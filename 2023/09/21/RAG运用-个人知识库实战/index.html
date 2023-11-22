@@ -16,24 +16,22 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="HDFS入门1 简介HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。是 Hadoop 核心组件之一，作为最底层的分布式存储服务而存在。 2 HDFS的作用2.1 大数据面临的问题随着大数据的快速发展，对数据的存储需求也不断增加。单个服务器已无法满足用户的需求，这不可避免地导致了需要">
+    <meta name="description" content="RAG运用-个人知识库实战1 前言RAG技术的应用需要外挂数据库来提供更时效性和准确性的信息，进而充分利用外部数据以提升LLM的能力。然而，在初次使用时，往往会感到无从下手。在此，我将以个人知识库为例，展示具体的操作方式，以期帮助大家更好地了解和运用该技术。 2 前期准备运行环境：本篇所有的操作都是运行在JupyterLab上的，需自行安装。 AZURE_OPENAI_API_KEY：是Azure">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HDFS入门">
-<meta property="og:url" content="http://example.com/2023/01/15/HDFS%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:title" content="RAG运用-个人知识库实战">
+<meta property="og:url" content="http://example.com/2023/09/21/RAG%E8%BF%90%E7%94%A8-%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E5%AE%9E%E6%88%98/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="HDFS入门1 简介HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。是 Hadoop 核心组件之一，作为最底层的分布式存储服务而存在。 2 HDFS的作用2.1 大数据面临的问题随着大数据的快速发展，对数据的存储需求也不断增加。单个服务器已无法满足用户的需求，这不可避免地导致了需要">
+<meta property="og:description" content="RAG运用-个人知识库实战1 前言RAG技术的应用需要外挂数据库来提供更时效性和准确性的信息，进而充分利用外部数据以提升LLM的能力。然而，在初次使用时，往往会感到无从下手。在此，我将以个人知识库为例，展示具体的操作方式，以期帮助大家更好地了解和运用该技术。 2 前期准备运行环境：本篇所有的操作都是运行在JupyterLab上的，需自行安装。 AZURE_OPENAI_API_KEY：是Azure">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/HDFS%E5%82%A8%E5%AD%98%E6%B5%81%E7%A8%8B.png">
-<meta property="article:published_time" content="2023-01-15T09:23:48.000Z">
-<meta property="article:modified_time" content="2023-11-21T03:31:26.239Z">
+<meta property="article:published_time" content="2023-09-21T13:19:04.000Z">
+<meta property="article:modified_time" content="2023-11-22T05:48:22.900Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/HDFS%E5%82%A8%E5%AD%98%E6%B5%81%E7%A8%8B.png">
   
   
   
-  <title>HDFS入门 - 残梦三生</title>
+  <title>RAG运用-个人知识库实战 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="HDFS入门"></span>
+            <span id="subtitle" data-typed-text="RAG运用-个人知识库实战"></span>
           
         </div>
 
@@ -210,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-15 17:23" pubdate>
-          2023年1月15日 下午
+        <time datetime="2023-09-21 21:19" pubdate>
+          2023年9月21日 晚上
         </time>
       </span>
     
@@ -222,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          3k 字
         
       </span>
     
@@ -233,7 +231,7 @@
         
         
         
-          11 分钟
+          26 分钟
         
       </span>
     
@@ -270,27 +268,39 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">HDFS入门</h1>
+            <h1 id="seo-header">RAG运用-个人知识库实战</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="HDFS入门"><a href="#HDFS入门" class="headerlink" title="HDFS入门"></a>HDFS入门</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。是 Hadoop 核心组件之一，作为最底层的分布式存储服务而存在。</p>
-<h2 id="2-HDFS的作用"><a href="#2-HDFS的作用" class="headerlink" title="2 HDFS的作用"></a>2 HDFS的作用</h2><h3 id="2-1-大数据面临的问题"><a href="#2-1-大数据面临的问题" class="headerlink" title="2.1 大数据面临的问题"></a>2.1 大数据面临的问题</h3><p>随着大数据的快速发展，对数据的存储需求也不断增加。单个服务器已无法满足用户的需求，这不可避免地导致了需要对服务器进行扩充的局面。然而，随着服务器数量数量的增加，用户可能面临难以精确定位特定文件存储位置以及管理大量数据的挑战。</p>
-<h3 id="2-2-HDFS的解决方法"><a href="#2-2-HDFS的解决方法" class="headerlink" title="2.2 HDFS的解决方法"></a>2.2 HDFS的解决方法</h3><h4 id="2-2-1-数据分块"><a href="#2-2-1-数据分块" class="headerlink" title="2.2.1 数据分块"></a>2.2.1 数据分块</h4><p>HDFS支持超大文件，它的分布式文件系统有较大的数据集，HDFS上的一个典型文件大小一般都在G字节至T字节。面临如此庞大的数据集，他主要采用了数据切块的方法。</p>
-<p>数据块block是磁盘进行数据读写的最小单位，一个整体成为一个block块；在Hadoop2之后默认一个block块的大小为128M，当一个文件不是128的整数时，除了最后一个，每个数据块的大小都会保持一致，最后一个小于128M的数据也会单独使用一个块，以确保每个数据在获取时所需要的时间一致，便于使用和管理数据。</p>
-<h4 id="2-2-2-数据定位"><a href="#2-2-2-数据定位" class="headerlink" title="2.2.2 数据定位"></a>2.2.2 数据定位</h4><p>HDFS采用master&#x2F;slave架构。一个HDFS集群是由一个NameNode和一定数目的DataNodes组成。</p>
-<p>NameNode主要用于数据文件定位，内部存储文件的原数据信息，如文件归属、权限、大小等。DataNode则是存放文件的具体数据，存储在磁盘上。</p>
-<p>在使用时，NameNode执行文系统的名字空间操作，如打开、关闭、重命名等，以及确定数据块到具体Datanode节点的映射。Datanode负责处理文件系统客户端的读写请求。在Namenode的统一调度下进行数据块的创建、删除和复制。</p>
-<h4 id="2-2-3-数据冗余"><a href="#2-2-3-数据冗余" class="headerlink" title="2.2.3 数据冗余"></a>2.2.3 数据冗余</h4><p>由于HDFS是由大量的服务器组成的，即使一台服务器发生故障的概率极低，但随着服务器数量的提升，服务器会发生故障的概率就越高，所以硬件故障是常态，无法避免的。</p>
-<p>为了解决这个问题，就需要对数据进行冗余，通常情况下，同一份数据会保存3份，其中两份存储在同一个机架上的不同服务器上，另一份数据储存在相邻机架的一台服务器上。</p>
-<p>在文件写入的过程中，一般是客户端向NameNode发出创建文件请求，NameNode将应该存放文件的DateNode位置返回给客户端，然后客户端再连接具体的DateNode并发送写入的数据，数据写完后，会将数据副本发送给需要备份的位置，当所以副本写完以后，才会告诉NameNode一次写入完成。具体流程如下图所示。</p>
-<p><img src="/images/HDFS%E5%82%A8%E5%AD%98%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload></p>
-<center>HDFS储存数据示意图</center>
+                <h1 id="RAG运用-个人知识库实战"><a href="#RAG运用-个人知识库实战" class="headerlink" title="RAG运用-个人知识库实战"></a>RAG运用-个人知识库实战</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>RAG技术的应用需要外挂数据库来提供更时效性和准确性的信息，进而充分利用外部数据以提升LLM的能力。然而，在初次使用时，往往会感到无从下手。在此，我将以个人知识库为例，展示具体的操作方式，以期帮助大家更好地了解和运用该技术。</p>
+<h2 id="2-前期准备"><a href="#2-前期准备" class="headerlink" title="2 前期准备"></a>2 前期准备</h2><p>运行环境：本篇所有的操作都是运行在JupyterLab上的，需自行安装。</p>
+<p>AZURE_OPENAI_API_KEY：是Azure云平台提供的OpenAI API的Key，用于访问OpenAI GPT-3等自然语言处理模型，需要自己去申请。</p>
+<p>AZURE_OPENAI_ENDPOINT：是Azure云平台上OpenAI API的终结点（Endpoint），用于指定API请求的目标地址，需要自己准备。</p>
+<h2 id="3-代码实战"><a href="#3-代码实战" class="headerlink" title="3 代码实战"></a>3 代码实战</h2><h3 id="3-1-安装依赖"><a href="#3-1-安装依赖" class="headerlink" title="3.1 安装依赖"></a>3.1 安装依赖</h3><p>RAG主要依靠的就是向量数据库，这里使用了chromadb向量数据库，同时安装langchain和openai。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">!pip install langchain openai chromadb<br></code></pre></td></tr></table></figure>
 
-<h3 id="3-HDFS的缺点"><a href="#3-HDFS的缺点" class="headerlink" title="3 HDFS的缺点"></a>3 HDFS的缺点</h3><p>不适用于低延迟数据的访问。数据切块和多份写入需要大量的时间，对比与MySQL这种毫秒级别的读写，有一定的差距。</p>
-<p>不适合储存大量的小文件。每一个DateNode都是固定大小，当大量的小于固定大小的数据进行储存时候，会占用较多的空间，造成资源浪费。</p>
-<p>不支持并发写。一个文件只允许一个进行写入，而且只能通过追加的方式写入，不能对已经写入的数据进行修改。</p>
+<h3 id="3-2-索引文档到向量数据库"><a href="#3-2-索引文档到向量数据库" class="headerlink" title="3.2 索引文档到向量数据库"></a>3.2 索引文档到向量数据库</h3><h4 id="3-2-1-定义embedding模型"><a href="#3-2-1-定义embedding模型" class="headerlink" title="3.2.1 定义embedding模型"></a>3.2.1 定义embedding模型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">from</span> langchain.embeddings <span class="hljs-keyword">import</span> AzureOpenAIEmbeddings<br><br>AZURE_OPENAI_API_KEY=<span class="hljs-string">&quot;xxxxxx&quot;</span><br>AZURE_OPENAI_ENDPOINT=<span class="hljs-string">&quot;xxxxxx&quot;</span><br><br>os.environ[<span class="hljs-string">&quot;AZURE_OPENAI_API_KEY&quot;</span>] = AZURE_OPENAI_API_KEY<br>os.environ[<span class="hljs-string">&quot;AZURE_OPENAI_ENDPOINT&quot;</span>] = AZURE_OPENAI_ENDPOINT<br><br>embeddings = AzureOpenAIEmbeddings(<br>    azure_deployment=<span class="hljs-string">&#x27;xxxxxx&#x27;</span>,<br>    openai_api_version=<span class="hljs-string">&quot;xxxxxx&quot;</span>,<br>)<br></code></pre></td></tr></table></figure>
+
+<p>这一步主要就是需要将自己申请的key等信息设置为环境变量，然后实例化embedding模型。</p>
+<h4 id="3-2-2-加载文档"><a href="#3-2-2-加载文档" class="headerlink" title="3.2.2 加载文档"></a>3.2.2 加载文档</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain.document_loaders <span class="hljs-keyword">import</span> TextLoader<br><span class="hljs-keyword">from</span> langchain.text_splitter <span class="hljs-keyword">import</span> CharacterTextSplitter<br><br>book_path=<span class="hljs-string">&quot;your path&quot;</span><br>loader = TextLoader(book_path)<br>documents = loader.load()<br><br><span class="hljs-comment"># 将文档按照章节切块</span><br>text_splitter = CharacterTextSplitter(chunk_size=<span class="hljs-number">1000</span>, chunk_overlap=<span class="hljs-number">0</span>)<br>docs = text_splitter.split_documents(documents)<br></code></pre></td></tr></table></figure>
+
+<p>加载文档一共分为两步，第一步是加载路径内的文件，并且将数据转化为document对象。第二部是初始化一个切割器，将document对象切割成小块，便于向量数据库的存储。</p>
+<h4 id="3-2-3-保存数据"><a href="#3-2-3-保存数据" class="headerlink" title="3.2.3 保存数据"></a>3.2.3 保存数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain.vectorstores <span class="hljs-keyword">import</span> Chroma<br>db = Chroma.from_documents(docs, embeddings)<br></code></pre></td></tr></table></figure>
+
+<p>这一步主要目的就是计算embedding，并且将数据保存到向量数据库中。</p>
+<h3 id="3-3-相关性检索"><a href="#3-3-相关性检索" class="headerlink" title="3.3 相关性检索"></a>3.3 相关性检索</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">query = <span class="hljs-string">&quot;激励相容是什么&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;用户的问题是：<span class="hljs-subst">&#123;query&#125;</span>&quot;</span>)<br>some_query_result = db.similarity_search(query)<br><br>recall_result=<span class="hljs-string">&quot;&quot;</span><br>cnt = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i,r <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(some_query_result):<br>    <span class="hljs-comment"># print(f&quot;第&#123;i&#125;条相似结果：&#123;r.page_content&#125;&quot;)</span><br>    recall_result = recall_result + <span class="hljs-string">&quot;\n\n&quot;</span>+r.page_content<br>    cnt = cnt + <span class="hljs-built_in">len</span>(r.page_content)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;共<span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(some_query_result)&#125;</span>条相似内容，共<span class="hljs-subst">&#123;cnt&#125;</span>字&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">用户的问题是：激励相容是什么<br>共4条相似内容，共3281字<br></code></pre></td></tr></table></figure>
+
+<p>对数据库内的数据进行搜索，统计并且打印所有检索出来的相关内容。</p>
+<h3 id="3-4-LLM整合"><a href="#3-4-LLM整合" class="headerlink" title="3.4 LLM整合"></a>3.4 LLM整合</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">from</span> langchain.chat_models <span class="hljs-keyword">import</span> AzureChatOpenAI<br><span class="hljs-keyword">from</span> langchain.schema <span class="hljs-keyword">import</span> HumanMessage,SystemMessage<br><br>model = AzureChatOpenAI(<br>    openai_api_version=<span class="hljs-string">&quot;xxx&quot;</span>,<br>    azure_deployment=<span class="hljs-string">&quot;xxx&quot;</span>,<br>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;用户的问题是：<span class="hljs-subst">&#123;query&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;--------正在计算，请稍候-----------&quot;</span>)<br>prompt_message = SystemMessage(<br>    content=<span class="hljs-string">&quot;你是一个文档总结机器人，请根据文档内容回答用户问题。文档内容为：&quot;</span>+recall_result<br>)<br>human_message=HumanMessage(content=query)<br>resp = model([prompt_message, human_message])<br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;AI的回答是：<span class="hljs-subst">&#123;resp.content&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">用户的问题是：激励相容是什么</span><br><span class="hljs-literal">--------</span><span class="hljs-comment">正在计算，请稍候</span><span class="hljs-literal">-----------</span><br><span class="hljs-comment">AI的回答是：激励相容指的是一方有意愿并具备能力去完成另一方期望的事情。在政府内部，激励相容可以指上下级之间的激励相容，也可以指工作目标和官员自身利益之间的激励相容。具体来说，就是要求上级政府和下级政府之间的工作目标相互协调，上级政府既要提出明确的要求，又要给予下级政府足够的资源和支持，使得下级政府有能力并有意愿去完成上级政府的要求。同时，上级政府也要考虑到下级政府官员的个人利益，给予相应的激励，以促使他们积极地推动工作。这样的激励相容可以提高政府运作的效果。</span><br></code></pre></td></tr></table></figure>
+
+<p>首先，需要加载AzureChatOpenAI模型；然后将向量数据库中查询到的数据全部放入到promrt中，将提问放到human_message对象中，最后将两个对象都作为输入参数传递给模型，让模型输出最终的回答内容。</p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>上述过程展示了一个完整的外挂个人知识库的制作过程，使用了基于LLM的RAG技术。通过这种技术，AI可以回答其原本不具备的知识。</p>
+<p>这种方法使得AI可以利用外部的知识资源来回答问题，即使它本身并不具备这些知识。通过引入文档总结作为提示信息，模型能够从中获取相关知识，并结合用户的问题生成准确的回答。</p>
 
                 
               </div>
@@ -309,8 +319,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
+  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">大模型</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/RAG/" class="category-chain-item">RAG</a>
+  
+  
+
   
 
       </span>
@@ -336,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>HDFS入门</div>
-      <div>http://example.com/2023/01/15/HDFS入门/</div>
+      <div>RAG运用-个人知识库实战</div>
+      <div>http://example.com/2023/09/21/RAG运用-个人知识库实战/</div>
     </div>
     <div class="license-meta">
       
@@ -349,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月15日</div>
+          <div>2023年9月21日</div>
         </div>
       
       
@@ -381,18 +398,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/13/RAG%E5%85%A5%E9%97%A8/" title="RAG入门">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">RAG入门</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/13/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/" title="用户画像">
-                        <span class="hidden-mobile">用户画像</span>
+                      <a href="/2023/07/13/RAG%E5%85%A5%E9%97%A8/" title="RAG入门">
+                        <span class="hidden-mobile">RAG入门</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -16,28 +16,24 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="垃圾回收入门1 简介垃圾回收（Garbage Collection，缩写为GC）是一种内存管理机制。当某个程序占用的一部分内存空间不再被这个程序访问时，这个程序会借助垃圾回收算法向操作系统归还这部分内存空间，垃圾回收是最经典的守护线程。 2 作用GC给程序员带来了非常大的便利。如果没有GC机制的存在，就必须要手动管理内存空间，确保需要的内存空间被保留，并释放不要的内存空间。这期间非常容易面临三个问">
+    <meta name="description" content="深入理解HDFS：存储大数据的利器与局限性1 简介HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。是 Hadoop 核心组件之一，作为最底层的分布式存储服务而存在。 2 HDFS的作用2.1 大数据面临的问题随着大数据的快速发展，对数据的存储需求也不断增加。单个服务器已无法满足用户">
 <meta property="og:type" content="article">
-<meta property="og:title" content="垃圾回收入门">
-<meta property="og:url" content="http://example.com/2022/05/03/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:title" content="深入理解HDFS：存储大数据的利器与局限性">
+<meta property="og:url" content="http://example.com/2023/01/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3HDFS%EF%BC%9A%E5%AD%98%E5%82%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%A9%E5%99%A8%E4%B8%8E%E5%B1%80%E9%99%90%E6%80%A7/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="垃圾回收入门1 简介垃圾回收（Garbage Collection，缩写为GC）是一种内存管理机制。当某个程序占用的一部分内存空间不再被这个程序访问时，这个程序会借助垃圾回收算法向操作系统归还这部分内存空间，垃圾回收是最经典的守护线程。 2 作用GC给程序员带来了非常大的便利。如果没有GC机制的存在，就必须要手动管理内存空间，确保需要的内存空间被保留，并释放不要的内存空间。这期间非常容易面临三个问">
+<meta property="og:description" content="深入理解HDFS：存储大数据的利器与局限性1 简介HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。是 Hadoop 核心组件之一，作为最底层的分布式存储服务而存在。 2 HDFS的作用2.1 大数据面临的问题随着大数据的快速发展，对数据的存储需求也不断增加。单个服务器已无法满足用户">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4.png">
-<meta property="og:image" content="http://example.com/images/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.png">
-<meta property="og:image" content="http://example.com/images/%E6%A0%87%E8%AE%B0-%E5%8E%8B%E7%BC%A9.png">
-<meta property="og:image" content="http://example.com/images/%E5%88%86%E4%BB%A3%E5%9B%9E%E6%94%B6%E5%86%85%E5%AD%98%E7%A4%BA%E6%84%8F.png">
-<meta property="og:image" content="http://example.com/images/%E6%96%B0%E7%94%9F%E4%BB%A3%E7%A9%BA%E9%97%B4GC.png">
-<meta property="article:published_time" content="2022-05-03T11:02:55.000Z">
-<meta property="article:modified_time" content="2023-11-21T03:27:57.482Z">
+<meta property="og:image" content="http://example.com/images/HDFS%E5%82%A8%E5%AD%98%E6%B5%81%E7%A8%8B.png">
+<meta property="article:published_time" content="2023-01-15T09:23:48.000Z">
+<meta property="article:modified_time" content="2023-11-22T05:46:10.884Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4.png">
+<meta name="twitter:image" content="http://example.com/images/HDFS%E5%82%A8%E5%AD%98%E6%B5%81%E7%A8%8B.png">
   
   
   
-  <title>垃圾回收入门 - 残梦三生</title>
+  <title>深入理解HDFS：存储大数据的利器与局限性 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="垃圾回收入门"></span>
+            <span id="subtitle" data-typed-text="深入理解HDFS：存储大数据的利器与局限性"></span>
           
         </div>
 
@@ -214,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-03 19:02" pubdate>
-          2022年5月3日 晚上
+        <time datetime="2023-01-15 17:23" pubdate>
+          2023年1月15日 下午
         </time>
       </span>
     
@@ -226,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1.3k 字
         
       </span>
     
@@ -237,7 +233,7 @@
         
         
         
-          16 分钟
+          11 分钟
         
       </span>
     
@@ -274,53 +270,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">垃圾回收入门</h1>
+            <h1 id="seo-header">深入理解HDFS：存储大数据的利器与局限性</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="垃圾回收入门"><a href="#垃圾回收入门" class="headerlink" title="垃圾回收入门"></a>垃圾回收入门</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>垃圾回收（Garbage Collection，缩写为GC）是一种内存管理机制。当某个程序占用的一部分内存空间不再被这个程序访问时，这个程序会借助垃圾回收算法向操作系统归还这部分内存空间，垃圾回收是最经典的守护线程。</p>
-<h2 id="2-作用"><a href="#2-作用" class="headerlink" title="2 作用"></a>2 作用</h2><p>GC给程序员带来了非常大的便利。如果没有GC机制的存在，就必须要手动管理内存空间，确保需要的内存空间被保留，并释放不要的内存空间。这期间非常容易面临三个问题：内存泄漏、悬垂指针、错误的释放使用中的内存空间，从而引发恶性漏洞和系统崩溃。</p>
-<p>有了GC以后，人们可以把内存管理托付给计算机，不需要考虑内存管理，把精力都集中在编程上。</p>
-<h2 id="3-垃圾回收算法"><a href="#3-垃圾回收算法" class="headerlink" title="3 垃圾回收算法"></a>3 垃圾回收算法</h2><p>目前垃圾算法比较常见的共有4种，从出现时序来看，分别是：标记-清除算法、复制算法、标记-压缩算法和分代垃圾回收。</p>
-<h3 id="3-1-标记-清除算法"><a href="#3-1-标记-清除算法" class="headerlink" title="3.1 标记-清除算法"></a>3.1 标记-清除算法</h3><p>标记-清除算法是由标记和清除两个阶段构成的。</p>
-<p>标记阶段主要是从根节点出发，遍历根节点能到达的内存空间，将所有的活动对象都标记出来。</p>
-<p>清除阶段，是将所有未标记的部分清除干净，并且对清理出来的连续空间进行合并，再将所有的空余空间链接到空闲链表上，方便之后的内存分配。最后再清除活动空间上的标记，为下一次垃圾回收做准备。</p>
-<p><img src="/images/%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4.png" srcset="/img/loading.gif" lazyload></p>
-<center>标记-清除算法</center>
+                <h1 id="深入理解HDFS：存储大数据的利器与局限性"><a href="#深入理解HDFS：存储大数据的利器与局限性" class="headerlink" title="深入理解HDFS：存储大数据的利器与局限性"></a>深入理解HDFS：存储大数据的利器与局限性</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。是 Hadoop 核心组件之一，作为最底层的分布式存储服务而存在。</p>
+<h2 id="2-HDFS的作用"><a href="#2-HDFS的作用" class="headerlink" title="2 HDFS的作用"></a>2 HDFS的作用</h2><h3 id="2-1-大数据面临的问题"><a href="#2-1-大数据面临的问题" class="headerlink" title="2.1 大数据面临的问题"></a>2.1 大数据面临的问题</h3><p>随着大数据的快速发展，对数据的存储需求也不断增加。单个服务器已无法满足用户的需求，这不可避免地导致了需要对服务器进行扩充的局面。然而，随着服务器数量数量的增加，用户可能面临难以精确定位特定文件存储位置以及管理大量数据的挑战。</p>
+<h3 id="2-2-HDFS的解决方法"><a href="#2-2-HDFS的解决方法" class="headerlink" title="2.2 HDFS的解决方法"></a>2.2 HDFS的解决方法</h3><h4 id="2-2-1-数据分块"><a href="#2-2-1-数据分块" class="headerlink" title="2.2.1 数据分块"></a>2.2.1 数据分块</h4><p>HDFS支持超大文件，它的分布式文件系统有较大的数据集，HDFS上的一个典型文件大小一般都在G字节至T字节。面临如此庞大的数据集，他主要采用了数据切块的方法。</p>
+<p>数据块block是磁盘进行数据读写的最小单位，一个整体成为一个block块；在Hadoop2之后默认一个block块的大小为128M，当一个文件不是128的整数时，除了最后一个，每个数据块的大小都会保持一致，最后一个小于128M的数据也会单独使用一个块，以确保每个数据在获取时所需要的时间一致，便于使用和管理数据。</p>
+<h4 id="2-2-2-数据定位"><a href="#2-2-2-数据定位" class="headerlink" title="2.2.2 数据定位"></a>2.2.2 数据定位</h4><p>HDFS采用master&#x2F;slave架构。一个HDFS集群是由一个NameNode和一定数目的DataNodes组成。</p>
+<p>NameNode主要用于数据文件定位，内部存储文件的原数据信息，如文件归属、权限、大小等。DataNode则是存放文件的具体数据，存储在磁盘上。</p>
+<p>在使用时，NameNode执行文系统的名字空间操作，如打开、关闭、重命名等，以及确定数据块到具体Datanode节点的映射。Datanode负责处理文件系统客户端的读写请求。在Namenode的统一调度下进行数据块的创建、删除和复制。</p>
+<h4 id="2-2-3-数据冗余"><a href="#2-2-3-数据冗余" class="headerlink" title="2.2.3 数据冗余"></a>2.2.3 数据冗余</h4><p>由于HDFS是由大量的服务器组成的，即使一台服务器发生故障的概率极低，但随着服务器数量的提升，服务器会发生故障的概率就越高，所以硬件故障是常态，无法避免的。</p>
+<p>为了解决这个问题，就需要对数据进行冗余，通常情况下，同一份数据会保存3份，其中两份存储在同一个机架上的不同服务器上，另一份数据储存在相邻机架的一台服务器上。</p>
+<p>在文件写入的过程中，一般是客户端向NameNode发出创建文件请求，NameNode将应该存放文件的DateNode位置返回给客户端，然后客户端再连接具体的DateNode并发送写入的数据，数据写完后，会将数据副本发送给需要备份的位置，当所以副本写完以后，才会告诉NameNode一次写入完成。具体流程如下图所示。</p>
+<p><img src="/images/HDFS%E5%82%A8%E5%AD%98%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload></p>
+<center>HDFS储存数据示意图</center>
 
-<h4 id="3-1-1-优势"><a href="#3-1-1-优势" class="headerlink" title="3.1.1 优势"></a>3.1.1 优势</h4><p>实现比较简单。算法简单，相比于其他算法，更加容易实现；不需要对内存空间的数据进行挪动，可以与保守式GC算法兼容。</p>
-<h4 id="3-1-2-劣势"><a href="#3-1-2-劣势" class="headerlink" title="3.1.2 劣势"></a>3.1.2 劣势</h4><p>碎片化。清理完的空间不进行整理，很容易出现很多细小的分块，即使总的空余空间足够大，但是由于没有一块完整的大空间，可能大致内存无法被分配。</p>
-<p>分配速度慢。由于清理出来的空间都在空闲链表上，极端情况下，可能会需要遍历整个链表才能分配空间。</p>
-<p>垃圾回收周期较长。在一次完整的回收流程，每个阶段都需要遍历一次内存空间，对程序的性能有一定的影响。</p>
-<h2 id="3-2-复制算法"><a href="#3-2-复制算法" class="headerlink" title="3.2 复制算法"></a>3.2 复制算法</h2><p>复制算法是将整个内存空间等分为二，分别为From空间和To空间。当From空间被占满时会触发复制算法，将所有的活动对象都复制到To空间，然后将From和To空间互换。</p>
-<p><img src="/images/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.png" srcset="/img/loading.gif" lazyload></p>
-<center>复制算法</center>
-
-<h3 id="3-2-1-优势"><a href="#3-2-1-优势" class="headerlink" title="3.2.1 优势"></a>3.2.1 优势</h3><p>优秀的吞吐量。对比标记-清除算法，复制算法只需要遍历一次，将所有的活动对象复制到To空间即可，一次垃圾回收所需要的时间很短。</p>
-<p>分配速度快且不会发生碎片化。所有的空闲空间都是一个连续的空间，当有新的对象需要空间时候，只需要在现有已用空间的末尾分配需要的空间即可，不会导致空间碎片化的情况出现。</p>
-<h3 id="3-2-2-劣势"><a href="#3-2-2-劣势" class="headerlink" title="3.2.2 劣势"></a>3.2.2 劣势</h3><p>堆的使用效率低。需要有一半的内存空间闲置，资源浪费严重，是一个非常大的缺陷。</p>
-<p>需要挪动对象。</p>
-<h2 id="3-3-标记-压缩算法"><a href="#3-3-标记-压缩算法" class="headerlink" title="3.3 标记-压缩算法"></a>3.3 标记-压缩算法</h2><p>标记-压缩算法与标记-清除算法类似。分为标记和压缩两个阶段，标记阶段和之前的没有变化。压缩阶段是将所有的活动空间进行挪动，把所有的空闲空间放到一块。</p>
-<p><img src="/images/%E6%A0%87%E8%AE%B0-%E5%8E%8B%E7%BC%A9.png" srcset="/img/loading.gif" lazyload></p>
-<center>标记-压缩算法</center>
-
-<h3 id="3-3-1优势"><a href="#3-3-1优势" class="headerlink" title="3.3.1优势"></a>3.3.1优势</h3><p>不会产生碎片化。对比标记-清除算法，垃圾回收结束后，所有的空闲空间都集中在尾部，没有碎片化的情况出现。</p>
-<p>堆的使用效率高。不会出现复制算法那样只能使用半个堆的情况出现，可以更加充分的使用内存空间。</p>
-<h3 id="3-3-2-劣势"><a href="#3-3-2-劣势" class="headerlink" title="3.3.2 劣势"></a>3.3.2 劣势</h3><p>成本较高。对比复制算法，标记-压缩算法需要多次遍历堆内存，消耗的成本较大。</p>
-<h2 id="3-4-分代垃圾回收"><a href="#3-4-分代垃圾回收" class="headerlink" title="3.4 分代垃圾回收"></a>3.4 分代垃圾回收</h2><p>分代回收是目前最常用的垃圾回收算法。它将整个内存空间分为两大部分：新生代空间和老年代空间。新生代空间内又细分为生成空间和两个幸存空间。</p>
-<p><img src="/images/%E5%88%86%E4%BB%A3%E5%9B%9E%E6%94%B6%E5%86%85%E5%AD%98%E7%A4%BA%E6%84%8F.png" srcset="/img/loading.gif" lazyload></p>
-<center>分代回收内存示意图</center>
-
-<p>新生代空间。所有新创建的对象都被分配到生存空间中，在其头部记录为0，当生存空间被占满时，采用复制算法，将活动对象都复制到第一个幸存者空间，并且每一个被复制进来的活动对象的年龄增加1。</p>
-<p>当第一个幸存者空间被占满时，再次启用复制算法，将第一个幸存空间的活动对象复制到第二个幸存者空间，并且年龄再加1。之后就是两个幸存者空间之间反复采用复制算法，等内部的对象年龄增加到一定数值，就将该对象放入到老年代中。</p>
-<p><img src="/images/%E6%96%B0%E7%94%9F%E4%BB%A3%E7%A9%BA%E9%97%B4GC.png" srcset="/img/loading.gif" lazyload></p>
-<center>新生代GC回收示意图</center>
-
-<p>老年代空间。被放入到老年代的对象，都是不容易转变成垃圾的，所有老年代的GC执行频率很低，老年代使用的是标记-清除算法。</p>
-<h3 id="3-4-1-优势"><a href="#3-4-1-优势" class="headerlink" title="3.4.1 优势"></a>3.4.1 优势</h3><p>吞吐量得到改善。新生代在执行GC时，只需要遍历生成空间的对象即可，所消耗的时间较短。</p>
-<h3 id="3-4-2-劣势"><a href="#3-4-2-劣势" class="headerlink" title="3.4.2 劣势"></a>3.4.2 劣势</h3><p>在部分程序中会出现反作用。当遇到某个程序，里面有大量的活的很久的对象，当启动GC后，会出现两个问题。新生代GC所需要的时间增多，老年代频繁地运行GC。</p>
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>综上所诉，垃圾回收是一种非常便利的机制，可以帮助我们减少很多不必要的麻烦，但是一款完美的垃圾回收机制是不存在的，每一种回收机制都有各自的优缺点。所以，这就要根据实际需求出现，选择一款合适的，并且缺点对自身影响较小的回收机制去使用。</p>
+<h3 id="3-HDFS的缺点"><a href="#3-HDFS的缺点" class="headerlink" title="3 HDFS的缺点"></a>3 HDFS的缺点</h3><p>不适用于低延迟数据的访问。数据切块和多份写入需要大量的时间，对比与MySQL这种毫秒级别的读写，有一定的差距。</p>
+<p>不适合储存大量的小文件。每一个DateNode都是固定大小，当大量的小于固定大小的数据进行储存时候，会占用较多的空间，造成资源浪费。</p>
+<p>不支持并发写。一个文件只允许一个进行写入，而且只能通过追加的方式写入，不能对已经写入的数据进行修改。</p>
 
                 
               </div>
@@ -339,7 +309,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="category-chain-item">垃圾回收</a>
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
   
   
 
@@ -366,8 +336,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>垃圾回收入门</div>
-      <div>http://example.com/2022/05/03/垃圾回收入门/</div>
+      <div>深入理解HDFS：存储大数据的利器与局限性</div>
+      <div>http://example.com/2023/01/15/深入理解HDFS：存储大数据的利器与局限性/</div>
     </div>
     <div class="license-meta">
       
@@ -379,7 +349,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月3日</div>
+          <div>2023年1月15日</div>
         </div>
       
       
@@ -411,9 +381,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/23/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84IO/" title="Linux系统下的IO">
+                      <a href="/2023/07/13/RAG%E5%85%A5%E9%97%A8/" title="RAG入门">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux系统下的IO</span>
+                        <span class="hidden-mobile">RAG入门</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -421,8 +391,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/" title="数据库事务">
-                        <span class="hidden-mobile">数据库事务</span>
+                      <a href="/2022/12/13/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/" title="用户画像">
+                        <span class="hidden-mobile">用户画像</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
