@@ -24,7 +24,7 @@
 <meta property="og:description" content="深入理解redo log原理和恢复机制1 前言大家都知道在事务中，redo log是用来保证持久性的，在SQL执行器执行SQL语句时，对于增、删、改操作都是内存上操作的，操作完后，该数据所在的数据页就会变成脏数据页，等待后台线程将该数据页刷进磁盘中。 ![](&#x2F;images&#x2F;redo log流程.png) redo log流程.png  但是大家有没有想过一个问题，那就是在脏页">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-25T11:35:33.000Z">
-<meta property="article:modified_time" content="2023-11-23T07:40:49.402Z">
+<meta property="article:modified_time" content="2023-11-28T03:42:15.876Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.4k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          10 分钟
+          12 分钟
         
       </span>
     
@@ -280,15 +280,18 @@
 <p>但是大家有没有想过一个问题，那就是在脏页还没有刷进磁盘，MySQL发生错误，会发生什么事情？</p>
 <h2 id="2-误区"><a href="#2-误区" class="headerlink" title="2 误区"></a>2 误区</h2><p>有些人会认为，当发生这种情况的话，是通过undo log回滚到事务发生前的状态，然后重新进行数据的修改。这种想法是片面的，如果事务未被提交，MySQL就发生错误，确实是使用了undo log来恢复数据。</p>
 <p>但是，假如事务已经被提交了，然后MySQL发生错误，那么有应该怎么办呢。</p>
-<h2 id="3-redo-log流程"><a href="#3-redo-log流程" class="headerlink" title="3 redo log流程"></a>3 redo log流程</h2><h3 id="3-1-redo-log-block"><a href="#3-1-redo-log-block" class="headerlink" title="3.1 redo log block"></a>3.1 redo log block</h3><p>当redo log被创建以后，并不是一条一条的去写入到磁盘中的，而是保存到block中，然后再以block为单位，一块一块的写入到磁盘中去的。一个redo log block是512字节，每个block都分为3部分：一个12字节的header块头，一个496字节的body块体，一个4字节的trailer块尾。</p>
+<h2 id="3-redo-log"><a href="#3-redo-log" class="headerlink" title="3 redo log"></a>3 redo log</h2><p>redo log主要就是为了解决事务已经被提交，但脏页还未持久化，MySQL突然崩溃，导致数据丢失的问题出现的。将MySQL的写操作记录在redo log中，实现持久化，然后再在合适的时机更新到磁盘中去。</p>
+<p>这时有人可能会疑惑，写redo log是磁盘IO，直接将数据写入磁盘也是一次磁盘IO，那为什么需要redo log，而不是直接将数据写入磁盘。</p>
+<p>这里面主要涉及到redo log和写数据的一个差异，redo log是顺序IO，写数据是随机IO。</p>
+<p>写redo log是按照固定的顺序循环写入，而写数据需要找到对应的位置，然后再增删改，所需要花费的时间更多，速度较慢。</p>
+<h2 id="4-redo-log流程"><a href="#4-redo-log流程" class="headerlink" title="4 redo log流程"></a>4 redo log流程</h2><h3 id="4-1-redo-log-block"><a href="#4-1-redo-log-block" class="headerlink" title="4.1 redo log block"></a>4.1 redo log block</h3><p>当redo log被创建以后，并不是一条一条的去写入到磁盘中的，而是保存到block中，然后再以block为单位，一块一块的写入到磁盘中去的。一个redo log block是512字节，每个block都分为3部分：一个12字节的header块头，一个496字节的body块体，一个4字节的trailer块尾。</p>
 <p>每一个redo log都被保存在496字节的body内。假设一个SQL语句会产生一组增、删、改操作，并且各生成一个对应的redo log，那么一个事务就会产生多个redo log，这些事务会持续不断的被写入到redo log block中，并且被标记成一个redo log group。</p>
-<h3 id="3-2-redo-log-buffer"><a href="#3-2-redo-log-buffer" class="headerlink" title="3.2 redo log buffer"></a>3.2 redo log buffer</h3><p>所有的block都是存储在redo log buffer的连续内存缓冲区的，当事务被提交时，会把对应事务产生的redo log写入到磁盘中，实现持久化。</p>
+<h3 id="4-2-redo-log-buffer"><a href="#4-2-redo-log-buffer" class="headerlink" title="4.2 redo log buffer"></a>4.2 redo log buffer</h3><p>所有的block都是存储在redo log buffer的连续内存缓冲区的，当事务被提交时，会把对应事务产生的redo log写入到磁盘中，实现持久化。</p>
 <p>当然并不是只有事务提交时，redo log buffer里面的数据才会被刷入磁盘，还如存在以下情况。</p>
 <p>log buffer空间不足。log buffer空间是有限的，如果不断地往里面塞入日志，有限的空间很快会被填满，所以当写入的日志量达到buffer总容量一半时，就会将这些数据全部落盘。</p>
 <p>后台线程持续的输入。通常是一个后台线程，以每秒一次的频率，将redo log刷新到磁盘。</p>
 <p>还有就是正常关闭服务器以及触发 <strong>checkpoint</strong> 规则时，也会触发日志刷新到磁盘中去。</p>
-<h2 id="4-redo-log恢复数据"><a href="#4-redo-log恢复数据" class="headerlink" title="4 redo log恢复数据"></a>4 redo log恢复数据</h2><p>现在回到开头提出的问题进行分析，如果事务已经被提交，但是当脏页上的数据还没有刷进磁盘，那么这意味着缓存页上的数据已经被更改，那么对应的redo log也已经被记录，并且写入到了磁盘中。</p>
-<p>所以MySQL发生错误并不会有太大影响。只要在重启时解析redo log中的事务然后重放一遍。将Buffer Pool中的缓存页重做成脏页，后续再在合适的时机将该脏页刷入磁盘即可。</p>
+<h2 id="5-redo-log恢复数据"><a href="#5-redo-log恢复数据" class="headerlink" title="5 redo log恢复数据"></a>5 redo log恢复数据</h2><p>当redo log被持久化以后，MySQL发生错误并不会有太大影响。只要在重启时解析redo log中的事务然后重放一遍。将Buffer Pool中的缓存页重做成脏页，后续再在合适的时机将该脏页刷入磁盘即可。</p>
 
                 
               </div>
