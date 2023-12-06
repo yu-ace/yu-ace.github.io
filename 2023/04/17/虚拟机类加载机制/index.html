@@ -16,24 +16,25 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="深入理解HDFS：存储大数据的利器与局限性1 简介HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。是 Hadoop 核心组件之一，作为最底层的分布式存储服务而存在。 2 HDFS的作用2.1 大数据面临的问题随着大数据的快速发展，对数据的存储需求也不断增加。单个服务器已无法满足用户">
+    <meta name="description" content="虚拟机类加载机制1 简介Java的一门编译与解释并存的语言。其中编译指的就是将代码（.java）编译成虚拟机可以识别理解的字节码(.class)，也就是所谓的Class文件。 而虚拟机的类加载机制，就是指虚拟机把描述类的数据从Class文件中加载到内存，并对数据进行校验、转换解析等操作，最后形成可以被虚拟机直接使用的Java类型的过程。 2 类加载过程一个类型从被加载到虚拟机内存，再到卸载出内存为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解HDFS：存储大数据的利器与局限性">
-<meta property="og:url" content="http://example.com/2023/01/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3HDFS%EF%BC%9A%E5%AD%98%E5%82%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%A9%E5%99%A8%E4%B8%8E%E5%B1%80%E9%99%90%E6%80%A7/index.html">
+<meta property="og:title" content="虚拟机类加载机制">
+<meta property="og:url" content="http://example.com/2023/04/17/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="深入理解HDFS：存储大数据的利器与局限性1 简介HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。是 Hadoop 核心组件之一，作为最底层的分布式存储服务而存在。 2 HDFS的作用2.1 大数据面临的问题随着大数据的快速发展，对数据的存储需求也不断增加。单个服务器已无法满足用户">
+<meta property="og:description" content="虚拟机类加载机制1 简介Java的一门编译与解释并存的语言。其中编译指的就是将代码（.java）编译成虚拟机可以识别理解的字节码(.class)，也就是所谓的Class文件。 而虚拟机的类加载机制，就是指虚拟机把描述类的数据从Class文件中加载到内存，并对数据进行校验、转换解析等操作，最后形成可以被虚拟机直接使用的Java类型的过程。 2 类加载过程一个类型从被加载到虚拟机内存，再到卸载出内存为">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/HDFS%E5%82%A8%E5%AD%98%E6%B5%81%E7%A8%8B.png">
-<meta property="article:published_time" content="2023-01-15T09:23:48.000Z">
-<meta property="article:modified_time" content="2023-11-22T05:46:10.884Z">
+<meta property="og:image" content="http://example.com/images/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="http://example.com/images/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B.png">
+<meta property="article:published_time" content="2023-04-17T11:09:11.000Z">
+<meta property="article:modified_time" content="2023-12-06T07:23:15.336Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/HDFS%E5%82%A8%E5%AD%98%E6%B5%81%E7%A8%8B.png">
+<meta name="twitter:image" content="http://example.com/images/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png">
   
   
   
-  <title>深入理解HDFS：存储大数据的利器与局限性 - 残梦三生</title>
+  <title>虚拟机类加载机制 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="深入理解HDFS：存储大数据的利器与局限性"></span>
+            <span id="subtitle" data-typed-text="虚拟机类加载机制"></span>
           
         </div>
 
@@ -210,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-15 17:23" pubdate>
-          2023年1月15日 下午
+        <time datetime="2023-04-17 19:09" pubdate>
+          2023年4月17日 晚上
         </time>
       </span>
     
@@ -222,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.2k 字
         
       </span>
     
@@ -233,7 +234,7 @@
         
         
         
-          11 分钟
+          10 分钟
         
       </span>
     
@@ -270,27 +271,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">深入理解HDFS：存储大数据的利器与局限性</h1>
+            <h1 id="seo-header">虚拟机类加载机制</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="深入理解HDFS：存储大数据的利器与局限性"><a href="#深入理解HDFS：存储大数据的利器与局限性" class="headerlink" title="深入理解HDFS：存储大数据的利器与局限性"></a>深入理解HDFS：存储大数据的利器与局限性</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>HDFS （Hadoop Distributed File System）是 Hadoop 下的分布式文件系统，具有高容错、高吞吐量等特性，可以部署在低成本的硬件上。是 Hadoop 核心组件之一，作为最底层的分布式存储服务而存在。</p>
-<h2 id="2-HDFS的作用"><a href="#2-HDFS的作用" class="headerlink" title="2 HDFS的作用"></a>2 HDFS的作用</h2><h3 id="2-1-大数据面临的问题"><a href="#2-1-大数据面临的问题" class="headerlink" title="2.1 大数据面临的问题"></a>2.1 大数据面临的问题</h3><p>随着大数据的快速发展，对数据的存储需求也不断增加。单个服务器已无法满足用户的需求，这不可避免地导致了需要对服务器进行扩充的局面。然而，随着服务器数量数量的增加，用户可能面临难以精确定位特定文件存储位置以及管理大量数据的挑战。</p>
-<h3 id="2-2-HDFS的解决方法"><a href="#2-2-HDFS的解决方法" class="headerlink" title="2.2 HDFS的解决方法"></a>2.2 HDFS的解决方法</h3><h4 id="2-2-1-数据分块"><a href="#2-2-1-数据分块" class="headerlink" title="2.2.1 数据分块"></a>2.2.1 数据分块</h4><p>HDFS支持超大文件，它的分布式文件系统有较大的数据集，HDFS上的一个典型文件大小一般都在G字节至T字节。面临如此庞大的数据集，他主要采用了数据切块的方法。</p>
-<p>数据块block是磁盘进行数据读写的最小单位，一个整体成为一个block块；在Hadoop2之后默认一个block块的大小为128M，当一个文件不是128的整数时，除了最后一个，每个数据块的大小都会保持一致，最后一个小于128M的数据也会单独使用一个块，以确保每个数据在获取时所需要的时间一致，便于使用和管理数据。</p>
-<h4 id="2-2-2-数据定位"><a href="#2-2-2-数据定位" class="headerlink" title="2.2.2 数据定位"></a>2.2.2 数据定位</h4><p>HDFS采用master&#x2F;slave架构。一个HDFS集群是由一个NameNode和一定数目的DataNodes组成。</p>
-<p>NameNode主要用于数据文件定位，内部存储文件的原数据信息，如文件归属、权限、大小等。DataNode则是存放文件的具体数据，存储在磁盘上。</p>
-<p>在使用时，NameNode执行文系统的名字空间操作，如打开、关闭、重命名等，以及确定数据块到具体Datanode节点的映射。Datanode负责处理文件系统客户端的读写请求。在Namenode的统一调度下进行数据块的创建、删除和复制。</p>
-<h4 id="2-2-3-数据冗余"><a href="#2-2-3-数据冗余" class="headerlink" title="2.2.3 数据冗余"></a>2.2.3 数据冗余</h4><p>由于HDFS是由大量的服务器组成的，即使一台服务器发生故障的概率极低，但随着服务器数量的提升，服务器会发生故障的概率就越高，所以硬件故障是常态，无法避免的。</p>
-<p>为了解决这个问题，就需要对数据进行冗余，通常情况下，同一份数据会保存3份，其中两份存储在同一个机架上的不同服务器上，另一份数据储存在相邻机架的一台服务器上。</p>
-<p>在文件写入的过程中，一般是客户端向NameNode发出创建文件请求，NameNode将应该存放文件的DateNode位置返回给客户端，然后客户端再连接具体的DateNode并发送写入的数据，数据写完后，会将数据副本发送给需要备份的位置，当所以副本写完以后，才会告诉NameNode一次写入完成。具体流程如下图所示。</p>
-<p><img src="/images/HDFS%E5%82%A8%E5%AD%98%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload></p>
-<center>HDFS储存数据示意图</center>
+                <h1 id="虚拟机类加载机制"><a href="#虚拟机类加载机制" class="headerlink" title="虚拟机类加载机制"></a>虚拟机类加载机制</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>Java的一门编译与解释并存的语言。其中编译指的就是将代码（.java）编译成虚拟机可以识别理解的字节码(.class)，也就是所谓的Class文件。</p>
+<p>而虚拟机的类加载机制，就是指虚拟机把描述类的数据从Class文件中加载到内存，并对数据进行校验、转换解析等操作，最后形成可以被虚拟机直接使用的Java类型的过程。</p>
+<h2 id="2-类加载过程"><a href="#2-类加载过程" class="headerlink" title="2 类加载过程"></a>2 类加载过程</h2><p>一个类型从被加载到虚拟机内存，再到卸载出内存为止，它的整个生命周期会经历加载、连接、初始化、使用和卸载五个阶段，其中连接里面又包含验证、准备和解析三个阶段。</p>
+<p><img src="/images/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png" srcset="/img/loading.gif" lazyload></p>
+<center>类加载过程</center>
 
-<h3 id="3-HDFS的缺点"><a href="#3-HDFS的缺点" class="headerlink" title="3 HDFS的缺点"></a>3 HDFS的缺点</h3><p>不适用于低延迟数据的访问。数据切块和多份写入需要大量的时间，对比与MySQL这种毫秒级别的读写，有一定的差距。</p>
-<p>不适合储存大量的小文件。每一个DateNode都是固定大小，当大量的小于固定大小的数据进行储存时候，会占用较多的空间，造成资源浪费。</p>
-<p>不支持并发写。一个文件只允许一个进行写入，而且只能通过追加的方式写入，不能对已经写入的数据进行修改。</p>
+<h3 id="2-1-加载"><a href="#2-1-加载" class="headerlink" title="2.1 加载"></a>2.1 加载</h3><p>加载是整个类加载过程中的一个阶段。在这个阶段，虚拟机要经历三个阶段，第一阶段是通过一个类名获取该类的字节流；第二阶段是将字节流的静态存储结构转换为方法区的运行时数据结构；第三阶段是再内存中生成这类的java.lang.Class对象，作为方法区对这个类各种数据的访问入口。</p>
+<h3 id="2-2-连接"><a href="#2-2-连接" class="headerlink" title="2.2 连接"></a>2.2 连接</h3><p>加载阶段和连接阶段的部分动作是交叉进行的，加载阶段没有完成，连接阶段可能已经开始了。</p>
+<h4 id="2-2-1-验证"><a href="#2-2-1-验证" class="headerlink" title="2.2.1 验证"></a>2.2.1 验证</h4><p>验证是连接阶段的第一步。这一步需要确保Class文件的字节流中的信息符合规范要求，并且不会被当作代码运行后危害虚拟机安全。</p>
+<p>验证阶段主要是对文件格式、元数据、字节码和符号引用进行验证。</p>
+<h4 id="2-2-2-准备"><a href="#2-2-2-准备" class="headerlink" title="2.2.2 准备"></a>2.2.2 准备</h4><p>准备阶段是正式为类中定义的变量分配内存空间并设置变量初始值的阶段。不过需要注意的是，内存分配的仅仅包括类变量，不包括实例变量，实例变量会在对象实例化时随着对象一起分配在Java堆中，而且初始值都是默认值，而不是变量中定义的值。</p>
+<h4 id="2-2-3-解析"><a href="#2-2-3-解析" class="headerlink" title="2.2.3 解析"></a>2.2.3 解析</h4><p>这个阶段是虚拟机将常量池内的符号引用替换成直接引用的过程。</p>
+<h3 id="2-3-初始化"><a href="#2-3-初始化" class="headerlink" title="2.3 初始化"></a>2.3 初始化</h3><p>类初始化是类加载过程中的最后一个步骤。到这一步，虚拟机才真正开始执行类中编写的Java程序。</p>
+<h2 id="3-类加载器"><a href="#3-类加载器" class="headerlink" title="3 类加载器"></a>3 类加载器</h2><p>类加载器是实现类加载动作的工具，他在Java程序中的作用非常大。任意一个类都需要由加载它的类加载器和这个类本身一起共同确立它在Java虚拟机的唯一性，每一个类加载器都有一个独立的类名空间。也就是说，如果两个类是由两个不同的类加载器加载的，那么他们必然是不相同的。</p>
+<h3 id="3-1-双亲委派模型"><a href="#3-1-双亲委派模型" class="headerlink" title="3.1 双亲委派模型"></a>3.1 双亲委派模型</h3><p>在Java语言系统中，一共支持4类加载器，分别是启动类加载器、扩展类加载器、应用程序类加载器和自定义类加载器。如下图所示，这就是一个双亲委派模型，双亲委派模型要求除了顶层的启动类加载器外，其他的类加载器都应该有自己的父类加载器。</p>
+<p><img src="/images/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B.png" srcset="/img/loading.gif" lazyload></p>
+<center>双亲委派模型</center>
+
+<p>双亲委派机制，其实就是如果一个类加载器收到了类加载的请求，他会向上反馈给自己的父类加载器去完成加载，所以一般都是由最顶层的启动类加载器完全加载请求。只有当父类反馈无法加载时，才会由子类其加载。</p>
+<p>使用双亲委派机制的好处就是，通过双亲委派机制，无论是哪一个类加载器加载一个类，最终都会向上委派给启动类加载器去加载，这样就可以确保该类在各种类加载器环境中都能保证是同一个类。</p>
 
                 
               </div>
@@ -309,8 +314,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Java/%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="category-chain-item">虚拟机</a>
+  
+  
+
   
 
       </span>
@@ -336,8 +348,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>深入理解HDFS：存储大数据的利器与局限性</div>
-      <div>http://example.com/2023/01/15/深入理解HDFS：存储大数据的利器与局限性/</div>
+      <div>虚拟机类加载机制</div>
+      <div>http://example.com/2023/04/17/虚拟机类加载机制/</div>
     </div>
     <div class="license-meta">
       
@@ -349,7 +361,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月15日</div>
+          <div>2023年4月17日</div>
         </div>
       
       
@@ -381,9 +393,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/23/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E5%92%8C%E5%A4%84%E7%90%86/" title="虚拟机性能监控和处理">
+                      <a href="/2023/07/13/RAG%E5%85%A5%E9%97%A8/" title="RAG入门">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">虚拟机性能监控和处理</span>
+                        <span class="hidden-mobile">RAG入门</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -391,8 +403,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/10/%E5%9F%BA%E4%BA%8E%20ClickHouse%20%E7%9A%84%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%AE%9E%E7%8E%B0%E5%88%86%E6%9E%90/" title="基于 ClickHouse 的用户画像实现分析">
-                        <span class="hidden-mobile">基于 ClickHouse 的用户画像实现分析</span>
+                      <a href="/2023/02/23/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E5%92%8C%E5%A4%84%E7%90%86/" title="虚拟机性能监控和处理">
+                        <span class="hidden-mobile">虚拟机性能监控和处理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
