@@ -16,22 +16,23 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linux系统下的IO1 简介Java中的IO（输入&#x2F;输出）是以流为基础的机制，用于数据的输入和输出操作。它将数据串行化写入流，并进行输出。 Java的IO操作涉及磁盘、内存、网络和键盘等数据来源和目的地。使用输入流（InputStream）和输出流（OutputStream），可以实现数据的输入和输出操作。输入流用于从数据来源读取数据到内存，输出流用于将数据从内存写入数据源。 2 磁盘">
+    <meta name="description" content="Garbage First收集器1 简介Garbage First（简称G1）是一款主要面向服务端应用的垃圾收集器，它是垃圾收集器技术发展历史上的里程碑式的成果，它开创了收集器面向局部收集的设计思路和基于Region的内存布局形式。 2 Mixed GC模式垃圾收集器的设计师们希望能做出一款能建立起“停顿时间模型”的收集器，这个模型就是指在能够支持指定在一个长度为M毫秒的时间片段内，消耗在垃圾收集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux系统下的IO">
-<meta property="og:url" content="http://example.com/2022/08/23/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84IO/index.html">
+<meta property="og:title" content="Garbage First收集器">
+<meta property="og:url" content="http://example.com/2022/06/29/Garbage%20First%E6%94%B6%E9%9B%86%E5%99%A8/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="Linux系统下的IO1 简介Java中的IO（输入&#x2F;输出）是以流为基础的机制，用于数据的输入和输出操作。它将数据串行化写入流，并进行输出。 Java的IO操作涉及磁盘、内存、网络和键盘等数据来源和目的地。使用输入流（InputStream）和输出流（OutputStream），可以实现数据的输入和输出操作。输入流用于从数据来源读取数据到内存，输出流用于将数据从内存写入数据源。 2 磁盘">
+<meta property="og:description" content="Garbage First收集器1 简介Garbage First（简称G1）是一款主要面向服务端应用的垃圾收集器，它是垃圾收集器技术发展历史上的里程碑式的成果，它开创了收集器面向局部收集的设计思路和基于Region的内存布局形式。 2 Mixed GC模式垃圾收集器的设计师们希望能做出一款能建立起“停顿时间模型”的收集器，这个模型就是指在能够支持指定在一个长度为M毫秒的时间片段内，消耗在垃圾收集">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-23T14:07:21.000Z">
-<meta property="article:modified_time" content="2023-11-21T03:29:38.550Z">
+<meta property="og:image" content="http://example.com/images/G1%E6%94%B6%E9%9B%86%E5%99%A8.png">
+<meta property="article:published_time" content="2022-06-29T11:42:55.000Z">
+<meta property="article:modified_time" content="2023-12-07T07:37:44.850Z">
 <meta property="article:author" content="yu">
-<meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/G1%E6%94%B6%E9%9B%86%E5%99%A8.png">
   
   
   
-  <title>Linux系统下的IO - 残梦三生</title>
+  <title>Garbage First收集器 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux系统下的IO"></span>
+            <span id="subtitle" data-typed-text="Garbage First收集器"></span>
           
         </div>
 
@@ -208,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-23 22:07" pubdate>
-          2022年8月23日 晚上
+        <time datetime="2022-06-29 19:42" pubdate>
+          2022年6月29日 晚上
         </time>
       </span>
     
@@ -220,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.2k 字
+          1.1k 字
         
       </span>
     
@@ -231,7 +232,7 @@
         
         
         
-          27 分钟
+          10 分钟
         
       </span>
     
@@ -268,40 +269,26 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Linux系统下的IO</h1>
+            <h1 id="seo-header">Garbage First收集器</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Linux系统下的IO"><a href="#Linux系统下的IO" class="headerlink" title="Linux系统下的IO"></a>Linux系统下的IO</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>Java中的IO（输入&#x2F;输出）是以流为基础的机制，用于数据的输入和输出操作。它将数据串行化写入流，并进行输出。</p>
-<p>Java的IO操作涉及磁盘、内存、网络和键盘等数据来源和目的地。使用输入流（InputStream）和输出流（OutputStream），可以实现数据的输入和输出操作。输入流用于从数据来源读取数据到内存，输出流用于将数据从内存写入数据源。</p>
-<h2 id="2-磁盘IO的方法"><a href="#2-磁盘IO的方法" class="headerlink" title="2 磁盘IO的方法"></a>2 磁盘IO的方法</h2><p>磁盘IO共有三种方式：缓存IO、直接IO和内存映射。</p>
-<h3 id="2-1-缓存IO"><a href="#2-1-缓存IO" class="headerlink" title="2.1 缓存IO"></a>2.1 缓存IO</h3><p>缓存IO又被称为标准IO，大多数文件系统的默认IO操作都是缓存IO，在Linux系统的缓存IO机制中，数据先从磁盘复制到内核空间的缓冲区(以页为单位)，然后从内核空间缓冲区复制到应用程序的地址空间。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-number">1.</span><span class="hljs-type">ByteBuffer</span> <span class="hljs-variable">byteBuffer</span> <span class="hljs-operator">=</span> ByteBuffer.allocate(<span class="hljs-number">8192</span>); <br></code></pre></td></tr></table></figure>
+                <h1 id="Garbage-First收集器"><a href="#Garbage-First收集器" class="headerlink" title="Garbage First收集器"></a>Garbage First收集器</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>Garbage First（简称G1）是一款主要面向服务端应用的垃圾收集器，它是垃圾收集器技术发展历史上的里程碑式的成果，它开创了收集器面向局部收集的设计思路和基于Region的内存布局形式。</p>
+<h2 id="2-Mixed-GC模式"><a href="#2-Mixed-GC模式" class="headerlink" title="2 Mixed GC模式"></a>2 Mixed GC模式</h2><p>垃圾收集器的设计师们希望能做出一款能建立起“停顿时间模型”的收集器，这个模型就是指在能够支持指定在一个长度为M毫秒的时间片段内，消耗在垃圾收集上的时间大概率不超过N毫秒的模型。</p>
+<p>针对这种目标，便出现了G1收集器的Mixed GC模式。它可以面向堆内存任何部分来组成回收集进行回收，衡量标准不是它属于哪个分代，而是哪块内存中存放的垃圾数量多，回收收益最大。</p>
+<h2 id="3-实现思路"><a href="#3-实现思路" class="headerlink" title="3 实现思路"></a>3 实现思路</h2><p>G1不再坚持固定大小以及固定数量的分代区域划分，而是将整个Java堆划分成约2048个大小相同的独立Region块，每个Region块大小根据堆空间的实际大小而定，整体被控制在1MB到32MB之间，且为2的N次幂，即1MB,2MB, 4MB, 8MB, 1 6MB, 32MB。所有的Region大小相同，且在JVM生命周期内不会被改变。</p>
+<p>每一个Region都可以根据需要，扮演新生代的Eden空间、Survivor空间，或者老年代空间。收集器能够对扮演不同角色的Region采用不同的策略去处理，这样无论是新创建的对象还是已经存活了一段时间、熬过多次收集的旧对象都能获取很好的收集效果。</p>
+<p>G1收集器能建立可预测的停顿时间模型，是因为它将Region作为单次回收的最小单元，即每次收集到的内存空间都是Region大小的整数倍，这样可以有计划地避免在整个Java堆中进行全区域的垃圾收集。</p>
+<p><img src="/images/G1%E6%94%B6%E9%9B%86%E5%99%A8.png" srcset="/img/loading.gif" lazyload></p>
+<center>G1收集器Region分区示意图</center>
 
-<p>allocate（）方法就是一个常见的创建内存缓冲区的方法，这个方法是创建一个位置为0，最大容量位置为capacity,未设置标记位置的指定大小的缓冲区。</p>
-<h4 id="2-1-1缓存IO的优势"><a href="#2-1-1缓存IO的优势" class="headerlink" title="2.1.1缓存IO的优势"></a>2.1.1缓存IO的优势</h4><p>通过利用页缓存，可以显著提高IO性能并减少对磁盘的访问次数。由于磁盘IO速度较慢，而内存访问速度更快，将文件数据缓存到内存中可以避免频繁地从磁盘读取数据。当应用程序请求读取文件数据时，内核首先检查页缓存中是否存在所需数据，若存在，则可以直接从缓存中读取，从而避免了额外的磁盘访问延迟。这不仅减少了对磁盘的实际访问次数，还显著提高了数据读取的速度。</p>
-<p>此外，页缓存中的数据可供多个应用程序共享，从而避免了每个应用程序单独访问磁盘的开销。这种共享机制有助于减轻磁盘负载，并提升整体系统性能。 </p>
-<p>当执行向文件写入数据的操作时，如果待写入数据所在的页缓存已存在，内核会直接将新数据写入到页缓存中。若待写入数据所在的页缓存不存在，则内核会先申请一个空闲的内存页（页缓存），然后从文件中读取数据到页缓存，并将新数据写入其中。对于被修改的页缓存，内核会定时将其刷新到文件中，以确保数据的一致性和持久性。</p>
-<h4 id="2-1-2-缓存IO的劣势"><a href="#2-1-2-缓存IO的劣势" class="headerlink" title="2.1.2 缓存IO的劣势"></a>2.1.2 缓存IO的劣势</h4><p>缓存IO具有一些缺点，其中包括数据一致性和实时性难以保证。由于缓存IO的机制需要先将数据写入缓存，然后再刷新到底层存储设备，这会引入一定的延迟。如果在缓存中修改了数据，但尚未及时刷新到底层存储设备，而此时系统发生故障或崩溃，可能会导致数据丢失或不一致的情况。</p>
-<p>此外，缓存IO需要使用一部分内存来存储缓存数据。如果缓存的数据量很大或者缓存管理不当，可能会导致内存消耗过大，从而影响系统的稳定性和性能。</p>
-<h3 id="2-2-直接IO"><a href="#2-2-直接IO" class="headerlink" title="2.2 直接IO"></a>2.2 直接IO</h3><p>直接IO通过绕过内核缓存区，使应用程序可以直接访问磁盘上的数据，从而减少了从内核缓存区到应用程序之间的数据拷贝步骤。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ByteBuffer</span> <span class="hljs-variable">byteBuffer</span> <span class="hljs-operator">=</span> ByteBuffer.allocateDirect(<span class="hljs-number">8192</span>);<br></code></pre></td></tr></table></figure>
-
-<p>allocateDirect()和缓存IO的创建方式类似，是创建一个位置为0，最大容量位置为capacity,未设置标记位置的指定大小的直接缓冲区。</p>
-<p>在java代码中，allocate()和allocateDirect()方法的使用是没有明显区别体现的，无论是使用哪种方法创建的缓冲区，它们的使用方式和操作方法是相同的。区别体现在内存分配和释放的方式上，以及对于高性能 IO 操作的实际效果上。</p>
-<h4 id="2-2-1直接IO的优势"><a href="#2-2-1直接IO的优势" class="headerlink" title="2.2.1直接IO的优势"></a>2.2.1直接IO的优势</h4><p>降低数据延迟和提高数据传输速度：直接I&#x2F;O减少了一次数据拷贝的过程，数据可以直接从外部设备传输到应用程序的内存中，或者从应用程序的内存传输到外部设备，从而减少了数据传输的延迟。这可以显著提高数据传输速度，特别是在大规模数据操作的情况下。</p>
-<p>减少CPU负担：直接I&#x2F;O允许外部设备和主存储器之间的数据传输在硬件层面上完成，而不需要CPU的干预。这减轻了CPU的负担，使CPU能够更多地用于执行其他计算任务，提高了系统的效率和性能。</p>
-<p>适用于大数据处理：直接I&#x2F;O对于大规模数据处理非常有效。它可以在数据传输期间同时进行其他计算任务，从而提高整体的数据处理能力。通过充分利用硬件资源，直接I&#x2F;O可以实现高吞吐量的数据操作，提高系统的效率和性能。</p>
-<h4 id="2-2-2-直接IO的劣势"><a href="#2-2-2-直接IO的劣势" class="headerlink" title="2.2.2 直接IO的劣势"></a>2.2.2 直接IO的劣势</h4><p>直接IO有这么多优点，缺点也很明显。首先，它对专门的硬件支持有依赖，需要升级或更换现有系统的硬件，这增加了实施的成本和复杂性。其次，在实施直接IO时需要仔细考虑系统的安全性和稳定性，因为绕过内核缓存区可能引入安全风险，并需要采取适当的措施来确保数据的保密性和完整性。此外，直接I&#x2F;O的实现可能需要特定的API或接口来支持直接I&#x2F;O操作，这要求开发人员具备相应的技术知识和经验，增加了开发和维护的难度。</p>
-<h3 id="2-3-内存映射"><a href="#2-3-内存映射" class="headerlink" title="2.3 内存映射"></a>2.3 内存映射</h3><p>内存映射是一种将文件或设备映射到进程的地址空间的机制，使得进程可以通过对内存的读写操作来访问文件或设备的内容。在内存映射中，操作系统将文件或设备的一部分或全部数据映射到进程的虚拟地址空间中的一个或多个内存区域。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">MappedByteBuffer</span> <span class="hljs-variable">byteBuffer</span> <span class="hljs-operator">=</span> channel.map(MapMode mode, <span class="hljs-type">long</span> position, <span class="hljs-type">long</span> size); <br></code></pre></td></tr></table></figure>
-
-<p>MappedByteBuffer map()方法是将通道文件的一个区域直接映射到内存中。映射一共有三种方式：READ_ONLY（只读模式）、READ_WRITE（读写模式）、PRIVATE（私有模式）。</p>
-<h4 id="2-3-1-内存映射和直接I-O的区别"><a href="#2-3-1-内存映射和直接I-O的区别" class="headerlink" title="2.3.1 内存映射和直接I&#x2F;O的区别"></a>2.3.1 内存映射和直接I&#x2F;O的区别</h4><p>内存映射和直接I&#x2F;O是两种不同的数据访问机制。内存映射通过将文件或设备映射到进程的地址空间，使得进程可以通过对内存的读写操作来访问数据，而直接I&#x2F;O则通过绕过内核缓存区，直接访问磁盘上的数据进行读写。内存映射将数据映射到内存中，可以通过内存操作进行数据访问，而直接I&#x2F;O则需要使用特定的API或接口进行数据传输。内存映射不需要特殊的硬件支持，而直接I&#x2F;O可能需要专用硬件控制器和驱动程序的支持。内存映射适用于频繁访问文件或设备数据的场景，而直接I&#x2F;O对于大规模数据处理也非常有效。</p>
-<h4 id="2-3-2-内存映射的优劣势"><a href="#2-3-2-内存映射的优劣势" class="headerlink" title="2.3.2 内存映射的优劣势"></a>2.3.2 内存映射的优劣势</h4><p>内存映射的优点包括简化的数据访问、提高性能和共享与协作。通过内存映射，进程可以使用常规的内存读写操作来访问文件或设备的数据，简化了编程过程并提高了代码的可读性。同时，内存映射避免了数据在内核缓存和用户空间之间的数据拷贝，从而显著提高了数据访问的速度和效率。此外，多个进程可以共享同一个文件或设备的数据，并通过对映射区域的修改实现进程间的数据传递和通信。</p>
-<p>然而，内存映射也存在一些注意事项和缺点。文件大小限制是其中之一，由于内存空间的限制，一次性映射过大的文件可能会受到限制。此外，对映射区域的修改不一定会立即写入文件或设备，需要手动调用同步操作来确保数据的持久化，以避免数据丢失。映射大型文件可能会占用大量虚拟内存空间，需要合理规划和管理虚拟内存资源。最后，内存映射涉及将文件或设备的数据直接映射到进程的地址空间，需要注意安全性风险，确保适当管理和保护映射区域的权限。</p>
-<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h2><p>综上所述，Linux系统下的IO操作方法包括缓存IO、直接IO和内存映射。缓存IO利用页缓存提高了性能，但可能面临数据一致性和内存消耗问题。直接IO降低了延迟和CPU负担，适用于大规模数据处理，但需要硬件支持和安全性考虑。内存映射简化了数据访问、提高了性能和实现了数据共享，适合频繁访问数据的场景。了解不同的Linux系统下的IO方法及其特点，有助于开发人员根据具体需求选择合适的IO方式，以提高系统的性能和效率。未来的研究可以进一步探索优化IO操作的技术和方法，以满足不断增长的数据处理需求和提升系统的整体性能。</p>
+<h2 id="4-优缺点"><a href="#4-优缺点" class="headerlink" title="4 优缺点"></a>4 优缺点</h2><h3 id="4-1-优点"><a href="#4-1-优点" class="headerlink" title="4.1 优点"></a>4.1 优点</h3><p>并行与并发。G1在回收期间，可以有多个GC线程同时工作，有效利用多核计算能力。同时它还拥有与应用程序交替执行的能力，部分工作可以和应用程序同时执行。</p>
+<p>分代回收。G1依然属于分代垃圾回收器，会区分年轻代和老年代。和其他收集器不同的是，他同时兼顾年轻代和老年代，不像其他的收集器，年轻代和老年代不能同时运行。</p>
+<p>空间整合。CMS使用的是标记-清除算法，存在内存碎片化的情况，而G1将内存分为region，以此为单位回收，避免了碎片化的情况。</p>
+<p>可预测停顿时间模型。</p>
+<h3 id="4-2-缺点"><a href="#4-2-缺点" class="headerlink" title="4.2 缺点"></a>4.2 缺点</h3><p>相较于 CMS，G1 还不具备全方位、压倒性优势。比如在用户程序运行过程中，G1 无论是为了垃圾收集产生的内存占用还是程序运行时的额外执行负载都要比 CMS 要高。</p>
+<h2 id="5-使用场景"><a href="#5-使用场景" class="headerlink" title="5 使用场景"></a>5 使用场景</h2><p>第一种场景是内存足够大，达到8G以上才会推荐使用G1收集器；第二种场景是堆中存活的对象较多，可能占到对内存的50%左右，将会较容易触发full gc；第三种情况就是垃圾收集时间过长的时候会使用。</p>
 
                 
               </div>
@@ -320,8 +307,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/IO/" class="category-chain-item">IO</a>
+  <a href="/categories/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="category-chain-item">垃圾回收</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/" class="category-chain-item">垃圾收集器</a>
+  
+  
+
   
 
       </span>
@@ -332,13 +326,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%8E%9F%E5%88%9B/" class="print-no-link">#原创</a>
-      
-    </div>
-  
 </div>
 
 
@@ -347,8 +334,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux系统下的IO</div>
-      <div>http://example.com/2022/08/23/Linux系统下的IO/</div>
+      <div>Garbage First收集器</div>
+      <div>http://example.com/2022/06/29/Garbage First收集器/</div>
     </div>
     <div class="license-meta">
       
@@ -360,7 +347,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月23日</div>
+          <div>2022年6月29日</div>
         </div>
       
       
@@ -392,9 +379,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/13/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/" title="用户画像">
+                      <a href="/2022/08/05/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%AF%A6%E8%A7%A3/" title="Java内存区域详解">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">用户画像</span>
+                        <span class="hidden-mobile">Java内存区域详解</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -402,8 +389,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/05/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%AF%A6%E8%A7%A3/" title="Java内存区域详解">
-                        <span class="hidden-mobile">Java内存区域详解</span>
+                      <a href="/2022/06/03/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E8%AF%A6%E8%A7%A3/" title="垃圾回收详解">
+                        <span class="hidden-mobile">垃圾回收详解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
