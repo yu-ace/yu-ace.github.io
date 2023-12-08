@@ -16,22 +16,22 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据库事务1 简介数据库事务是访问并可能操作各种数据项的一个数据库操作序列，这些操作要么全部执行,要么全部不执行，是一个不可分割的工作单位。事务由事务开始与事务结束之间执行的全部数据库操作组成。 2 特性数据库事务一共有四大特性，分别是：原子性、一致性、隔离性和持久性。 原子性(Atomicity)。事务作为一个整体被执行，对数据库的操作要么全部被执行，要么都不执行。比如数据在写入过程中发生错误，">
+    <meta name="description" content="什么是线程安全1 简介线程安全，是每一个从业者多无法避免的问题。那么什么是线程安全呢，首先先说一下线程。线程是进程中最小的执行单位，每一个程序里面都有至少一个线程。在单线程环境中，是不会发生线程安全问题的，只有在多线程环境下，才需要考虑。 2 线程不安全以下是一个非常经典的线程不安全的案例，当两个线程同时对一个变量进行10000次自增，那么结果会是20000嘛。 12345678910111213">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库事务">
-<meta property="og:url" content="http://example.com/2022/04/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/index.html">
+<meta property="og:title" content="什么是线程安全">
+<meta property="og:url" content="http://example.com/2022/03/28/%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="数据库事务1 简介数据库事务是访问并可能操作各种数据项的一个数据库操作序列，这些操作要么全部执行,要么全部不执行，是一个不可分割的工作单位。事务由事务开始与事务结束之间执行的全部数据库操作组成。 2 特性数据库事务一共有四大特性，分别是：原子性、一致性、隔离性和持久性。 原子性(Atomicity)。事务作为一个整体被执行，对数据库的操作要么全部被执行，要么都不执行。比如数据在写入过程中发生错误，">
+<meta property="og:description" content="什么是线程安全1 简介线程安全，是每一个从业者多无法避免的问题。那么什么是线程安全呢，首先先说一下线程。线程是进程中最小的执行单位，每一个程序里面都有至少一个线程。在单线程环境中，是不会发生线程安全问题的，只有在多线程环境下，才需要考虑。 2 线程不安全以下是一个非常经典的线程不安全的案例，当两个线程同时对一个变量进行10000次自增，那么结果会是20000嘛。 12345678910111213">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-16T12:38:33.000Z">
-<meta property="article:modified_time" content="2023-11-23T07:30:07.004Z">
+<meta property="article:published_time" content="2022-03-28T14:24:35.000Z">
+<meta property="article:modified_time" content="2023-12-08T13:30:46.124Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>数据库事务 - 残梦三生</title>
+  <title>什么是线程安全 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="数据库事务"></span>
+            <span id="subtitle" data-typed-text="什么是线程安全"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-16 20:38" pubdate>
-          2022年4月16日 晚上
+        <time datetime="2022-03-28 22:24" pubdate>
+          2022年3月28日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.7k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          10 分钟
+          15 分钟
         
       </span>
     
@@ -268,28 +268,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">数据库事务</h1>
+            <h1 id="seo-header">什么是线程安全</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="数据库事务"><a href="#数据库事务" class="headerlink" title="数据库事务"></a>数据库事务</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>数据库事务是访问并可能操作各种数据项的一个数据库操作序列，这些操作要么全部执行,要么全部不执行，是一个不可分割的工作单位。事务由事务开始与事务结束之间执行的全部数据库操作组成。</p>
-<h2 id="2-特性"><a href="#2-特性" class="headerlink" title="2 特性"></a>2 特性</h2><p>数据库事务一共有四大特性，分别是：原子性、一致性、隔离性和持久性。</p>
-<p>原子性(Atomicity)。事务作为一个整体被执行，对数据库的操作要么全部被执行，要么都不执行。比如数据在写入过程中发生错误，他会回滚到事务发生前的状态。</p>
-<p>一致性(Consistency)。是指事务在开始前和事务结束后，数据不会被破坏。比如A和B各有10块钱，A给B转10块钱，那么事务结束以后，A和B的账户一定是0和20，而不会其他的金额。</p>
-<p>隔离性(Isolation)。多个事务并发时，事物之间是相互隔离的，互相之间不会被影响。</p>
-<p>持久性(Durability)。事务发生以后，对数据库的更改都会被持久的写入到数据库中。</p>
-<h2 id="3-实现原理"><a href="#3-实现原理" class="headerlink" title="3 实现原理"></a>3 实现原理</h2><p>事务的四大特的实现，主要是依赖于所使用的存储引擎，分别是依靠redo log(重做日志)和undo log(回滚日志)，以及MVCC(多版本并发控制)来实现的。</p>
-<p>undo log，主要实现了原子性。在事务发生时，undo log会记录事务发生前数据库的数据，如果出现异常，就会恢复到发生前的状态。如果事务正常提交，那么在一段时间内，这次记录的数据库数据会被删除。</p>
-<p>redo log，实现了持久性。在事务进行写操作时，数据不是立刻反映在数据库的修改上的，而是先记录到redo log上，然后再通过异步的方式写进数据库，如果在写入过程中出现异常，也是可以通过redo log来重新写入的。</p>
-<p>MVCC，保证了隔离性。它主要是保存多个数据版本，每一个版本都记录有版本的生成时间和过期时间，每一个并发事务都只能看到自己对应的数据版本。</p>
-<p>至于一致性，主要是通过上诉三个一起来实现的。</p>
-<h2 id="4-缺点"><a href="#4-缺点" class="headerlink" title="4 缺点"></a>4 缺点</h2><p>事务在它存在的时候，给我们带来了很大的便利，但是它也存在着一定的缺陷。</p>
-<p>并发性能损失。由于事务需要保证隔离性，可能会导致并发操作的性能下降。当多个事务同时操作相同的数据时，需要进行锁定和等待，从而影响系统的吞吐量。</p>
-<p>锁争用和死锁。事务的隔离性可能导致锁争用和死锁问题。如果多个事务同时请求同一个资源，可能会发生死锁，导致系统无法继续执行。</p>
-<p>容易引发长时间事务。事务需要在较短的时间内执行完成，否则可能会占用数据库资源，影响其他事务的执行。</p>
-<p>需要额外的存储开销。为了保证事务的持久性，数据库需要记录事务日志以支持事务的回滚和恢复，这会增加存储开销。</p>
-<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>事务可以很好地保证我们数据的准确性，但是也需要在使用时注意一些缺点。在实际开发中，需要根据业务需求和系统特点合理地运用事务，以达到数据一致性和系统性能的平衡。</p>
+                <h1 id="什么是线程安全"><a href="#什么是线程安全" class="headerlink" title="什么是线程安全"></a>什么是线程安全</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>线程安全，是每一个从业者多无法避免的问题。那么什么是线程安全呢，首先先说一下线程。线程是进程中最小的执行单位，每一个程序里面都有至少一个线程。在单线程环境中，是不会发生线程安全问题的，只有在多线程环境下，才需要考虑。</p>
+<h2 id="2-线程不安全"><a href="#2-线程不安全" class="headerlink" title="2 线程不安全"></a>2 线程不安全</h2><p>以下是一个非常经典的线程不安全的案例，当两个线程同时对一个变量进行10000次自增，那么结果会是20000嘛。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">()</span>&#123;<br>        j++;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">thread2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        thread.start();<br>        thread2.start();<br>        thread.join();<br>        thread2.join();<br>        System.out.println(j);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>很显然，每一次运行上述代码，得出来的结果都不一样，但是没有一次的结果是20000。这就是线程不安全。</p>
+<p>造成线程不安全的原因很简单，那就是整个自增操作不是原子性的。</p>
+<h2 id="3-线程安全"><a href="#3-线程安全" class="headerlink" title="3 线程安全"></a>3 线程安全</h2><p>当多个线程访问同一个方法时候，不管通过什么样的调用方式或者线程如何执行，最终得出来的结果一定是和预期值是一样的。就拿上面的例子来说，所谓的线程安全，那就是不论重复执行多少次代码，最后得出来的值一定是20000。</p>
+<p>在Java中，实现线程安全的方法有很多。如使用线程同步，包括同步块、同步方法、可重入锁等；使用Volatile关键字；使用Atomic变量和使用final关键字。</p>
+<h2 id="4-AtomicInteger实现线程安全"><a href="#4-AtomicInteger实现线程安全" class="headerlink" title="4 AtomicInteger实现线程安全"></a>4 AtomicInteger实现线程安全</h2><p>AtomicInteger是一个支持原子操作的Integer类，它提供了原子自增方法、原子自减方法以及原子赋值方法。接下来，我们以此为例，将上述线程不安全的代码修改成线程安全的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">AtomicInteger</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AtomicInteger</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">()</span>&#123;<br>        j.incrementAndGet();<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">thread2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        thread.start();<br>        thread2.start();<br>        thread.join();<br>        thread2.join();<br>        System.out.println(j);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>通过改写后的代码，已经实现了线程安全，无论对它执行多少次，得出来的结果一定是20000。</p>
+<p> AtomicInteger 的线程安全性，但并不是所有场景都适用，它主要用于多线程环境中的计数器、序列生成器等场景。需要注意的是，AtomicInteger 只保证单个原子操作的线程安全，如果需要在多个原子操作之间保持一致性，还是需要使用其他同步机制。</p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>线程安全是我们经常会遇到的问题，解决方法也有很多。但是对于工作时间较短的程序来说，这是一块让人非常头疼的问题。只有我们弄清楚了线程不安全是由什么原因造成的，才能对症下药，要到合适的处理方法。</p>
 
                 
               </div>
@@ -308,8 +305,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Java/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/" class="category-chain-item">线程安全</a>
+  
+  
+
   
 
       </span>
@@ -335,8 +339,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>数据库事务</div>
-      <div>http://example.com/2022/04/16/数据库事务/</div>
+      <div>什么是线程安全</div>
+      <div>http://example.com/2022/03/28/什么是线程安全/</div>
     </div>
     <div class="license-meta">
       
@@ -348,7 +352,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月16日</div>
+          <div>2022年3月28日</div>
         </div>
       
       
@@ -380,9 +384,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3redo%20log%E5%8E%9F%E7%90%86%E5%92%8C%E6%81%A2%E5%A4%8D%E6%9C%BA%E5%88%B6/" title="深入理解redo log原理和恢复机制">
+                      <a href="/2022/04/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/" title="数据库事务">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">深入理解redo log原理和恢复机制</span>
+                        <span class="hidden-mobile">数据库事务</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -390,8 +394,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/28/%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/" title="什么是线程安全">
-                        <span class="hidden-mobile">什么是线程安全</span>
+                      <a href="/2022/01/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84HashMap/" title="多线程下的HashMap">
+                        <span class="hidden-mobile">多线程下的HashMap</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
