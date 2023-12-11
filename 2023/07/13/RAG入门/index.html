@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="残梦三生">
 <meta property="og:description" content="RAG入门1 简介RAG（检索增强生成，英文名：Retrieval Augmented Generation）是使用外部知识源的检索和大语言模型相结合的应用，LLM可以通过这个技术来增强生成的回复内容。 RAG主要包含检索和生成两部分的内容。生成指的是系统搜索庞大的数据库或存储库以查找相关信息的过程；生成是在检索完成以后，系统生成类似人类的文本，整合获取数据。 2 作用LLM有多个痛点，比如时效性">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/rag%E6%AD%A5%E9%AA%A4.png">
 <meta property="article:published_time" content="2023-07-13T11:21:38.000Z">
-<meta property="article:modified_time" content="2023-11-22T05:48:39.797Z">
+<meta property="article:modified_time" content="2023-12-11T08:13:26.420Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/rag%E6%AD%A5%E9%AA%A4.png">
   
   
   
@@ -220,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.1k 字
         
       </span>
     
@@ -277,6 +279,9 @@
 <p>RAG主要包含检索和生成两部分的内容。生成指的是系统搜索庞大的数据库或存储库以查找相关信息的过程；生成是在检索完成以后，系统生成类似人类的文本，整合获取数据。</p>
 <h2 id="2-作用"><a href="#2-作用" class="headerlink" title="2 作用"></a>2 作用</h2><p>LLM有多个痛点，比如时效性问题，它无法获取到最新发生的事情的内容，内部的知识库还停留在2021年的数据；比如会出现幻觉，它会产生大量不准确的或者是误导性的内容输入，这主要是因为它是通过当前输出的字来计算下一个字出现的概率，这就非常容易导致幻觉的出现。</p>
 <p>面对LLM所存在的缺陷，RAG就可以较好地解决这方面的问题。通过外挂数据库，就可以使LLM在回答问题或者生成文本时，不仅可以从本身包含的大量文档中检索内容，也会从外挂的数据库中检索出相关信息，这样就可以获取到最新时效的内容，也能使其回答更准确。</p>
+<p><img src="/images/rag%E6%AD%A5%E9%AA%A4.png" srcset="/img/loading.gif" lazyload></p>
+<center>RAG主要流程图</center>
+
 <h2 id="3-特点"><a href="#3-特点" class="headerlink" title="3 特点"></a>3 特点</h2><p>动态数据。通过RAG，可以不断的查询外部数据，确保信息的时效性，而且不需要频繁的训练模型。</p>
 <p>可以较好的利用外部数据。通过在生成响应之前从知识源检索相关信息来增强LLM能力，非常适合文档或其他结构化&#x2F;非结构化数据库，通过这些数据，RAG是不太可能出现幻觉的，因为它的每一个回答都建立在检索到的内容上。</p>
 <h2 id="4-缺点"><a href="#4-缺点" class="headerlink" title="4 缺点"></a>4 缺点</h2><p>信息丢失：RAG 的流程链中的每个步骤都是有损的，意味着并不是所有的信息都能被保留在结果中。分块和嵌入过程、检索过程以及回复生成过程都可能导致信息的丢失。</p>
@@ -382,9 +387,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/15/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%AE%9E%E6%88%98%E2%80%94FastChat%E9%83%A8%E7%BD%B2/" title="大语言模型实战—FastChat部署">
+                      <a href="/2023/07/15/FastChat%E5%AE%9E%E6%88%98%E2%80%94%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%A7%81%E6%9C%89%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%8D%E5%8A%A1/" title="FastChat实战—部署个人私有大模型服务">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">大语言模型实战—FastChat部署</span>
+                        <span class="hidden-mobile">FastChat实战—部署个人私有大模型服务</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

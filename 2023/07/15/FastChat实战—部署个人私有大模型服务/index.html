@@ -16,17 +16,17 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="大语言模型实战—FastChat部署1 简介FastChat是一个用于训练、提供服务和评估基于大型语言模型的聊天机器人的开放平台。其核心特点包括：最先进模型（例如 Vicuna）的权重、训练代码和评估代码。带有 WebUI 和与 OpenAI 兼容的 RESTful API 的分布式多模型服务系统。 本篇主要是以ubuntu系统下的模型部署 2 配置环境2.1 安装Navia驱动首先需要检查服务器">
+    <meta name="description" content="FastChat实战—部署个人私有大模型服务1 简介FastChat是一个用于训练、提供服务和评估基于大型语言模型的聊天机器人的开放平台。其核心特点包括：最先进模型（例如 Vicuna）的权重、训练代码和评估代码。带有 WebUI 和与 OpenAI 兼容的 RESTful API 的分布式多模型服务系统。 本篇主要是以ubuntu系统下的模型部署 2 配置环境2.1 安装Navia驱动首先需要检">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大语言模型实战—FastChat部署">
-<meta property="og:url" content="http://example.com/2023/07/15/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%AE%9E%E6%88%98%E2%80%94FastChat%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:title" content="FastChat实战—部署个人私有大模型服务">
+<meta property="og:url" content="http://example.com/2023/07/15/FastChat%E5%AE%9E%E6%88%98%E2%80%94%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%A7%81%E6%9C%89%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="大语言模型实战—FastChat部署1 简介FastChat是一个用于训练、提供服务和评估基于大型语言模型的聊天机器人的开放平台。其核心特点包括：最先进模型（例如 Vicuna）的权重、训练代码和评估代码。带有 WebUI 和与 OpenAI 兼容的 RESTful API 的分布式多模型服务系统。 本篇主要是以ubuntu系统下的模型部署 2 配置环境2.1 安装Navia驱动首先需要检查服务器">
+<meta property="og:description" content="FastChat实战—部署个人私有大模型服务1 简介FastChat是一个用于训练、提供服务和评估基于大型语言模型的聊天机器人的开放平台。其核心特点包括：最先进模型（例如 Vicuna）的权重、训练代码和评估代码。带有 WebUI 和与 OpenAI 兼容的 RESTful API 的分布式多模型服务系统。 本篇主要是以ubuntu系统下的模型部署 2 配置环境2.1 安装Navia驱动首先需要检">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/PyTorch.png">
 <meta property="og:image" content="http://example.com/images/13B%E6%8A%A5%E9%94%99.png">
 <meta property="article:published_time" content="2023-07-15T10:55:39.000Z">
-<meta property="article:modified_time" content="2023-11-22T09:34:51.286Z">
+<meta property="article:modified_time" content="2023-12-11T07:17:10.115Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -34,7 +34,7 @@
   
   
   
-  <title>大语言模型实战—FastChat部署 - 残梦三生</title>
+  <title>FastChat实战—部署个人私有大模型服务 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="大语言模型实战—FastChat部署"></span>
+            <span id="subtitle" data-typed-text="FastChat实战—部署个人私有大模型服务"></span>
           
         </div>
 
@@ -271,12 +271,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">大语言模型实战—FastChat部署</h1>
+            <h1 id="seo-header">FastChat实战—部署个人私有大模型服务</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="大语言模型实战—FastChat部署"><a href="#大语言模型实战—FastChat部署" class="headerlink" title="大语言模型实战—FastChat部署"></a>大语言模型实战—FastChat部署</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>FastChat是一个用于训练、提供服务和评估基于大型语言模型的聊天机器人的开放平台。其核心特点包括：最先进模型（例如 Vicuna）的权重、训练代码和评估代码。带有 WebUI 和与 OpenAI 兼容的 RESTful API 的分布式多模型服务系统。</p>
+                <h1 id="FastChat实战—部署个人私有大模型服务"><a href="#FastChat实战—部署个人私有大模型服务" class="headerlink" title="FastChat实战—部署个人私有大模型服务"></a>FastChat实战—部署个人私有大模型服务</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>FastChat是一个用于训练、提供服务和评估基于大型语言模型的聊天机器人的开放平台。其核心特点包括：最先进模型（例如 Vicuna）的权重、训练代码和评估代码。带有 WebUI 和与 OpenAI 兼容的 RESTful API 的分布式多模型服务系统。</p>
 <p>本篇主要是以ubuntu系统下的模型部署</p>
 <h2 id="2-配置环境"><a href="#2-配置环境" class="headerlink" title="2 配置环境"></a>2 配置环境</h2><h3 id="2-1-安装Navia驱动"><a href="#2-1-安装Navia驱动" class="headerlink" title="2.1 安装Navia驱动"></a>2.1 安装Navia驱动</h3><p>首先需要检查服务器是否安装gcc，如果没有安装，则需要进行安装。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -v<br>sudo apt-get install build-essential<br></code></pre></td></tr></table></figure>
@@ -368,8 +368,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>大语言模型实战—FastChat部署</div>
-      <div>http://example.com/2023/07/15/大语言模型实战—FastChat部署/</div>
+      <div>FastChat实战—部署个人私有大模型服务</div>
+      <div>http://example.com/2023/07/15/FastChat实战—部署个人私有大模型服务/</div>
     </div>
     <div class="license-meta">
       
