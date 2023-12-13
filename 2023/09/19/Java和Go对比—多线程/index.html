@@ -16,22 +16,22 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="RAG运用-个人知识库实战1 前言RAG技术的应用需要外挂数据库来提供更时效性和准确性的信息，进而充分利用外部数据以提升LLM的能力。然而，在初次使用时，往往会感到无从下手。在此，我将以个人知识库为例，展示具体的操作方式，以期帮助大家更好地了解和运用该技术。 2 前期准备运行环境：本篇所有的操作都是运行在JupyterLab上的，需自行安装。 OPENAI_API_KEY：是 OpenAI 提供的">
+    <meta name="description" content="Java和Go对比—多线程1 简介多线程是现代计算机科学中非常重要的概念，它可以大大提高计算机程序的性能和效率。现在多线程已经成为了一种非常重要的技术，几乎所有的操作系统、编程语言和应用程序都支持多线程。但是每一种编程语言下的多线程的实现都是各不相同的，在这里我们主要对比一下Java和Go语言在多线程上的区别。 2 代码实现首先使用Java和Go分别实现一个简单的多线程程序，实现两个线程对一个变量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RAG运用-个人知识库实战">
-<meta property="og:url" content="http://example.com/2023/09/21/RAG%E8%BF%90%E7%94%A8-%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:title" content="Java和Go对比—多线程">
+<meta property="og:url" content="http://example.com/2023/09/19/Java%E5%92%8CGo%E5%AF%B9%E6%AF%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="RAG运用-个人知识库实战1 前言RAG技术的应用需要外挂数据库来提供更时效性和准确性的信息，进而充分利用外部数据以提升LLM的能力。然而，在初次使用时，往往会感到无从下手。在此，我将以个人知识库为例，展示具体的操作方式，以期帮助大家更好地了解和运用该技术。 2 前期准备运行环境：本篇所有的操作都是运行在JupyterLab上的，需自行安装。 OPENAI_API_KEY：是 OpenAI 提供的">
+<meta property="og:description" content="Java和Go对比—多线程1 简介多线程是现代计算机科学中非常重要的概念，它可以大大提高计算机程序的性能和效率。现在多线程已经成为了一种非常重要的技术，几乎所有的操作系统、编程语言和应用程序都支持多线程。但是每一种编程语言下的多线程的实现都是各不相同的，在这里我们主要对比一下Java和Go语言在多线程上的区别。 2 代码实现首先使用Java和Go分别实现一个简单的多线程程序，实现两个线程对一个变量">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-21T13:19:04.000Z">
-<meta property="article:modified_time" content="2023-12-11T07:10:00.412Z">
+<meta property="article:published_time" content="2023-09-19T12:09:11.000Z">
+<meta property="article:modified_time" content="2023-12-13T09:06:24.195Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>RAG运用-个人知识库实战 - 残梦三生</title>
+  <title>Java和Go对比—多线程 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="RAG运用-个人知识库实战"></span>
+            <span id="subtitle" data-typed-text="Java和Go对比—多线程"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-21 21:19" pubdate>
-          2023年9月21日 晚上
+        <time datetime="2023-09-19 20:09" pubdate>
+          2023年9月19日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          2.3k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          22 分钟
+          19 分钟
         
       </span>
     
@@ -268,38 +268,30 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">RAG运用-个人知识库实战</h1>
+            <h1 id="seo-header">Java和Go对比—多线程</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="RAG运用-个人知识库实战"><a href="#RAG运用-个人知识库实战" class="headerlink" title="RAG运用-个人知识库实战"></a>RAG运用-个人知识库实战</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>RAG技术的应用需要外挂数据库来提供更时效性和准确性的信息，进而充分利用外部数据以提升LLM的能力。然而，在初次使用时，往往会感到无从下手。在此，我将以个人知识库为例，展示具体的操作方式，以期帮助大家更好地了解和运用该技术。</p>
-<h2 id="2-前期准备"><a href="#2-前期准备" class="headerlink" title="2 前期准备"></a>2 前期准备</h2><p>运行环境：本篇所有的操作都是运行在JupyterLab上的，需自行安装。</p>
-<p>OPENAI_API_KEY：是 OpenAI 提供的 API 密钥，用于访问 OpenAI GPT-3 模型以及其他相关的人工智能服务，需要自己去申请。</p>
-<h2 id="3-代码实战"><a href="#3-代码实战" class="headerlink" title="3 代码实战"></a>3 代码实战</h2><h3 id="3-1-安装依赖"><a href="#3-1-安装依赖" class="headerlink" title="3.1 安装依赖"></a>3.1 安装依赖</h3><p>RAG主要依靠的就是向量数据库，这里使用了chromadb向量数据库，同时安装langchain和openai。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">!pip install langchain openai chromadb<br></code></pre></td></tr></table></figure>
+                <h1 id="Java和Go对比—多线程"><a href="#Java和Go对比—多线程" class="headerlink" title="Java和Go对比—多线程"></a>Java和Go对比—多线程</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>多线程是现代计算机科学中非常重要的概念，它可以大大提高计算机程序的性能和效率。现在多线程已经成为了一种非常重要的技术，几乎所有的操作系统、编程语言和应用程序都支持多线程。但是每一种编程语言下的多线程的实现都是各不相同的，在这里我们主要对比一下Java和Go语言在多线程上的区别。</p>
+<h2 id="2-代码实现"><a href="#2-代码实现" class="headerlink" title="2 代码实现"></a>2 代码实现</h2><p>首先使用Java和Go分别实现一个简单的多线程程序，实现两个线程对一个变量各自进行10000次累加。</p>
+<h3 id="2-1-Java多线程"><a href="#2-1-Java多线程" class="headerlink" title="2.1 Java多线程"></a>2.1 Java多线程</h3><p>在Java中，使用synchronized关键字确保线程安全，通过new Thread()方法创建线程，并且调用start和join方法来确保多线程的正常运行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">Integer</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span><span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">()</span>&#123;<br>        j++;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">thread2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        thread.start();<br>        thread2.start();<br>        thread.join();<br>        thread2.join();<br>        System.out.println(j);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="3-2-索引文档到向量数据库"><a href="#3-2-索引文档到向量数据库" class="headerlink" title="3.2 索引文档到向量数据库"></a>3.2 索引文档到向量数据库</h3><h4 id="3-2-1-设置openai"><a href="#3-2-1-设置openai" class="headerlink" title="3.2.1 设置openai"></a>3.2.1 设置openai</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">from</span> langchain <span class="hljs-keyword">import</span> OpenAI<br><br>os.environ[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&#x27;你的api key&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="2-2-Go多线程"><a href="#2-2-Go多线程" class="headerlink" title="2.2 Go多线程"></a>2.2 Go多线程</h3><p>在Go语言中，使用互斥锁确保线程安全，通过<code>go</code>关键字，实现并发执行多个goroutine。并且通过defer wg.Done()和wg.Wait()来确保多线程的正常运行。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;sync&quot;</span><br>)<br><br><span class="hljs-keyword">var</span> j <span class="hljs-type">int32</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">var</span> mutex sync.Mutex<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">add</span><span class="hljs-params">()</span></span> &#123;<br>	mutex.Lock()<br>	j++<br>	mutex.Unlock()<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> wg sync.WaitGroup<br>	wg.Add(<span class="hljs-number">2</span>)<br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++ &#123;<br>			add()<br>		&#125;<br>		<span class="hljs-keyword">defer</span> wg.Done()<br>	&#125;()<br><br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++ &#123;<br>			add()<br>		&#125;<br>		<span class="hljs-keyword">defer</span> wg.Done()<br>	&#125;()<br>	wg.Wait()<br>	fmt.Println(j)<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>这一步主要就是需要将自己申请的key设置为环境变量，以供后续使用。</p>
-<h4 id="3-2-2-加载文档"><a href="#3-2-2-加载文档" class="headerlink" title="3.2.2 加载文档"></a>3.2.2 加载文档</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain.document_loaders <span class="hljs-keyword">import</span> TextLoader<br><span class="hljs-keyword">from</span> langchain.text_splitter <span class="hljs-keyword">import</span> CharacterTextSplitter<br><br>book_path=<span class="hljs-string">&quot;your path&quot;</span><br>loader = TextLoader(book_path)<br>documents = loader.load()<br><br><span class="hljs-comment"># 将文档按照章节切块</span><br>text_splitter = CharacterTextSplitter(chunk_size=<span class="hljs-number">1000</span>, chunk_overlap=<span class="hljs-number">0</span>)<br>docs = text_splitter.split_documents(documents)<br></code></pre></td></tr></table></figure>
-
-<p>加载文档一共分为两步，第一步是加载路径内的文件，并且将数据转化为document对象。第二部是初始化一个切割器，将document对象切割成小块，便于向量数据库的存储。</p>
-<h4 id="3-2-3-保存数据"><a href="#3-2-3-保存数据" class="headerlink" title="3.2.3 保存数据"></a>3.2.3 保存数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain.vectorstores <span class="hljs-keyword">import</span> Chroma<br><span class="hljs-keyword">from</span> langchain.embeddings.openai <span class="hljs-keyword">import</span> OpenAIEmbeddings<br><br>embeddings = OpenAIEmbeddings()<br>db = Chroma.from_documents(docs, embeddings)<br></code></pre></td></tr></table></figure>
-
-<p>这一步主要目的就是计算embedding，并且将数据保存到向量数据库中。</p>
-<h3 id="3-3-相关性检索"><a href="#3-3-相关性检索" class="headerlink" title="3.3 相关性检索"></a>3.3 相关性检索</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">query = <span class="hljs-string">&quot;激励相容是什么&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;用户的问题是：<span class="hljs-subst">&#123;query&#125;</span>&quot;</span>)<br>some_query_result = db.similarity_search(query)<br><br>recall_result=<span class="hljs-string">&quot;&quot;</span><br>cnt = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i,r <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(some_query_result):<br>    <span class="hljs-comment"># print(f&quot;第&#123;i&#125;条相似结果：&#123;r.page_content&#125;&quot;)</span><br>    recall_result = recall_result + <span class="hljs-string">&quot;\n\n&quot;</span>+r.page_content<br>    cnt = cnt + <span class="hljs-built_in">len</span>(r.page_content)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;共<span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(some_query_result)&#125;</span>条相似内容，共<span class="hljs-subst">&#123;cnt&#125;</span>字&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">用户的问题是：激励相容是什么<br>共4条相似内容，共3281字<br></code></pre></td></tr></table></figure>
-
-<p>对数据库内的数据进行搜索，统计并且打印所有检索出来的相关内容。</p>
-<h3 id="3-4-LLM整合"><a href="#3-4-LLM整合" class="headerlink" title="3.4 LLM整合"></a>3.4 LLM整合</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">from</span> langchain <span class="hljs-keyword">import</span> OpenAI<br><span class="hljs-keyword">from</span> langchain.schema <span class="hljs-keyword">import</span> HumanMessage,SystemMessage<br><br>embeddings = OpenAIEmbeddings()<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;用户的问题是：<span class="hljs-subst">&#123;query&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;--------正在计算，请稍候-----------&quot;</span>)<br>prompt_message = SystemMessage(<br>    content=<span class="hljs-string">&quot;你是一个文档总结机器人，请根据文档内容回答用户问题。文档内容为：&quot;</span>+recall_result<br>)<br>human_message=HumanMessage(content=query)<br>resp = model([prompt_message, human_message])<br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;AI的回答是：<span class="hljs-subst">&#123;resp.content&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">用户的问题是：激励相容是什么</span><br><span class="hljs-literal">--------</span><span class="hljs-comment">正在计算，请稍候</span><span class="hljs-literal">-----------</span><br><span class="hljs-comment">AI的回答是：激励相容指的是一方有意愿并具备能力去完成另一方期望的事情。在政府内部，激励相容可以指上下级之间的激励相容，也可以指工作目标和官员自身利益之间的激励相容。具体来说，就是要求上级政府和下级政府之间的工作目标相互协调，上级政府既要提出明确的要求，又要给予下级政府足够的资源和支持，使得下级政府有能力并有意愿去完成上级政府的要求。同时，上级政府也要考虑到下级政府官员的个人利益，给予相应的激励，以促使他们积极地推动工作。这样的激励相容可以提高政府运作的效果。</span><br></code></pre></td></tr></table></figure>
-
-<p>首先，需要加载OpenAI模型；然后将向量数据库中查询到的数据全部放入到promrt中，将提问放到human_message对象中，最后将两个对象都作为输入参数传递给模型，让模型输出最终的回答内容。</p>
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>上述过程展示了一个完整的外挂个人知识库的制作过程，使用了基于LLM的RAG技术。通过这种技术，AI可以回答其原本不具备的知识。</p>
-<p>这种方法使得AI可以利用外部的知识资源来回答问题，即使它本身并不具备这些知识。通过引入文档总结作为提示信息，模型能够从中获取相关知识，并结合用户的问题生成准确的回答。</p>
+<h2 id="3-两者之间的异同"><a href="#3-两者之间的异同" class="headerlink" title="3 两者之间的异同"></a>3 两者之间的异同</h2><p>从上面的例子可以看出，作为两门不同的语言，在语法、实现上有很大的区别。但是，仔细观看的话，他们之间也有很多相同点。</p>
+<h3 id="3-1-相同点"><a href="#3-1-相同点" class="headerlink" title="3.1 相同点"></a>3.1 相同点</h3><p>支持并发编程：Java和Go都提供了原生支持并发编程的机制，使得开发者能够轻松地创建和管理多个并发执行的线程。</p>
+<p>提供线程抽象：两者都提供了高级的线程抽象，如Java中的Thread类和Runnable接口，以及Go中的goroutine。</p>
+<p>支持锁和同步：Java和Go都提供了锁和同步机制，如Java中的synchronized关键字和Lock接口，以及Go中的互斥锁（Mutex）和通道（Channel）等。</p>
+<h3 id="3-2-不同点"><a href="#3-2-不同点" class="headerlink" title="3.2 不同点"></a>3.2 不同点</h3><p>语言特性：Java是一种面向对象的语言，而Go是一种面向过程和函数式编程的语言。这导致在多线程编程时，两种语言的代码风格和实现方式有所不同。</p>
+<p>并发模型：Java 中 CPU 资源分配对象是 Thread，Go 中 CPU 资源分配对象是 goroutine。Java Thread 与系统线程为一一对应关系，goroutine 是 Go 实现的用户级线程，与系统线程是 m:n 关系。</p>
+<p>Go在设计上注重并发安全性，通过通道和互斥锁等机制来避免数据竞争和死锁等问题。而Java在并发编程时需要开发者自己处理线程同步和锁的问题，容易出现线程安全性问题。</p>
+<h2 id="4-Go线程池"><a href="#4-Go线程池" class="headerlink" title="4 Go线程池"></a>4 Go线程池</h2><p>Go语言中没有内置的线程池。Go鼓励使用goroutine和通道来实现并发和并行操作，以避免传统线程池的一些问题，如线程创建和销毁的开销、锁的竞争等。</p>
+<p>在Go中，可以使用goroutine来启动轻量级的并发执行单元，而不是直接操作线程。goroutine的创建和销毁开销很小，因此可以创建大量的goroutine，并行执行任务。此外，通过使用通道进行同步和通信，可以确保数据的安全访问。</p>
+<p>当然，如果必须使用线程池，可以通过一些第三方库来实现类似线程池的功能。这些库通常允许你创建一组固定数量的goroutine，并将任务提交到池中进行执行。它们会自动管理goroutine的生命周期，避免过度创建和销毁。你可以根据需要控制并发度和任务队列的大小，以适应不同的场景。</p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>通过对Java和Go语言各自实现一个多线程代码，对比他们之间的特点和异同，虽然说Go语言在多线程是使用上，有更小的内存消耗和资源调度的花销，但是Java拥有更加成熟的线程库、并发模型等，所以开发者需要根据具体需求选择适合的语言和机制。</p>
 
                 
               </div>
@@ -318,13 +310,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">大模型</a>
+  <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="category-chain-item">多线程</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/RAG/" class="category-chain-item">RAG</a>
+  <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/Java/" class="category-chain-item">Java</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/Java/Go/" class="category-chain-item">Go</a>
+  
+  
+
   
 
   
@@ -352,8 +351,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>RAG运用-个人知识库实战</div>
-      <div>http://example.com/2023/09/21/RAG运用-个人知识库实战/</div>
+      <div>Java和Go对比—多线程</div>
+      <div>http://example.com/2023/09/19/Java和Go对比—多线程/</div>
     </div>
     <div class="license-meta">
       
@@ -365,7 +364,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月21日</div>
+          <div>2023年9月19日</div>
         </div>
       
       
@@ -397,11 +396,17 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2023/09/21/RAG%E8%BF%90%E7%94%A8-%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E5%AE%9E%E6%88%98/" title="RAG运用-个人知识库实战">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">RAG运用-个人知识库实战</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/19/Java%E5%92%8CGo%E5%AF%B9%E6%AF%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java和Go对比—多线程">
+                      <a href="/2023/09/02/Java%E5%92%8CGo%E5%AF%B9%E6%AF%94/" title="Java和Go对比—多线程">
                         <span class="hidden-mobile">Java和Go对比—多线程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

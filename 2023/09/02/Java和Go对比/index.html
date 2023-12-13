@@ -16,22 +16,22 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="RAG运用-个人知识库实战1 前言RAG技术的应用需要外挂数据库来提供更时效性和准确性的信息，进而充分利用外部数据以提升LLM的能力。然而，在初次使用时，往往会感到无从下手。在此，我将以个人知识库为例，展示具体的操作方式，以期帮助大家更好地了解和运用该技术。 2 前期准备运行环境：本篇所有的操作都是运行在JupyterLab上的，需自行安装。 OPENAI_API_KEY：是 OpenAI 提供的">
+    <meta name="description" content="Java和Go对比1 简介Java 是一种面向对象的编程语言，旨在提供并发性和跨平台可移植性。它具有强大的类和对象模型，支持面向对象编程范式，并且拥有丰富的类库和生态系统。后端开发领域得到广泛应用，尤其是在大型互联网平台，如淘宝、京东等。 Go 是一种面向过程的编程语言，于 2009 年由 Google 发布。它注重运行性能和开发效率，具有优秀的并发编程支持，在多处理器环境下表现出色。随着大数据的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RAG运用-个人知识库实战">
-<meta property="og:url" content="http://example.com/2023/09/21/RAG%E8%BF%90%E7%94%A8-%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:title" content="Java和Go对比—多线程">
+<meta property="og:url" content="http://example.com/2023/09/02/Java%E5%92%8CGo%E5%AF%B9%E6%AF%94/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="RAG运用-个人知识库实战1 前言RAG技术的应用需要外挂数据库来提供更时效性和准确性的信息，进而充分利用外部数据以提升LLM的能力。然而，在初次使用时，往往会感到无从下手。在此，我将以个人知识库为例，展示具体的操作方式，以期帮助大家更好地了解和运用该技术。 2 前期准备运行环境：本篇所有的操作都是运行在JupyterLab上的，需自行安装。 OPENAI_API_KEY：是 OpenAI 提供的">
+<meta property="og:description" content="Java和Go对比1 简介Java 是一种面向对象的编程语言，旨在提供并发性和跨平台可移植性。它具有强大的类和对象模型，支持面向对象编程范式，并且拥有丰富的类库和生态系统。后端开发领域得到广泛应用，尤其是在大型互联网平台，如淘宝、京东等。 Go 是一种面向过程的编程语言，于 2009 年由 Google 发布。它注重运行性能和开发效率，具有优秀的并发编程支持，在多处理器环境下表现出色。随着大数据的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-21T13:19:04.000Z">
-<meta property="article:modified_time" content="2023-12-11T07:10:00.412Z">
+<meta property="article:published_time" content="2023-09-02T11:49:11.000Z">
+<meta property="article:modified_time" content="2023-12-13T09:06:09.797Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>RAG运用-个人知识库实战 - 残梦三生</title>
+  <title>Java和Go对比—多线程 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="RAG运用-个人知识库实战"></span>
+            <span id="subtitle" data-typed-text="Java和Go对比—多线程"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-21 21:19" pubdate>
-          2023年9月21日 晚上
+        <time datetime="2023-09-02 19:49" pubdate>
+          2023年9月2日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          1.9k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          22 分钟
+          16 分钟
         
       </span>
     
@@ -268,38 +268,38 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">RAG运用-个人知识库实战</h1>
+            <h1 id="seo-header">Java和Go对比—多线程</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="RAG运用-个人知识库实战"><a href="#RAG运用-个人知识库实战" class="headerlink" title="RAG运用-个人知识库实战"></a>RAG运用-个人知识库实战</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>RAG技术的应用需要外挂数据库来提供更时效性和准确性的信息，进而充分利用外部数据以提升LLM的能力。然而，在初次使用时，往往会感到无从下手。在此，我将以个人知识库为例，展示具体的操作方式，以期帮助大家更好地了解和运用该技术。</p>
-<h2 id="2-前期准备"><a href="#2-前期准备" class="headerlink" title="2 前期准备"></a>2 前期准备</h2><p>运行环境：本篇所有的操作都是运行在JupyterLab上的，需自行安装。</p>
-<p>OPENAI_API_KEY：是 OpenAI 提供的 API 密钥，用于访问 OpenAI GPT-3 模型以及其他相关的人工智能服务，需要自己去申请。</p>
-<h2 id="3-代码实战"><a href="#3-代码实战" class="headerlink" title="3 代码实战"></a>3 代码实战</h2><h3 id="3-1-安装依赖"><a href="#3-1-安装依赖" class="headerlink" title="3.1 安装依赖"></a>3.1 安装依赖</h3><p>RAG主要依靠的就是向量数据库，这里使用了chromadb向量数据库，同时安装langchain和openai。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">!pip install langchain openai chromadb<br></code></pre></td></tr></table></figure>
+                <h1 id="Java和Go对比"><a href="#Java和Go对比" class="headerlink" title="Java和Go对比"></a>Java和Go对比</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>Java 是一种面向对象的编程语言，旨在提供并发性和跨平台可移植性。它具有强大的类和对象模型，支持面向对象编程范式，并且拥有丰富的类库和生态系统。后端开发领域得到广泛应用，尤其是在大型互联网平台，如淘宝、京东等。</p>
+<p>Go 是一种面向过程的编程语言，于 2009 年由 Google 发布。它注重运行性能和开发效率，具有优秀的并发编程支持，在多处理器环境下表现出色。随着大数据的发展，越来越多的开发人员开始尝试使用 Go 语言构建大型并发式服务。</p>
+<h2 id="2-代码比较"><a href="#2-代码比较" class="headerlink" title="2 代码比较"></a>2 代码比较</h2><p>相信大部分人接触Java的时候，第一个代码就是打印出“Hello World”。那么我们就以这个为例，来看看Java和Go实现的差异。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloWorld</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="3-2-索引文档到向量数据库"><a href="#3-2-索引文档到向量数据库" class="headerlink" title="3.2 索引文档到向量数据库"></a>3.2 索引文档到向量数据库</h3><h4 id="3-2-1-设置openai"><a href="#3-2-1-设置openai" class="headerlink" title="3.2.1 设置openai"></a>3.2.1 设置openai</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">from</span> langchain <span class="hljs-keyword">import</span> OpenAI<br><br>os.environ[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&#x27;你的api key&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<p>在Java中，使用了类和静态方法的概念，需要定义一个公共的类来包含 main 方法，而且main函数入口的固定格式是 <strong>public static void main(String[] args)</strong> ，并且通过 <strong>System.out.println()</strong> 的方式来将内容打印出来。 </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;Hello World!&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>这一步主要就是需要将自己申请的key设置为环境变量，以供后续使用。</p>
-<h4 id="3-2-2-加载文档"><a href="#3-2-2-加载文档" class="headerlink" title="3.2.2 加载文档"></a>3.2.2 加载文档</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain.document_loaders <span class="hljs-keyword">import</span> TextLoader<br><span class="hljs-keyword">from</span> langchain.text_splitter <span class="hljs-keyword">import</span> CharacterTextSplitter<br><br>book_path=<span class="hljs-string">&quot;your path&quot;</span><br>loader = TextLoader(book_path)<br>documents = loader.load()<br><br><span class="hljs-comment"># 将文档按照章节切块</span><br>text_splitter = CharacterTextSplitter(chunk_size=<span class="hljs-number">1000</span>, chunk_overlap=<span class="hljs-number">0</span>)<br>docs = text_splitter.split_documents(documents)<br></code></pre></td></tr></table></figure>
-
-<p>加载文档一共分为两步，第一步是加载路径内的文件，并且将数据转化为document对象。第二部是初始化一个切割器，将document对象切割成小块，便于向量数据库的存储。</p>
-<h4 id="3-2-3-保存数据"><a href="#3-2-3-保存数据" class="headerlink" title="3.2.3 保存数据"></a>3.2.3 保存数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> langchain.vectorstores <span class="hljs-keyword">import</span> Chroma<br><span class="hljs-keyword">from</span> langchain.embeddings.openai <span class="hljs-keyword">import</span> OpenAIEmbeddings<br><br>embeddings = OpenAIEmbeddings()<br>db = Chroma.from_documents(docs, embeddings)<br></code></pre></td></tr></table></figure>
-
-<p>这一步主要目的就是计算embedding，并且将数据保存到向量数据库中。</p>
-<h3 id="3-3-相关性检索"><a href="#3-3-相关性检索" class="headerlink" title="3.3 相关性检索"></a>3.3 相关性检索</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">query = <span class="hljs-string">&quot;激励相容是什么&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;用户的问题是：<span class="hljs-subst">&#123;query&#125;</span>&quot;</span>)<br>some_query_result = db.similarity_search(query)<br><br>recall_result=<span class="hljs-string">&quot;&quot;</span><br>cnt = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i,r <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(some_query_result):<br>    <span class="hljs-comment"># print(f&quot;第&#123;i&#125;条相似结果：&#123;r.page_content&#125;&quot;)</span><br>    recall_result = recall_result + <span class="hljs-string">&quot;\n\n&quot;</span>+r.page_content<br>    cnt = cnt + <span class="hljs-built_in">len</span>(r.page_content)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;共<span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(some_query_result)&#125;</span>条相似内容，共<span class="hljs-subst">&#123;cnt&#125;</span>字&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">用户的问题是：激励相容是什么<br>共4条相似内容，共3281字<br></code></pre></td></tr></table></figure>
-
-<p>对数据库内的数据进行搜索，统计并且打印所有检索出来的相关内容。</p>
-<h3 id="3-4-LLM整合"><a href="#3-4-LLM整合" class="headerlink" title="3.4 LLM整合"></a>3.4 LLM整合</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">from</span> langchain <span class="hljs-keyword">import</span> OpenAI<br><span class="hljs-keyword">from</span> langchain.schema <span class="hljs-keyword">import</span> HumanMessage,SystemMessage<br><br>embeddings = OpenAIEmbeddings()<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;用户的问题是：<span class="hljs-subst">&#123;query&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;--------正在计算，请稍候-----------&quot;</span>)<br>prompt_message = SystemMessage(<br>    content=<span class="hljs-string">&quot;你是一个文档总结机器人，请根据文档内容回答用户问题。文档内容为：&quot;</span>+recall_result<br>)<br>human_message=HumanMessage(content=query)<br>resp = model([prompt_message, human_message])<br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;AI的回答是：<span class="hljs-subst">&#123;resp.content&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">用户的问题是：激励相容是什么</span><br><span class="hljs-literal">--------</span><span class="hljs-comment">正在计算，请稍候</span><span class="hljs-literal">-----------</span><br><span class="hljs-comment">AI的回答是：激励相容指的是一方有意愿并具备能力去完成另一方期望的事情。在政府内部，激励相容可以指上下级之间的激励相容，也可以指工作目标和官员自身利益之间的激励相容。具体来说，就是要求上级政府和下级政府之间的工作目标相互协调，上级政府既要提出明确的要求，又要给予下级政府足够的资源和支持，使得下级政府有能力并有意愿去完成上级政府的要求。同时，上级政府也要考虑到下级政府官员的个人利益，给予相应的激励，以促使他们积极地推动工作。这样的激励相容可以提高政府运作的效果。</span><br></code></pre></td></tr></table></figure>
-
-<p>首先，需要加载OpenAI模型；然后将向量数据库中查询到的数据全部放入到promrt中，将提问放到human_message对象中，最后将两个对象都作为输入参数传递给模型，让模型输出最终的回答内容。</p>
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>上述过程展示了一个完整的外挂个人知识库的制作过程，使用了基于LLM的RAG技术。通过这种技术，AI可以回答其原本不具备的知识。</p>
-<p>这种方法使得AI可以利用外部的知识资源来回答问题，即使它本身并不具备这些知识。通过引入文档总结作为提示信息，模型能够从中获取相关知识，并结合用户的问题生成准确的回答。</p>
+<p>对比Go语言，它没有class类的概念，而是使用了包和函数的概念，需要定义一个名为 main 的包和一个名为 main 的函数，来作为程序的入口点。并且需要使用 <strong>import</strong> 导入使用的包，并通过包来获取其中的方法。</p>
+<h2 id="3-优劣势对比"><a href="#3-优劣势对比" class="headerlink" title="3 优劣势对比"></a>3 优劣势对比</h2><p>从上面的两段代码，可以很清楚的看出来区别，这里我们就说说他们各自的优点和缺点。</p>
+<h3 id="3-1-Java的优点"><a href="#3-1-Java的优点" class="headerlink" title="3.1 Java的优点"></a>3.1 Java的优点</h3><p>跨平台性：Java 编写的程序可以在多个操作系统上运行，具有很好的跨平台可移植性。</p>
+<p>面向对象：Java 是一种面向对象的编程语言，具有严格的类型检查和良好的封装特性。</p>
+<p>强大的生态系统和丰富的类库：Java 拥有庞大的生态系统和丰富的类库，提供了各种工具和框架来支持开发。</p>
+<p>成熟和稳定：Java 经过长时间的发展，已经非常成熟和稳定，拥有大量的成功案例和社区支持。</p>
+<h3 id="3-2-Java的缺点"><a href="#3-2-Java的缺点" class="headerlink" title="3.2 Java的缺点"></a>3.2 Java的缺点</h3><p>冗长的语法：Java 的语法相对冗长，需要更多的代码量来表达相同的逻辑。</p>
+<p>较慢的启动时间：Java 程序通常需要较长的启动时间，这在对启动速度要求较高的场景下可能会受到影响。</p>
+<p>资源消耗大：相比于一些轻量级语言，Java 程序通常需要更多的内存。在多线程中，他使用的是内核级线程模型，切换开销大。</p>
+<p>运行条件：编译后，需要在JVM上才可以运行。</p>
+<h3 id="3-3-Go的优点"><a href="#3-3-Go的优点" class="headerlink" title="3.3 Go的优点"></a>3.3 Go的优点</h3><p>并发支持：Go语言原生支持并发编程，通过goroutines和channels实现并发操作变得更加简单和高效，线程切换不需要经过内核，程序体量小。</p>
+<p>高性能：Go在多处理器环境下表现出色，具有良好的性能表现，适合构建高性能的分布式系统。</p>
+<p>简洁明了的语法和包管理：Go语言的语法简洁、清晰，同时包管理工具也让依赖管理变得更加方便。</p>
+<p>运行方便：经过编译的文件，可以直接运行。</p>
+<h3 id="3-4-Go的缺点"><a href="#3-4-Go的缺点" class="headerlink" title="3.4 Go的缺点"></a>3.4 Go的缺点</h3><p>相对较小的生态系统：相较于Java，Go的生态系统相对较小，某些第三方库或工具可能不如Java那样丰富。</p>
+<p>不适合所有类型的应用：虽然Go适用于许多类型的应用程序，但它并不适用于所有场景，尤其是那些对性能要求不是特别高的应用。</p>
+<h2 id="4-使用场景"><a href="#4-使用场景" class="headerlink" title="4 使用场景"></a>4 使用场景</h2><p>Java适用于大型企业级应用的开发。Java具有丰富的类库和框架，支持面向对象的开发，具有良好的可移植性和跨平台性。Java适合开发大型系统、Web应用、企业级应用、Android应用等。</p>
+<p>Go适用于高并发服务器开发、分布式系统、网络编程以及命令行工具和系统工具的开发。它原生支持并发编程，通过轻量级线程(goroutines)和通信机制(channels)，可以方便高效地构建高并发、高性能的服务器应用程序，如Web服务器和微服务。同时，Go在构建分布式系统时也非常方便，在网络编程方面适合编写网络代理、爬虫、实时通信系统等。此外，Go的快速编译和执行速度使其非常适合开发命令行工具和系统工具，如构建工具和静态分析工具。</p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>作为不同的语言，他们都有着各自的特点，在这些特点的作用下，产生了各自的优势和劣势。我们不能说那一种语言更好，而是只能说哪一种语言更加符合场景，更加符合项目的需要。</p>
 
                 
               </div>
@@ -318,12 +318,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">大模型</a>
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/RAG/" class="category-chain-item">RAG</a>
+  <a href="/categories/Java/Go/" class="category-chain-item">Go</a>
   
   
 
@@ -352,8 +352,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>RAG运用-个人知识库实战</div>
-      <div>http://example.com/2023/09/21/RAG运用-个人知识库实战/</div>
+      <div>Java和Go对比—多线程</div>
+      <div>http://example.com/2023/09/02/Java和Go对比/</div>
     </div>
     <div class="license-meta">
       
@@ -365,7 +365,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月21日</div>
+          <div>2023年9月2日</div>
         </div>
       
       
@@ -397,12 +397,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2023/09/19/Java%E5%92%8CGo%E5%AF%B9%E6%AF%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java和Go对比—多线程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java和Go对比—多线程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/19/Java%E5%92%8CGo%E5%AF%B9%E6%AF%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java和Go对比—多线程">
-                        <span class="hidden-mobile">Java和Go对比—多线程</span>
+                      <a href="/2023/07/15/FastChat%E5%AE%9E%E6%88%98%E2%80%94%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E7%A7%81%E6%9C%89%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%8D%E5%8A%A1/" title="FastChat实战—部署个人私有大模型服务">
+                        <span class="hidden-mobile">FastChat实战—部署个人私有大模型服务</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
