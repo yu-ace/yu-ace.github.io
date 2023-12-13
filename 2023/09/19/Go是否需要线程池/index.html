@@ -16,22 +16,22 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Java和Go对比—多线程1 简介多线程是现代计算机科学中非常重要的概念，它可以大大提高计算机程序的性能和效率。现在多线程已经成为了一种非常重要的技术，几乎所有的操作系统、编程语言和应用程序都支持多线程。但是每一种编程语言下的多线程的实现都是各不相同的，在这里我们主要对比一下Java和Go语言在多线程上的区别。 2 代码实现首先使用Java和Go分别实现一个简单的多线程程序，实现两个线程对一个变量">
+    <meta name="description" content="Go是否需要线程池1 Java中的线程池1.1 简介熟悉Java的人都知道，在Java多线程的运用中，线程池是一个非常好的工具，它可以避免在处理短时间任务时创建和销毁线程，起到充分利用内核、防止线程过分调度的作用，那么java都有那些线程池呢？ 1.2 Java线程池FixedThreadPool（固定线程池）:该线程池包含固定数量的线程，适合处理数量已知且较小的任务。当所有线程都处于活动状态时，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java和Go对比—多线程">
-<meta property="og:url" content="http://example.com/2023/09/19/Java%E5%92%8CGo%E5%AF%B9%E6%AF%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:title" content="Go是否需要线程池">
+<meta property="og:url" content="http://example.com/2023/09/19/Go%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E7%BA%BF%E7%A8%8B%E6%B1%A0/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="Java和Go对比—多线程1 简介多线程是现代计算机科学中非常重要的概念，它可以大大提高计算机程序的性能和效率。现在多线程已经成为了一种非常重要的技术，几乎所有的操作系统、编程语言和应用程序都支持多线程。但是每一种编程语言下的多线程的实现都是各不相同的，在这里我们主要对比一下Java和Go语言在多线程上的区别。 2 代码实现首先使用Java和Go分别实现一个简单的多线程程序，实现两个线程对一个变量">
+<meta property="og:description" content="Go是否需要线程池1 Java中的线程池1.1 简介熟悉Java的人都知道，在Java多线程的运用中，线程池是一个非常好的工具，它可以避免在处理短时间任务时创建和销毁线程，起到充分利用内核、防止线程过分调度的作用，那么java都有那些线程池呢？ 1.2 Java线程池FixedThreadPool（固定线程池）:该线程池包含固定数量的线程，适合处理数量已知且较小的任务。当所有线程都处于活动状态时，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-19T12:09:11.000Z">
-<meta property="article:modified_time" content="2023-12-13T09:06:24.195Z">
+<meta property="article:modified_time" content="2023-12-13T15:49:31.813Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Java和Go对比—多线程 - 残梦三生</title>
+  <title>Go是否需要线程池 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Java和Go对比—多线程"></span>
+            <span id="subtitle" data-typed-text="Go是否需要线程池"></span>
           
         </div>
 
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          2.8k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          19 分钟
+          24 分钟
         
       </span>
     
@@ -268,30 +268,34 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Java和Go对比—多线程</h1>
+            <h1 id="seo-header">Go是否需要线程池</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Java和Go对比—多线程"><a href="#Java和Go对比—多线程" class="headerlink" title="Java和Go对比—多线程"></a>Java和Go对比—多线程</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>多线程是现代计算机科学中非常重要的概念，它可以大大提高计算机程序的性能和效率。现在多线程已经成为了一种非常重要的技术，几乎所有的操作系统、编程语言和应用程序都支持多线程。但是每一种编程语言下的多线程的实现都是各不相同的，在这里我们主要对比一下Java和Go语言在多线程上的区别。</p>
-<h2 id="2-代码实现"><a href="#2-代码实现" class="headerlink" title="2 代码实现"></a>2 代码实现</h2><p>首先使用Java和Go分别实现一个简单的多线程程序，实现两个线程对一个变量各自进行10000次累加。</p>
-<h3 id="2-1-Java多线程"><a href="#2-1-Java多线程" class="headerlink" title="2.1 Java多线程"></a>2.1 Java多线程</h3><p>在Java中，使用synchronized关键字确保线程安全，通过new Thread()方法创建线程，并且调用start和join方法来确保多线程的正常运行。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">Integer</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span><span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">()</span>&#123;<br>        j++;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">thread2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        thread.start();<br>        thread2.start();<br>        thread.join();<br>        thread2.join();<br>        System.out.println(j);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="Go是否需要线程池"><a href="#Go是否需要线程池" class="headerlink" title="Go是否需要线程池"></a>Go是否需要线程池</h1><h2 id="1-Java中的线程池"><a href="#1-Java中的线程池" class="headerlink" title="1 Java中的线程池"></a>1 Java中的线程池</h2><h3 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h3><p>熟悉Java的人都知道，在Java多线程的运用中，线程池是一个非常好的工具，它可以避免在处理短时间任务时创建和销毁线程，起到充分利用内核、防止线程过分调度的作用，那么java都有那些线程池呢？</p>
+<h3 id="1-2-Java线程池"><a href="#1-2-Java线程池" class="headerlink" title="1.2 Java线程池"></a>1.2 Java线程池</h3><p><strong>FixedThreadPool（固定线程池）</strong>:该线程池包含固定数量的线程，适合处理数量已知且较小的任务。当所有线程都处于活动状态时，新的任务会被放入等待队列中。</p>
+<p><strong>CachedThreadPool（缓存线程池）</strong>:创建一个可缓存线程池，线程池的线程数量不固定，可以根据任务的数量动态调整。如果线程池中有空闲线程，则会重复利用它们，否则会创建新的线程。适用于大量短期任务的场景。</p>
+<p><strong>SingleThreadExecutor（单线程池）</strong>:该线程池只包含一个线程，用于按顺序执行任务。适合需要保证任务顺序执行的场景，比如单线程执行文件的读写操作。</p>
+<p><strong>ScheduledThreadPool（定时线程池）</strong>:这个线程池可用于按延迟或定时周期执行任务。可以通过schedule方法设定任务的执行时间。</p>
+<p><strong>WorkStealingPool（工作窃取线程池）</strong>:这线程池是Java 8新增的一种线程池。它是一种拥有多个工作队列的线程池，可以提高任务的并行度。每个线程都有自己的工作队列，当线程完成自己队列中的任务后，可以从其他线程的队列中窃取任务执行。</p>
+<h3 id="1-3-Java线程池的使用"><a href="#1-3-Java线程池的使用" class="headerlink" title="1.3 Java线程池的使用"></a>1.3 Java线程池的使用</h3><p>上面一共列举了Java的Executors工具类所提供的5种线程池。但是由于它们在源源不断的任务加入到队列或者创建大量线程时，会发生内存耗尽的情况。所以在阿里规范中不建议直接使用这些自带的线程池，而是使用一些第三方库里面的线程池，如Apache Commons Pooling。</p>
+<h2 id="2-Java和Go的异同"><a href="#2-Java和Go的异同" class="headerlink" title="2 Java和Go的异同"></a>2 Java和Go的异同</h2><p>从上面的内容可以看出，Java拥有许多种线程池，同时也拥有第三方库对Java线程池的支持。那么在Go语言中，是否需要线程池呢？首先我们先对比一下两种语言的差异。</p>
+<h3 id="2-1-相同点"><a href="#2-1-相同点" class="headerlink" title="2.1 相同点"></a>2.1 相同点</h3><p>__支持并发编程__：Java和Go都提供了原生支持并发编程的机制，使得开发者能够轻松地创建和管理多个并发执行的线程。</p>
+<p>__提供线程抽象__：两者都提供了高级的线程抽象，如Java中的Thread类和Runnable接口，以及Go中的goroutine。</p>
+<p>__支持锁和同步__：Java和Go都提供了锁和同步机制，如Java中的synchronized关键字和Lock接口，以及Go中的互斥锁（Mutex）和通道（Channel）等。</p>
+<h3 id="2-2-不同点"><a href="#2-2-不同点" class="headerlink" title="2.2 不同点"></a>2.2 不同点</h3><p>__语言特性__：Java是一种面向对象的语言，而Go是一种面向过程和函数式编程的语言。这导致在多线程编程时，两种语言的代码风格和实现方式有所不同。</p>
+<p>__并发模型__：Java 中 CPU 资源分配对象是 Thread，Go 中 CPU 资源分配对象是 goroutine。Java Thread 与系统线程为一一对应关系，goroutine 是 Go 实现的用户级线程，与系统线程是 m:n 关系。</p>
+<h2 id="3-Go是否需要线程池"><a href="#3-Go是否需要线程池" class="headerlink" title="3 Go是否需要线程池"></a>3 Go是否需要线程池</h2><p>从Go的并发模型特点可以看出，Go鼓励使用goroutine和通道来实现并发和并行操作，以避免传统线程池的一些问题，如线程创建和销毁的开销、锁的竞争等。</p>
+<p>在Go中，可以使用goroutine来启动轻量级的并发执行单元，而不是直接操作线程。goroutine的创建和销毁开销很小，因此可以创建大量的goroutine，并行执行任务。此外，通过使用通道进行同步和通信，可以确保数据的安全访问。</p>
+<p>当然，如果必须使用线程池，可以通过一些第三方库来实现类似线程池的功能。一些常用的库包括<code>golang.org/x/sync/semaphore</code>、<code>github.com/Workiva/go-datastructures/workerpool</code>等。</p>
+<p>这些库通常允许你创建一组固定数量的goroutine，并将任务提交到池中进行执行。它们会自动管理goroutine的生命周期，避免过度创建和销毁。</p>
+<h2 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4 代码实现"></a>4 代码实现</h2><h3 id="4-1-Java线程池实现"><a href="#4-1-Java线程池实现" class="headerlink" title="4.1 Java线程池实现"></a>4.1 Java线程池实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">Integer</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">()</span> &#123;<br>        j++;<br>    &#125;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">ExecutorService</span> <span class="hljs-variable">executorService</span> <span class="hljs-operator">=</span> ExecutorBuilder.create()<br>            .setCorePoolSize(<span class="hljs-number">2</span>)<br>            .setMaxPoolSize(<span class="hljs-number">2</span>)<br>            .setWorkQueue(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedBlockingQueue</span>&lt;&gt;(<span class="hljs-number">100</span>))<br>            .build();<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        Future&lt;?&gt; future = executorService.submit(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        Future&lt;?&gt; future1 = executorService.submit(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>                add();<br>            &#125;<br>        &#125;);<br>        future.get();<br>        future1.get();<br>        System.out.println(j);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-2-Go多线程"><a href="#2-2-Go多线程" class="headerlink" title="2.2 Go多线程"></a>2.2 Go多线程</h3><p>在Go语言中，使用互斥锁确保线程安全，通过<code>go</code>关键字，实现并发执行多个goroutine。并且通过defer wg.Done()和wg.Wait()来确保多线程的正常运行。</p>
+<h3 id="4-2-Go多线程"><a href="#4-2-Go多线程" class="headerlink" title="4.2 Go多线程"></a>4.2 Go多线程</h3><p>根据Go语言对于线程池的态度，在此就是用常规的写法实现Go的多线程写法，不使用第三方库来实现多线程。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;sync&quot;</span><br>)<br><br><span class="hljs-keyword">var</span> j <span class="hljs-type">int32</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">var</span> mutex sync.Mutex<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">add</span><span class="hljs-params">()</span></span> &#123;<br>	mutex.Lock()<br>	j++<br>	mutex.Unlock()<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> wg sync.WaitGroup<br>	wg.Add(<span class="hljs-number">2</span>)<br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++ &#123;<br>			add()<br>		&#125;<br>		<span class="hljs-keyword">defer</span> wg.Done()<br>	&#125;()<br><br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++ &#123;<br>			add()<br>		&#125;<br>		<span class="hljs-keyword">defer</span> wg.Done()<br>	&#125;()<br>	wg.Wait()<br>	fmt.Println(j)<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="3-两者之间的异同"><a href="#3-两者之间的异同" class="headerlink" title="3 两者之间的异同"></a>3 两者之间的异同</h2><p>从上面的例子可以看出，作为两门不同的语言，在语法、实现上有很大的区别。但是，仔细观看的话，他们之间也有很多相同点。</p>
-<h3 id="3-1-相同点"><a href="#3-1-相同点" class="headerlink" title="3.1 相同点"></a>3.1 相同点</h3><p>支持并发编程：Java和Go都提供了原生支持并发编程的机制，使得开发者能够轻松地创建和管理多个并发执行的线程。</p>
-<p>提供线程抽象：两者都提供了高级的线程抽象，如Java中的Thread类和Runnable接口，以及Go中的goroutine。</p>
-<p>支持锁和同步：Java和Go都提供了锁和同步机制，如Java中的synchronized关键字和Lock接口，以及Go中的互斥锁（Mutex）和通道（Channel）等。</p>
-<h3 id="3-2-不同点"><a href="#3-2-不同点" class="headerlink" title="3.2 不同点"></a>3.2 不同点</h3><p>语言特性：Java是一种面向对象的语言，而Go是一种面向过程和函数式编程的语言。这导致在多线程编程时，两种语言的代码风格和实现方式有所不同。</p>
-<p>并发模型：Java 中 CPU 资源分配对象是 Thread，Go 中 CPU 资源分配对象是 goroutine。Java Thread 与系统线程为一一对应关系，goroutine 是 Go 实现的用户级线程，与系统线程是 m:n 关系。</p>
-<p>Go在设计上注重并发安全性，通过通道和互斥锁等机制来避免数据竞争和死锁等问题。而Java在并发编程时需要开发者自己处理线程同步和锁的问题，容易出现线程安全性问题。</p>
-<h2 id="4-Go线程池"><a href="#4-Go线程池" class="headerlink" title="4 Go线程池"></a>4 Go线程池</h2><p>Go语言中没有内置的线程池。Go鼓励使用goroutine和通道来实现并发和并行操作，以避免传统线程池的一些问题，如线程创建和销毁的开销、锁的竞争等。</p>
-<p>在Go中，可以使用goroutine来启动轻量级的并发执行单元，而不是直接操作线程。goroutine的创建和销毁开销很小，因此可以创建大量的goroutine，并行执行任务。此外，通过使用通道进行同步和通信，可以确保数据的安全访问。</p>
-<p>当然，如果必须使用线程池，可以通过一些第三方库来实现类似线程池的功能。这些库通常允许你创建一组固定数量的goroutine，并将任务提交到池中进行执行。它们会自动管理goroutine的生命周期，避免过度创建和销毁。你可以根据需要控制并发度和任务队列的大小，以适应不同的场景。</p>
-<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>通过对Java和Go语言各自实现一个多线程代码，对比他们之间的特点和异同，虽然说Go语言在多线程是使用上，有更小的内存消耗和资源调度的花销，但是Java拥有更加成熟的线程库、并发模型等，所以开发者需要根据具体需求选择适合的语言和机制。</p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>Go语言本身不拥有线程池，因为它使用的是goroutine和通道来实现并发和并行。当然这并不是说它不支持线程池，在运用中，如果需要限制程序的并发量，也是可以通过第三方库来实现线程池运用的。</p>
 
                 
               </div>
@@ -351,8 +355,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Java和Go对比—多线程</div>
-      <div>http://example.com/2023/09/19/Java和Go对比—多线程/</div>
+      <div>Go是否需要线程池</div>
+      <div>http://example.com/2023/09/19/Go是否需要线程池/</div>
     </div>
     <div class="license-meta">
       
@@ -406,8 +410,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/02/Java%E5%92%8CGo%E5%AF%B9%E6%AF%94/" title="Java和Go对比—多线程">
-                        <span class="hidden-mobile">Java和Go对比—多线程</span>
+                      <a href="/2023/09/02/Java%E5%92%8CGo%E5%AF%B9%E6%AF%94/" title="Java和Go对比">
+                        <span class="hidden-mobile">Java和Go对比</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
