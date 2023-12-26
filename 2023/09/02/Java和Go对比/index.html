@@ -24,7 +24,7 @@
 <meta property="og:description" content="Java和Go对比1 简介Java 是一种面向对象的编程语言，旨在提供并发性和跨平台可移植性。它具有强大的类和对象模型，支持面向对象编程范式，并且拥有丰富的类库和生态系统。后端开发领域得到广泛应用，尤其是在大型互联网平台，如淘宝、京东等。 Go 是一种面向过程的编程语言，于 2009 年由 Google 发布。它注重运行性能和开发效率，具有优秀的并发编程支持，在多处理器环境下表现出色。随着大数据的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-02T11:49:11.000Z">
-<meta property="article:modified_time" content="2023-12-13T15:53:07.838Z">
+<meta property="article:modified_time" content="2023-12-26T06:45:17.697Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1.3k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          16 分钟
+          11 分钟
         
       </span>
     
@@ -275,30 +275,17 @@
                 
                 <h1 id="Java和Go对比"><a href="#Java和Go对比" class="headerlink" title="Java和Go对比"></a>Java和Go对比</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>Java 是一种面向对象的编程语言，旨在提供并发性和跨平台可移植性。它具有强大的类和对象模型，支持面向对象编程范式，并且拥有丰富的类库和生态系统。后端开发领域得到广泛应用，尤其是在大型互联网平台，如淘宝、京东等。</p>
 <p>Go 是一种面向过程的编程语言，于 2009 年由 Google 发布。它注重运行性能和开发效率，具有优秀的并发编程支持，在多处理器环境下表现出色。随着大数据的发展，越来越多的开发人员开始尝试使用 Go 语言构建大型并发式服务。</p>
-<h2 id="2-代码比较"><a href="#2-代码比较" class="headerlink" title="2 代码比较"></a>2 代码比较</h2><p>相信大部分人接触Java的时候，第一个代码就是打印出“Hello World”。那么我们就以这个为例，来看看Java和Go实现的差异。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloWorld</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>在Java中，使用了类和静态方法的概念，需要定义一个公共的类来包含 main 方法，而且main函数入口的固定格式是 <strong>public static void main(String[] args)</strong> ，并且通过 <strong>System.out.println()</strong> 的方式来将内容打印出来。 </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    fmt.Println(<span class="hljs-string">&quot;Hello World!&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>对比Go语言，它没有class类的概念，而是使用了包和函数的概念，需要定义一个名为 main 的包和一个名为 main 的函数，来作为程序的入口点。并且需要使用 <strong>import</strong> 导入使用的包，并通过包来获取其中的方法。</p>
-<h2 id="3-优劣势对比"><a href="#3-优劣势对比" class="headerlink" title="3 优劣势对比"></a>3 优劣势对比</h2><h3 id="3-1-Java的优点"><a href="#3-1-Java的优点" class="headerlink" title="3.1 Java的优点"></a>3.1 Java的优点</h3><p>__跨平台性__：Java 编写的程序可以在多个操作系统上运行，具有很好的跨平台可移植性。</p>
-<p>__面向对象__：Java 是一种面向对象的编程语言，具有严格的类型检查和良好的封装特性。</p>
-<p>__强大的生态系统和丰富的类库__：Java 拥有庞大的生态系统和丰富的类库，提供了各种工具和框架来支持开发。</p>
-<p>__成熟和稳定__：Java 经过长时间的发展，已经非常成熟和稳定，拥有大量的成功案例和社区支持。</p>
-<h3 id="3-2-Java的缺点"><a href="#3-2-Java的缺点" class="headerlink" title="3.2 Java的缺点"></a>3.2 Java的缺点</h3><p>__冗长的语法__：Java 的语法相对冗长，需要更多的代码量来表达相同的逻辑。</p>
-<p>__较慢的启动时间__：Java 程序通常需要较长的启动时间，这在对启动速度要求较高的场景下可能会受到影响。</p>
-<p>__资源消耗大__：相比于一些轻量级语言，Java 程序通常需要更多的内存。在多线程中，他使用的是内核级线程模型，切换开销大。</p>
-<p>__运行环境__：编译后，需要在JVM上才可以运行。</p>
-<h3 id="3-3-Go的优点"><a href="#3-3-Go的优点" class="headerlink" title="3.3 Go的优点"></a>3.3 Go的优点</h3><p>__并发支持__：Go语言原生支持并发编程，通过goroutines和channels实现并发操作变得更加简单和高效，线程切换不需要经过内核，程序体量小。</p>
-<p>__高性能__：Go在多处理器环境下表现出色，具有良好的性能表现，适合构建高性能的分布式系统。</p>
-<p>__简洁的语法和包管理__：Go语言的语法简洁、清晰，同时包管理工具也让依赖管理变得更加方便。</p>
-<p>__运行方便__：经过编译的文件，可以直接运行。</p>
-<h3 id="3-4-Go的缺点"><a href="#3-4-Go的缺点" class="headerlink" title="3.4 Go的缺点"></a>3.4 Go的缺点</h3><p>__生态系统小__：相较于Java，Go的生态系统相对较小，某些第三方库或工具可能不如Java那样丰富。</p>
-<p>__适用应用少__：虽然Go适用于许多类型的应用程序，但它并不适用于所有场景，尤其是那些对性能要求不是特别高的应用。</p>
-<h2 id="4-使用场景"><a href="#4-使用场景" class="headerlink" title="4 使用场景"></a>4 使用场景</h2><p>Java适用于大型企业级应用的开发。Java具有丰富的类库和框架，支持面向对象的开发，具有良好的可移植性和跨平台性。Java适合开发大型系统、Web应用、企业级应用、Android应用等。</p>
-<p>Go适用于高并发服务器开发、分布式系统、网络编程以及命令行工具和系统工具的开发。它原生支持并发编程，通过轻量级线程(goroutines)和通信机制(channels)，可以方便高效地构建高并发、高性能的服务器应用程序，如Web服务器和微服务。同时，Go在构建分布式系统时也非常方便，在网络编程方面适合编写网络代理、爬虫、实时通信系统等。此外，Go的快速编译和执行速度使其非常适合开发命令行工具和系统工具，如构建工具和静态分析工具。</p>
-<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>作为不同的语言，他们都有着各自的特点，在这些特点的作用下，产生了各自的优势和劣势。我们不能说那一种语言更好，而是只能说哪一种语言更加符合场景，更加符合项目的需要。</p>
+<h2 id="2-两种语言比较"><a href="#2-两种语言比较" class="headerlink" title="2 两种语言比较"></a>2 两种语言比较</h2><p>目前很多人都在推崇Go语言，并且推荐想学习编程的人不要卷Java，而是直接入门Go语言，可以更快的上手。关于这种观点，我们得从两种语言的特性来对比，到底是怎么回事。</p>
+<h3 id="2-1-Java的特点"><a href="#2-1-Java的特点" class="headerlink" title="2.1 Java的特点"></a>2.1 Java的特点</h3><p>Java作为目前使用最普遍的编程语言，是因为它经历了20多年，一直在不断地更新推出版本。它通过JVM虚拟机，实现了“一次编译，多次运行”，主要是通过编译器将代码编译成二进制文件，然后在虚拟机上运行二进制文件，所以只需要其他平台有虚拟机，就可以实现Java的跨平台运行。当然这也导致了Java运行时的臃肿，需要浪费一部分资源，增加了Java程序的大小。</p>
+<p>Java是一门面向对象的语言，拥有封装、继承、多态三大特性。Java中的所有内容都被视为对象，类是对象的模板，它描述了对象的状态和行为。</p>
+<p>在线程方面，Java采用的是内核线程，是直接由操作系统内核支持的线程，由内核来实现线程的切换，这也就导致了各种线程操作都需要进行系统调用，它的代价比较大，需要在用户态和内核态来回切换，需要消耗一定的内核资源。</p>
+<p>同时，Java还拥有丰富的第三方库的支持，开发人员可以在应用程序中使用它们来完成很多任务，可以极大的提升开发的效率。</p>
+<h3 id="2-2-Go的特点"><a href="#2-2-Go的特点" class="headerlink" title="2.2 Go的特点"></a>2.2 Go的特点</h3><p>Go是一种极简主义的语言。没有类的概念，而是通过结构体的方式来表示。他不是面向对象的，没有传统意义上的继承和反射，而是通过组合和嵌入结构体来实现系统构建。</p>
+<p>GO通过编译成可执行文件来实现跨平台运行。主要是通过它的编码器，在编译时针对不同的平台编译成不同的执行文件，从而实现在对应的平台运行。由于Go运行环境就是系统环境，没有JVM的存在，所以Go程序通常会比较小。</p>
+<p>Go在线程方面，采用的是用户线程，它是完全建立在用户空间的线程库上，系统内核不能感知到用户线程的存在和实现，所以如果程序实现得当，它的线程不需要切换到内核态，所以线程操作可以非常快速并且消耗较低的资源。</p>
+<h2 id="3-适用场景"><a href="#3-适用场景" class="headerlink" title="3 适用场景"></a>3 适用场景</h2><p>Java广泛应用于企业级应用、大型系统、Android应用等领域。由于其稳定性、强大的生态系统和广泛的支持，Java在企业级开发中占有重要地位。</p>
+<p>Go由于其简洁性、高效性和优秀的并发模型，在云计算、分布式系统、网络编程等领域表现出色。在构建高并发、高性能的服务器应用和微服务方面具有优势。</p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>作为不同的语言，他们都有着各自的特点，在这些特点的作用下，产生了各自的优势和劣势。我们不能说哪一种语言更好，而是只能说哪一种语言更加符合场景，更加符合项目的需要。</p>
 
                 
               </div>

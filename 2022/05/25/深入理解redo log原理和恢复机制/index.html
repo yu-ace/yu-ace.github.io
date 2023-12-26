@@ -16,18 +16,20 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="深入理解redo log原理和恢复机制1 前言大家都知道在事务中，redo log是用来保证持久性的，在SQL执行器执行SQL语句时，对于增、删、改操作都是内存上操作的，操作完后，该数据所在的数据页就会变成脏数据页，等待后台线程将该数据页刷进磁盘中。 ![](&#x2F;images&#x2F;redo log流程.png) redo log流程.png  但是大家有没有想过一个问题，那就是在脏页">
+    <meta name="description" content="深入理解redo log原理和恢复机制1 前言大家都知道在事务中，redo log是用来保证持久性的，在SQL执行器执行SQL语句时，对于增、删、改操作都是内存上操作的，操作完后，该数据所在的数据页就会变成脏数据页，等待后台线程将该数据页刷进磁盘中。  redo log流程.png  但是大家有没有想过一个问题，那就是在脏页还没有刷进磁盘，MySQL发生错误，会发生什么事情？ 2 误区有些人会认为">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解redo log原理和恢复机制">
 <meta property="og:url" content="http://example.com/2022/05/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3redo%20log%E5%8E%9F%E7%90%86%E5%92%8C%E6%81%A2%E5%A4%8D%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="深入理解redo log原理和恢复机制1 前言大家都知道在事务中，redo log是用来保证持久性的，在SQL执行器执行SQL语句时，对于增、删、改操作都是内存上操作的，操作完后，该数据所在的数据页就会变成脏数据页，等待后台线程将该数据页刷进磁盘中。 ![](&#x2F;images&#x2F;redo log流程.png) redo log流程.png  但是大家有没有想过一个问题，那就是在脏页">
+<meta property="og:description" content="深入理解redo log原理和恢复机制1 前言大家都知道在事务中，redo log是用来保证持久性的，在SQL执行器执行SQL语句时，对于增、删、改操作都是内存上操作的，操作完后，该数据所在的数据页就会变成脏数据页，等待后台线程将该数据页刷进磁盘中。  redo log流程.png  但是大家有没有想过一个问题，那就是在脏页还没有刷进磁盘，MySQL发生错误，会发生什么事情？ 2 误区有些人会认为">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/redoLog%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2022-05-25T11:35:33.000Z">
-<meta property="article:modified_time" content="2023-11-28T03:42:15.876Z">
+<meta property="article:modified_time" content="2023-12-20T06:29:12.877Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/redoLog%E6%B5%81%E7%A8%8B.png">
   
   
   
@@ -220,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.3k 字
         
       </span>
     
@@ -274,7 +276,7 @@
               <div class="markdown-body">
                 
                 <h1 id="深入理解redo-log原理和恢复机制"><a href="#深入理解redo-log原理和恢复机制" class="headerlink" title="深入理解redo log原理和恢复机制"></a>深入理解redo log原理和恢复机制</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>大家都知道在事务中，redo log是用来保证持久性的，在SQL执行器执行SQL语句时，对于增、删、改操作都是内存上操作的，操作完后，该数据所在的数据页就会变成脏数据页，等待后台线程将该数据页刷进磁盘中。</p>
-<p>![](&#x2F;images&#x2F;redo log流程.png)</p>
+<p><img src="/images/redoLog%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload></p>
 <center>redo log流程.png</center>
 
 <p>但是大家有没有想过一个问题，那就是在脏页还没有刷进磁盘，MySQL发生错误，会发生什么事情？</p>
