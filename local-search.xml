@@ -197,6 +197,31 @@
   
   
   <entry>
+    <title>COW和MOR</title>
+    <link href="/2023/02/15/COW%E5%92%8CMOR/"/>
+    <url>/2023/02/15/COW%E5%92%8CMOR/</url>
+    
+    <content type="html"><![CDATA[<h1 id="COW和MOR"><a href="#COW和MOR" class="headerlink" title="COW和MOR"></a>COW和MOR</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>相信很多人看到Copy On Write都不会太陌生，因为早在学习ArrayList时候，就接触过ArrayList不是线程安全的，想要实现线程安全的一种方法就是使用CopyOnWriteArrayList。其中这里的CopyOnWriteArrayList使用的就是Copy On Write的技术。</p><p>Copy On Write(COW)是写时复制，从名字就可以看出它是在数据写入的时候进行操作；那么我们可以设想一下是否有一种相反的方法，可以在数据读取的时候进行操作。Merge On Read(MOR)就是这种方法， 称为读时合并。</p><h2 id="2-Copy-On-Write"><a href="#2-Copy-On-Write" class="headerlink" title="2 Copy On Write"></a>2 Copy On Write</h2><h3 id="2-1-思想解读"><a href="#2-1-思想解读" class="headerlink" title="2.1 思想解读"></a>2.1 思想解读</h3><p>Copy On Write思想，简单来说就是多个进程在访问同一资源时候，不会进行数据的操作，访问的都属是同一个资源。只有在进行写操作时，会复制一份数据副本，期间所有的读操作依旧读取原始数据，写操作在副本上进行，写入完成后再更新指针。</p><h3 id="2-2-适用场景"><a href="#2-2-适用场景" class="headerlink" title="2.2 适用场景"></a>2.2 适用场景</h3><p>在读多写少的情境下效率较高。例如配置、黑名单、物流地址等变化非常少的数据，这是一种无锁的实现。可以帮我们实现程序更高的并发。</p><h3 id="2-3-缺点"><a href="#2-3-缺点" class="headerlink" title="2.3 缺点"></a>2.3 缺点</h3><p>数据一致性问题。这种实现只是保证数据的最终一致性，在添加到拷贝数据而还没进行替换的时候，读到的仍然是旧数据。</p><p>内存占用问题。如果对象比较大，频繁地进行替换会消耗内存，从而引发 Java 的 GC 问题，这个时候，我们应该考虑其他的容器。</p><h2 id="3-Merge-On-Read"><a href="#3-Merge-On-Read" class="headerlink" title="3 Merge On Read"></a>3 Merge On Read</h2><h3 id="3-1-思想解读"><a href="#3-1-思想解读" class="headerlink" title="3.1 思想解读"></a>3.1 思想解读</h3><p>Merge On Read思想，是指新插入的数据都存储在delta log中。定期将delta log合并进行parquet数据文件。数据读取时，会将delta log和老数据做merge，得出完整的数据返回。当然它也可以忽略delta log，只读取最近的完整数据文件。</p><h3 id="3-2-适用场景"><a href="#3-2-适用场景" class="headerlink" title="3.2 适用场景"></a>3.2 适用场景</h3><p>适用于写多读少的场景。由于写入数据先写delta log，且delta log较小，所以写入成本较低。</p><h3 id="3-3-缺点"><a href="#3-3-缺点" class="headerlink" title="3.3 缺点"></a>3.3 缺点</h3><p>需要定期合并整理compact，否则会产生较多的碎片文件。</p><p>查询延迟性较大。在对数据进行读取时，需要合并delta log和老数据文件，导致读取性能较差。</p><h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>COW和MOR是两种常用的存储格式，但是它们拥有完全相反的思想，选择了错误的方法会造成很大的麻烦。所以在技术选择上，我们需要区分好两者的特点，选择合适的技术运用到自己的项目中去。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>大数据</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>深入理解HDFS：存储大数据的利器与局限性</title>
     <link href="/2023/01/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3HDFS%EF%BC%9A%E5%AD%98%E5%82%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%A9%E5%99%A8%E4%B8%8E%E5%B1%80%E9%99%90%E6%80%A7/"/>
     <url>/2023/01/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3HDFS%EF%BC%9A%E5%AD%98%E5%82%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%A9%E5%99%A8%E4%B8%8E%E5%B1%80%E9%99%90%E6%80%A7/</url>
@@ -426,6 +451,33 @@
       <category>Java</category>
       
       <category>线程安全</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>存储结构-索引</title>
+    <link href="/2022/03/26/%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-%E7%B4%A2%E5%BC%95/"/>
+    <url>/2022/03/26/%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-%E7%B4%A2%E5%BC%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="存储结构-索引"><a href="#存储结构-索引" class="headerlink" title="存储结构-索引"></a>存储结构-索引</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>索引是关系数据库中的一种存储结构，它的作用相当于图书目录，可以根据目录中的页码快速找到所需的内容，可以大幅提升查找的效率。所以他也是MySQL面试中的重中之重，所以我们现在就简单的说说索引。</p><h2 id="2-分类"><a href="#2-分类" class="headerlink" title="2 分类"></a>2 分类</h2><p>所先我们来看一下索引的分类，总共可以从三个维度对索引进行分类。从基本使用上，可以分为主键索引、唯一索引、普通索引和组合索引；从数据结构上来分，可以分为哈希索引、B树索引和B+树索引；而从物理存储上来分的话。可以分为聚簇索引和非聚簇索引。</p><h2 id="3-MySQL索引的数据结构"><a href="#3-MySQL索引的数据结构" class="headerlink" title="3 MySQL索引的数据结构"></a>3 MySQL索引的数据结构</h2><p>MySQL的默认存储引擎是InnoDB,采用的是B+数结构的索引。</p><h3 id="3-1-B-树"><a href="#3-1-B-树" class="headerlink" title="3.1 B+树"></a>3.1 B+树</h3><p>B+树是一种只有叶子节点才会存储数据，非叶子节点只存储键值得结构，叶子节点之间是用双向指针连接，最底层的叶子节点形成一个双向有序链表。<br><img src="/images/B+%E6%A0%91%E7%BB%93%E6%9E%84.png"></p><center>B+树结构</center>如图所示，B+树一共分为三层，每次外面包裹的成为磁盘块，每一个磁盘块都包含两个数据项和三个指针，如根节点磁盘包含的数据项为20和38，三根指针分别表示小于20,20-38之间以及大于38的磁盘块。真实的数据都存在于第三层叶子节点上，非叶子节点上所存储的只是搜索方向的数据项，并不一定存在于数据中。同时，叶子节点之间还使用了双向指针连接，形成一个双向的有序链表，可以提供范围查询的功能。### 3.2 B+树的特点<h4 id="3-2-1-和B树相比"><a href="#3-2-1-和B树相比" class="headerlink" title="3.2.1 和B树相比"></a>3.2.1 和B树相比</h4><p>B+树是B树的变种，都可以解决每个节点存储更多关键字和路数更多的需求。同时它的磁盘读写能力更强，IO次数更少；<br>因为B+树的根节点和枝节点都不保存数据，节点所以一个节点可以保存更多的关键字，一次磁盘的加载获取的数据更多，所以IO次数更少。而B树的枝节点保存数据，占据的空间更大，需要加载的时间更多。</p><h4 id="3-2-2-其他特点"><a href="#3-2-2-其他特点" class="headerlink" title="3.2.2 其他特点"></a>3.2.2 其他特点</h4><p>B+树的扫库、扫表能力更强，因为他只需要遍历叶子节点就可以获取所有的数据；<br>排序能力更强，效率也更加稳定。这都是得利于叶子节点上的指针，将两个数据区连接成了链表，并且B+树永远在叶子节点上获取数据，IO次数也比较稳定。</p><h2 id="4-聚簇索引"><a href="#4-聚簇索引" class="headerlink" title="4 聚簇索引"></a>4 聚簇索引</h2><p>上文提到，聚簇索引是一种存储方式，表示数据行和相邻的键值紧凑的存储在一起，InnoDB才用的就是聚簇索引。<br>简单来说，聚簇索引就是索引和数据都存储在一棵树上，树的叶子节点就是数据。与之相对的就是非聚簇索引，它的索引和数据不在一棵树上，MyISAM采用的就是这一种方式。</p><h3 id="4-1-两者之间的对比"><a href="#4-1-两者之间的对比" class="headerlink" title="4.1 两者之间的对比"></a>4.1 两者之间的对比</h3><p>在一个表中，聚簇索引只能有一个，但是可以有多个非聚簇索引；<br>在聚簇索引中，索引的键值逻辑顺序决定了表中相应行的物理顺序，而非聚簇索引就没有这种情况。</p><h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>索引是一个非常强大的存储结构，它可以很大程度的提升数据库的查找效率，但是我们也要明白其中的一些原理，只有这样我们才能更好的使用好索引。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>MySQL</category>
+      
+      <category>索引</category>
       
     </categories>
     
