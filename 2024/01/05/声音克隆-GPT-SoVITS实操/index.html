@@ -23,21 +23,21 @@
 <meta property="og:site_name" content="残梦三生">
 <meta property="og:description" content="声音克隆-GPT-SoVITS实操1 前言随着大模型的发展，越来越多有趣的模型问世。本次所介绍的就是一款声音克隆模型，它可以分析一段音频，提取说话人的音色，将音频交给模型训练并推理，最终实现声音的克隆，这种克隆可以获取到音频的情感、音色和语速。 2 前期准备模型名称为 __GPT-SoVITS__，推荐直接使用 github 下载，当然也可以从其他途径去获取。以Windows系统为例，下载完成后，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E6%A8%A1%E5%9E%8B%E9%A6%96%E9%A1%B5%E7%95%8C%E9%9D%A2.png">
-<meta property="og:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E7%95%8C%E9%9D%A2.png">
-<meta property="og:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E6%93%8D%E4%BD%9C.png">
-<meta property="og:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E5%88%87%E5%89%B2%E5%99%AA%E9%9F%B3.png">
-<meta property="og:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97.png">
-<meta property="og:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83.png">
-<meta property="og:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E8%AE%AD%E7%BB%83.png">
-<meta property="og:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86.png">
-<meta property="og:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E7%95%8C%E9%9D%A2.png">
+<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E9%A6%96%E9%A1%B5%E7%95%8C%E9%9D%A2.png">
+<meta property="og:image" content="http://example.com/images/%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E7%95%8C%E9%9D%A2.png">
+<meta property="og:image" content="http://example.com/images/%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E6%93%8D%E4%BD%9C.png">
+<meta property="og:image" content="http://example.com/images/%E5%88%87%E5%89%B2%E5%99%AA%E9%9F%B3.png">
+<meta property="og:image" content="http://example.com/images/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97.png">
+<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83.png">
+<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E8%AE%AD%E7%BB%83.png">
+<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86.png">
+<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E7%95%8C%E9%9D%A2.png">
 <meta property="article:published_time" content="2024-01-05T13:19:04.000Z">
-<meta property="article:modified_time" content="2024-02-29T08:08:43.796Z">
+<meta property="article:modified_time" content="2024-02-29T08:21:58.410Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="c:\Users\cfcz4\hexo-blog\source\images\%E6%A8%A1%E5%9E%8B%E9%A6%96%E9%A1%B5%E7%95%8C%E9%9D%A2.png">
+<meta name="twitter:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E9%A6%96%E9%A1%B5%E7%95%8C%E9%9D%A2.png">
   
   
   
@@ -285,40 +285,40 @@
                 
                 <h1 id="声音克隆-GPT-SoVITS实操"><a href="#声音克隆-GPT-SoVITS实操" class="headerlink" title="声音克隆-GPT-SoVITS实操"></a>声音克隆-GPT-SoVITS实操</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>随着大模型的发展，越来越多有趣的模型问世。本次所介绍的就是一款声音克隆模型，它可以分析一段音频，提取说话人的音色，将音频交给模型训练并推理，最终实现声音的克隆，这种克隆可以获取到音频的情感、音色和语速。</p>
 <h2 id="2-前期准备"><a href="#2-前期准备" class="headerlink" title="2 前期准备"></a>2 前期准备</h2><p>模型名称为 __GPT-SoVITS__，推荐直接使用 <strong>github</strong> 下载，当然也可以从其他途径去获取。以Windows系统为例，下载完成后，打开资源包，双击 <strong>go-webui.bat</strong> 便会打开浏览器看到如下页面。如果没有跳出，也可以在浏览器中输入命令行给出的网址打开。</p>
-<p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型首页界面.png" srcset="/img/loading.gif" lazyload alt="这是图片"></p>
+<p><img src="/images/%E6%A8%A1%E5%9E%8B%E9%A6%96%E9%A1%B5%E7%95%8C%E9%9D%A2.png" srcset="/img/loading.gif" lazyload></p>
 <center>模型首页界面</center>
 
 <h2 id="3-训练实战"><a href="#3-训练实战" class="headerlink" title="3 训练实战"></a>3 训练实战</h2><h3 id="3-1-去除噪音"><a href="#3-1-去除噪音" class="headerlink" title="3.1 去除噪音"></a>3.1 去除噪音</h3><p>首先，需要点击 <strong>Open UVR5-WebUI</strong> ,在跳出来的界面上进行操作。</p>
-<p><img src="C:\Users\cfcz4\hexo-blog\source\images\去除噪音界面.png" srcset="/img/loading.gif" lazyload alt="这是图片"></p>
+<p><img src="/images/%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E7%95%8C%E9%9D%A2.png" srcset="/img/loading.gif" lazyload></p>
 <center>去除噪音界面打开方式</center>
 
 <p>在打开的界面中，需要将我们的音频文件的存储路径复制到文本框中，然后按照需求选择对应的模型，同时需要指定音频分离以后的文件所保存的位置，并且格式需要确保为wav格式，然后确定即可。</p>
-<p><img src="C:\Users\cfcz4\hexo-blog\source\images\去除噪音操作.png" srcset="/img/loading.gif" lazyload alt="这是图片"></p>
+<p><img src="/images/%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E6%93%8D%E4%BD%9C.png" srcset="/img/loading.gif" lazyload></p>
 <center>去除噪音操作</center>
 
 <p>这一步操作完，一共会得到两个音频文件，一个是以instrument开头的伴奏文件，另一个是以vocal开头的人声文件。</p>
 <h4 id="3-2-切割音频"><a href="#3-2-切割音频" class="headerlink" title="3.2 切割音频"></a>3.2 切割音频</h4><p>这一步需要将分离开的人声进行切割。首先输入原音频的文件夹路径，然后根据需要调整参数。主要的参数为min_length，主要依靠电脑显存大小来调整，显存越小数值也就越小。如果获取的音频太密集可以通过min_interval参数降低。其他参数建议使用默认选项，之后便进行音频切割。</p>
-<p><img src="C:\Users\cfcz4\hexo-blog\source\images\切割噪音.png" srcset="/img/loading.gif" lazyload alt="这是图片"></p>
+<p><img src="/images/%E5%88%87%E5%89%B2%E5%99%AA%E9%9F%B3.png" srcset="/img/loading.gif" lazyload></p>
 <center>切割音频</center>
 
 <p>我们将切割完的文件进行中文识别，将音频转换为文字，可以更好地帮助我们校核音频。这里需要将切割后的文件夹路径放置到文本框，选定输出文件即可进行转换，转换完成后，可以将生成的文件路径放入到语音转文字校对工具中 <strong>.list annotation file path</strong> ,并且选中的 <strong>Open labelling WebUI</strong> ,在跳出的界面中进行文字比对，修改。当然如果不追求极致的效果，可以跳过该步骤。</p>
-<p><img src="C:\Users\cfcz4\hexo-blog\source\images\音频转文字.png" srcset="/img/loading.gif" lazyload alt="这是图片"></p>
+<p><img src="/images/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97.png" srcset="/img/loading.gif" lazyload></p>
 <center>音频文字转换</center>
 
 <h3 id="3-3-模型训练"><a href="#3-3-模型训练" class="headerlink" title="3.3 模型训练"></a>3.3 模型训练</h3><p>这一步，我们将正是进行模型的训练。我们需要在初始界面上，选择__1-GPT-SOVITS-TTS__ ，在model name中为自己的模型取名，然后在 <strong>Text labelling file</strong> 标签中,将之前生成的list文件路径放入，并将存储切割后音频文件的文件夹路径放入到 <strong>Audio dataset folder</strong> 中。然后就可以点击下面的三个选项，依次进行模型训练即可。</p>
-<p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型训练.png" srcset="/img/loading.gif" lazyload alt="这是图片"></p>
+<p><img src="/images/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83.png" srcset="/img/loading.gif" lazyload></p>
 <center>模型训练</center>
 
 <p>训练完成后，便可以调整权重，进行深度学习。我们在 <strong>1B-Fine-tuned training</strong> 界面中，选择参数进行深度学习，这一步非常吃系统资源，不建议选择较高的数值。</p>
-<p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型权重训练.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E8%AE%AD%E7%BB%83.png" srcset="/img/loading.gif" lazyload></p>
 <center>模型权重训练</center>
 
 <h4 id="3-4-模型推理"><a href="#3-4-模型推理" class="headerlink" title="3.4 模型推理"></a>3.4 模型推理</h4><p>当完成权重训练以后，便可以进行推理了.我们需要选择 <strong>1C-inference</strong> 界面，在GPT模型列表和SoVITS模型里边中找到需要使用的模型，然后勾选 <strong>Open TTS inference WEBUI</strong> 选项，既可以跳出模型推理界面。</p>
-<p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型推理.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86.png" srcset="/img/loading.gif" lazyload></p>
 <center>模型推理入口界面</center>
 
 <p>在这里，我们就可以按照需求，使用训练的模型，模拟输入音频的音色进行文字转换。首先需要重新选择GPT模型列表和SoVITS模型。在__Please upload and fill reference information__中放入部分音频的分割文件，并且在对应的文本框中输入相应的中文，以供模型模拟，然后将需要转化的文字粘贴到inference text文本框中，然后转换即可。</p>
-<p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型推理界面.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E7%95%8C%E9%9D%A2.png" srcset="/img/loading.gif" lazyload></p>
 <center>模型推理界面</center>
 
 <h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>按照上述内容操作，最后生成的声音虽然说不能100%一样，但还是很相似的。毕竟这是机器模拟，现在还不可能模拟出一摸一样的声音，但是随着大模型的发展，真正会有实现的那一天那不一定呢。</p>
