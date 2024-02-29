@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>声音克隆-GPT-SoVITS实操</title>
+    <link href="/2024/01/05/%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86-GPT-SoVITS%E5%AE%9E%E6%93%8D/"/>
+    <url>/2024/01/05/%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86-GPT-SoVITS%E5%AE%9E%E6%93%8D/</url>
+    
+    <content type="html"><![CDATA[<h1 id="声音克隆-GPT-SoVITS实操"><a href="#声音克隆-GPT-SoVITS实操" class="headerlink" title="声音克隆-GPT-SoVITS实操"></a>声音克隆-GPT-SoVITS实操</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>随着大模型的发展，越来越多有趣的模型问世。本次所介绍的就是一款声音克隆模型，它可以分析一段音频，提取说话人的音色，将音频交给模型训练并推理，最终实现声音的克隆，这种克隆可以获取到音频的情感、音色和语速。</p><h2 id="2-前期准备"><a href="#2-前期准备" class="headerlink" title="2 前期准备"></a>2 前期准备</h2><p>模型名称为 __GPT-SoVITS__，推荐直接使用 <strong>github</strong> 下载，当然也可以从其他途径去获取。以Windows系统为例，下载完成后，打开资源包，双击 <strong>go-webui.bat</strong> 便会打开浏览器看到如下页面。如果没有跳出，也可以在浏览器中输入命令行给出的网址打开。</p><p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型首页界面.png" alt="这是图片"></p><center>模型首页界面</center><h2 id="3-训练实战"><a href="#3-训练实战" class="headerlink" title="3 训练实战"></a>3 训练实战</h2><h3 id="3-1-去除噪音"><a href="#3-1-去除噪音" class="headerlink" title="3.1 去除噪音"></a>3.1 去除噪音</h3><p>首先，需要点击 <strong>Open UVR5-WebUI</strong> ,在跳出来的界面上进行操作。</p><p><img src="C:\Users\cfcz4\hexo-blog\source\images\去除噪音界面.png" alt="这是图片"></p><center>去除噪音界面打开方式</center><p>在打开的界面中，需要将我们的音频文件的存储路径复制到文本框中，然后按照需求选择对应的模型，同时需要指定音频分离以后的文件所保存的位置，并且格式需要确保为wav格式，然后确定即可。</p><p><img src="C:\Users\cfcz4\hexo-blog\source\images\去除噪音操作.png" alt="这是图片"></p><center>去除噪音操作</center><p>这一步操作完，一共会得到两个音频文件，一个是以instrument开头的伴奏文件，另一个是以vocal开头的人声文件。</p><h4 id="3-2-切割音频"><a href="#3-2-切割音频" class="headerlink" title="3.2 切割音频"></a>3.2 切割音频</h4><p>这一步需要将分离开的人声进行切割。首先输入原音频的文件夹路径，然后根据需要调整参数。主要的参数为min_length，主要依靠电脑显存大小来调整，显存越小数值也就越小。如果获取的音频太密集可以通过min_interval参数降低。其他参数建议使用默认选项，之后便进行音频切割。</p><p><img src="C:\Users\cfcz4\hexo-blog\source\images\切割噪音.png" alt="这是图片"></p><center>切割音频</center><p>我们将切割完的文件进行中文识别，将音频转换为文字，可以更好地帮助我们校核音频。这里需要将切割后的文件夹路径放置到文本框，选定输出文件即可进行转换，转换完成后，可以将生成的文件路径放入到语音转文字校对工具中 <strong>.list annotation file path</strong> ,并且选中的 <strong>Open labelling WebUI</strong> ,在跳出的界面中进行文字比对，修改。当然如果不追求极致的效果，可以跳过该步骤。</p><p><img src="C:\Users\cfcz4\hexo-blog\source\images\音频转文字.png" alt="这是图片"></p><center>音频文字转换</center><h3 id="3-3-模型训练"><a href="#3-3-模型训练" class="headerlink" title="3.3 模型训练"></a>3.3 模型训练</h3><p>这一步，我们将正是进行模型的训练。我们需要在初始界面上，选择__1-GPT-SOVITS-TTS__ ，在model name中为自己的模型取名，然后在 <strong>Text labelling file</strong> 标签中,将之前生成的list文件路径放入，并将存储切割后音频文件的文件夹路径放入到 <strong>Audio dataset folder</strong> 中。然后就可以点击下面的三个选项，依次进行模型训练即可。</p><p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型训练.png" alt="这是图片"></p><center>模型训练</center><p>训练完成后，便可以调整权重，进行深度学习。我们在 <strong>1B-Fine-tuned training</strong> 界面中，选择参数进行深度学习，这一步非常吃系统资源，不建议选择较高的数值。</p><p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型权重训练.png"></p><center>模型权重训练</center><h4 id="3-4-模型推理"><a href="#3-4-模型推理" class="headerlink" title="3.4 模型推理"></a>3.4 模型推理</h4><p>当完成权重训练以后，便可以进行推理了.我们需要选择 <strong>1C-inference</strong> 界面，在GPT模型列表和SoVITS模型里边中找到需要使用的模型，然后勾选 <strong>Open TTS inference WEBUI</strong> 选项，既可以跳出模型推理界面。</p><p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型推理.png"></p><center>模型推理入口界面</center><p>在这里，我们就可以按照需求，使用训练的模型，模拟输入音频的音色进行文字转换。首先需要重新选择GPT模型列表和SoVITS模型。在__Please upload and fill reference information__中放入部分音频的分割文件，并且在对应的文本框中输入相应的中文，以供模型模拟，然后将需要转化的文字粘贴到inference text文本框中，然后转换即可。</p><p><img src="C:\Users\cfcz4\hexo-blog\source\images\模型推理界面.png"></p><center>模型推理界面</center><h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>按照上述内容操作，最后生成的声音虽然说不能100%一样，但还是很相似的。毕竟这是机器模拟，现在还不可能模拟出一摸一样的声音，但是随着大模型的发展，真正会有实现的那一天那不一定呢。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>大模型</category>
+      
+      <category>GPT</category>
+      
+      <category>声音克隆</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>RAG运用-个人知识库实战</title>
     <link href="/2023/09/21/RAG%E8%BF%90%E7%94%A8-%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E5%AE%9E%E6%88%98/"/>
     <url>/2023/09/21/RAG%E8%BF%90%E7%94%A8-%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E5%AE%9E%E6%88%98/</url>
@@ -470,7 +499,7 @@
     <link href="/2022/03/26/%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-%E7%B4%A2%E5%BC%95/"/>
     <url>/2022/03/26/%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-%E7%B4%A2%E5%BC%95/</url>
     
-    <content type="html"><![CDATA[<h1 id="存储结构-索引"><a href="#存储结构-索引" class="headerlink" title="存储结构-索引"></a>存储结构-索引</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>索引是关系数据库中的一种存储结构，它的作用相当于图书目录，可以根据目录中的页码快速找到所需的内容，可以大幅提升查找的效率。所以他也是MySQL面试中的重中之重，所以我们现在就简单的说说索引。</p><h2 id="2-分类"><a href="#2-分类" class="headerlink" title="2 分类"></a>2 分类</h2><p>所先我们来看一下索引的分类，总共可以从三个维度对索引进行分类。从基本使用上，可以分为主键索引、唯一索引、普通索引和组合索引；从数据结构上来分，可以分为哈希索引、B树索引和B+树索引；而从物理存储上来分的话。可以分为聚簇索引和非聚簇索引。</p><h2 id="3-MySQL索引的数据结构"><a href="#3-MySQL索引的数据结构" class="headerlink" title="3 MySQL索引的数据结构"></a>3 MySQL索引的数据结构</h2><p>MySQL的默认存储引擎是InnoDB,采用的是B+数结构的索引。</p><h3 id="3-1-B-树"><a href="#3-1-B-树" class="headerlink" title="3.1 B+树"></a>3.1 B+树</h3><p>B+树是一种只有叶子节点才会存储数据，非叶子节点只存储键值得结构，叶子节点之间是用双向指针连接，最底层的叶子节点形成一个双向有序链表。<br><img src="/images/B+%E6%A0%91%E7%BB%93%E6%9E%84.png"></p><center>B+树结构</center>如图所示，B+树一共分为三层，每次外面包裹的成为磁盘块，每一个磁盘块都包含两个数据项和三个指针，如根节点磁盘包含的数据项为20和38，三根指针分别表示小于20,20-38之间以及大于38的磁盘块。真实的数据都存在于第三层叶子节点上，非叶子节点上所存储的只是搜索方向的数据项，并不一定存在于数据中。同时，叶子节点之间还使用了双向指针连接，形成一个双向的有序链表，可以提供范围查询的功能。### 3.2 B+树的特点<h4 id="3-2-1-和B树相比"><a href="#3-2-1-和B树相比" class="headerlink" title="3.2.1 和B树相比"></a>3.2.1 和B树相比</h4><p>B+树是B树的变种，都可以解决每个节点存储更多关键字和路数更多的需求。同时它的磁盘读写能力更强，IO次数更少；<br>因为B+树的根节点和枝节点都不保存数据，节点所以一个节点可以保存更多的关键字，一次磁盘的加载获取的数据更多，所以IO次数更少。而B树的枝节点保存数据，占据的空间更大，需要加载的时间更多。</p><h4 id="3-2-2-其他特点"><a href="#3-2-2-其他特点" class="headerlink" title="3.2.2 其他特点"></a>3.2.2 其他特点</h4><p>B+树的扫库、扫表能力更强，因为他只需要遍历叶子节点就可以获取所有的数据；<br>排序能力更强，效率也更加稳定。这都是得利于叶子节点上的指针，将两个数据区连接成了链表，并且B+树永远在叶子节点上获取数据，IO次数也比较稳定。</p><h2 id="4-聚簇索引"><a href="#4-聚簇索引" class="headerlink" title="4 聚簇索引"></a>4 聚簇索引</h2><p>上文提到，聚簇索引是一种存储方式，表示数据行和相邻的键值紧凑的存储在一起，InnoDB才用的就是聚簇索引。<br>简单来说，聚簇索引就是索引和数据都存储在一棵树上，树的叶子节点就是数据。与之相对的就是非聚簇索引，它的索引和数据不在一棵树上，MyISAM采用的就是这一种方式。</p><h3 id="4-1-两者之间的对比"><a href="#4-1-两者之间的对比" class="headerlink" title="4.1 两者之间的对比"></a>4.1 两者之间的对比</h3><p>在一个表中，聚簇索引只能有一个，但是可以有多个非聚簇索引；<br>在聚簇索引中，索引的键值逻辑顺序决定了表中相应行的物理顺序，而非聚簇索引就没有这种情况。</p><h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>索引是一个非常强大的存储结构，它可以很大程度的提升数据库的查找效率，但是我们也要明白其中的一些原理，只有这样我们才能更好的使用好索引。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="存储结构-索引"><a href="#存储结构-索引" class="headerlink" title="存储结构-索引"></a>存储结构-索引</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>索引是关系数据库中的一种存储结构，它的作用相当于图书目录，可以根据目录中的页码快速找到所需的内容，可以大幅提升查找的效率。所以他也是MySQL面试中的重中之重，所以我们现在就简单的说说索引。</p><h2 id="2-分类"><a href="#2-分类" class="headerlink" title="2 分类"></a>2 分类</h2><p>所先我们来看一下索引的分类，总共可以从三个维度对索引进行分类。从基本使用上，可以分为主键索引、唯一索引、普通索引和组合索引；从数据结构上来分，可以分为哈希索引、B树索引和B+树索引；而从物理存储上来分的话。可以分为聚簇索引和非聚簇索引。</p><h2 id="3-MySQL索引的数据结构"><a href="#3-MySQL索引的数据结构" class="headerlink" title="3 MySQL索引的数据结构"></a>3 MySQL索引的数据结构</h2><p>MySQL的默认存储引擎是InnoDB,采用的是B+数结构的索引。</p><h3 id="3-1-B-树"><a href="#3-1-B-树" class="headerlink" title="3.1 B+树"></a>3.1 B+树</h3><p>B+树是一种只有叶子节点才会存储数据，非叶子节点只存储键值得结构，叶子节点之间是用双向指针连接，最底层的叶子节点形成一个双向有序链表。<br><img src="/images/B+%E6%A0%91%E7%BB%93%E6%9E%84.png"></p><center>B+树结构</center>如图所示，B+树一共分为三层，每次外面包裹的成为磁盘块，每一个磁盘块都包含两个数据项和三个指针，如根节点磁盘包含的数据项为20和38，三根指针分别表示小于20,20-38之间以及大于38的磁盘块。真实的数据都存在于第三层叶子节点上，非叶子节点上所存储的只是搜索方向的数据项，并不一定存在于数据中。同时，叶子节点之间还使用了双向指针连接，形成一个双向的有序链表，可以提供范围查询的功能。<h3 id="3-2-B-树的特点"><a href="#3-2-B-树的特点" class="headerlink" title="3.2 B+树的特点"></a>3.2 B+树的特点</h3><h4 id="3-2-1-和B树相比"><a href="#3-2-1-和B树相比" class="headerlink" title="3.2.1 和B树相比"></a>3.2.1 和B树相比</h4><p>B+树是B树的变种，都可以解决每个节点存储更多关键字和路数更多的需求。同时它的磁盘读写能力更强，IO次数更少；<br>因为B+树的根节点和枝节点都不保存数据，节点所以一个节点可以保存更多的关键字，一次磁盘的加载获取的数据更多，所以IO次数更少。而B树的枝节点保存数据，占据的空间更大，需要加载的时间更多。</p><h4 id="3-2-2-其他特点"><a href="#3-2-2-其他特点" class="headerlink" title="3.2.2 其他特点"></a>3.2.2 其他特点</h4><p>B+树的扫库、扫表能力更强，因为他只需要遍历叶子节点就可以获取所有的数据；<br>排序能力更强，效率也更加稳定。这都是得利于叶子节点上的指针，将两个数据区连接成了链表，并且B+树永远在叶子节点上获取数据，IO次数也比较稳定。</p><h2 id="4-聚簇索引"><a href="#4-聚簇索引" class="headerlink" title="4 聚簇索引"></a>4 聚簇索引</h2><p>上文提到，聚簇索引是一种存储方式，表示数据行和相邻的键值紧凑的存储在一起，InnoDB才用的就是聚簇索引。<br>简单来说，聚簇索引就是索引和数据都存储在一棵树上，树的叶子节点就是数据。与之相对的就是非聚簇索引，它的索引和数据不在一棵树上，MyISAM采用的就是这一种方式。</p><h3 id="4-1-两者之间的对比"><a href="#4-1-两者之间的对比" class="headerlink" title="4.1 两者之间的对比"></a>4.1 两者之间的对比</h3><p>在一个表中，聚簇索引只能有一个，但是可以有多个非聚簇索引；<br>在聚簇索引中，索引的键值逻辑顺序决定了表中相应行的物理顺序，而非聚簇索引就没有这种情况。</p><h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>索引是一个非常强大的存储结构，它可以很大程度的提升数据库的查找效率，但是我们也要明白其中的一些原理，只有这样我们才能更好的使用好索引。</p>]]></content>
     
     
     <categories>
