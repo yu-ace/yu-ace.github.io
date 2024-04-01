@@ -16,32 +16,22 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="声音克隆-GPT-SoVITS实操1 前言随着大模型的发展，越来越多有趣的模型问世。本次所介绍的就是一款声音克隆模型，它可以分析一段音频，提取说话人的音色，将音频交给模型训练并推理，最终实现声音的克隆，这种克隆可以获取到音频的情感、音色和语速。 2 前期准备模型名称为 __GPT-SoVITS__，推荐直接使用 github 下载，当然也可以从其他途径去获取。以Windows系统为例，下载完成后，">
+    <meta name="description" content="流量，既分南北也分东西1 简介在画单体应用架构图的时候，我们通常都是从上往下画的，基本不会有人是左右画的(并不绝对)。而对于分布式架构，又很少见到纯粹的是从上往下的，常常还伴随着左右。这并不是巧合，而是因为这些架构图的绘制都和流量有关。 2 流量南北流量和东西流量是数据中心环境中的网络流量模式。 我们以最简单的单体应用为例，拥有服务器、客户端和数据库三个部分组成。当客户端需要访问数据时，服务器就是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="声音克隆-GPT-SoVITS实操">
-<meta property="og:url" content="http://example.com/2024/01/05/%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86-GPT-SoVITS%E5%AE%9E%E6%93%8D/index.html">
+<meta property="og:title" content="流量，既分南北也分东西">
+<meta property="og:url" content="http://example.com/2024/02/15/%E6%B5%81%E9%87%8F%EF%BC%8C%E6%97%A2%E5%88%86%E5%8D%97%E5%8C%97%E4%B9%9F%E5%88%86%E4%B8%9C%E8%A5%BF/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="声音克隆-GPT-SoVITS实操1 前言随着大模型的发展，越来越多有趣的模型问世。本次所介绍的就是一款声音克隆模型，它可以分析一段音频，提取说话人的音色，将音频交给模型训练并推理，最终实现声音的克隆，这种克隆可以获取到音频的情感、音色和语速。 2 前期准备模型名称为 __GPT-SoVITS__，推荐直接使用 github 下载，当然也可以从其他途径去获取。以Windows系统为例，下载完成后，">
+<meta property="og:description" content="流量，既分南北也分东西1 简介在画单体应用架构图的时候，我们通常都是从上往下画的，基本不会有人是左右画的(并不绝对)。而对于分布式架构，又很少见到纯粹的是从上往下的，常常还伴随着左右。这并不是巧合，而是因为这些架构图的绘制都和流量有关。 2 流量南北流量和东西流量是数据中心环境中的网络流量模式。 我们以最简单的单体应用为例，拥有服务器、客户端和数据库三个部分组成。当客户端需要访问数据时，服务器就是">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E9%A6%96%E9%A1%B5%E7%95%8C%E9%9D%A2.png">
-<meta property="og:image" content="http://example.com/images/%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E7%95%8C%E9%9D%A2.png">
-<meta property="og:image" content="http://example.com/images/%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E6%93%8D%E4%BD%9C.png">
-<meta property="og:image" content="http://example.com/images/%E5%88%87%E5%89%B2%E5%99%AA%E9%9F%B3.png">
-<meta property="og:image" content="http://example.com/images/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97.png">
-<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83.png">
-<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E8%AE%AD%E7%BB%83.png">
-<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86.png">
-<meta property="og:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E7%95%8C%E9%9D%A2.png">
-<meta property="article:published_time" content="2024-01-05T13:19:04.000Z">
-<meta property="article:modified_time" content="2024-02-29T08:21:58.410Z">
+<meta property="article:published_time" content="2024-02-15T14:19:04.000Z">
+<meta property="article:modified_time" content="2024-04-01T02:04:08.312Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/%E6%A8%A1%E5%9E%8B%E9%A6%96%E9%A1%B5%E7%95%8C%E9%9D%A2.png">
   
   
   
-  <title>声音克隆-GPT-SoVITS实操 - 残梦三生</title>
+  <title>流量，既分南北也分东西 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="声音克隆-GPT-SoVITS实操"></span>
+            <span id="subtitle" data-typed-text="流量，既分南北也分东西"></span>
           
         </div>
 
@@ -218,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-05 21:19" pubdate>
-          2024年1月5日 晚上
+        <time datetime="2024-02-15 22:19" pubdate>
+          2024年2月15日 晚上
         </time>
       </span>
     
@@ -230,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          732 字
         
       </span>
     
@@ -241,7 +231,7 @@
         
         
         
-          13 分钟
+          7 分钟
         
       </span>
     
@@ -278,50 +268,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">声音克隆-GPT-SoVITS实操</h1>
+            <h1 id="seo-header">流量，既分南北也分东西</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="声音克隆-GPT-SoVITS实操"><a href="#声音克隆-GPT-SoVITS实操" class="headerlink" title="声音克隆-GPT-SoVITS实操"></a>声音克隆-GPT-SoVITS实操</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>随着大模型的发展，越来越多有趣的模型问世。本次所介绍的就是一款声音克隆模型，它可以分析一段音频，提取说话人的音色，将音频交给模型训练并推理，最终实现声音的克隆，这种克隆可以获取到音频的情感、音色和语速。</p>
-<h2 id="2-前期准备"><a href="#2-前期准备" class="headerlink" title="2 前期准备"></a>2 前期准备</h2><p>模型名称为 __GPT-SoVITS__，推荐直接使用 <strong>github</strong> 下载，当然也可以从其他途径去获取。以Windows系统为例，下载完成后，打开资源包，双击 <strong>go-webui.bat</strong> 便会打开浏览器看到如下页面。如果没有跳出，也可以在浏览器中输入命令行给出的网址打开。</p>
-<p><img src="/images/%E6%A8%A1%E5%9E%8B%E9%A6%96%E9%A1%B5%E7%95%8C%E9%9D%A2.png" srcset="/img/loading.gif" lazyload></p>
-<center>模型首页界面</center>
-
-<h2 id="3-训练实战"><a href="#3-训练实战" class="headerlink" title="3 训练实战"></a>3 训练实战</h2><h3 id="3-1-去除噪音"><a href="#3-1-去除噪音" class="headerlink" title="3.1 去除噪音"></a>3.1 去除噪音</h3><p>首先，需要点击 <strong>Open UVR5-WebUI</strong> ,在跳出来的界面上进行操作。</p>
-<p><img src="/images/%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E7%95%8C%E9%9D%A2.png" srcset="/img/loading.gif" lazyload></p>
-<center>去除噪音界面打开方式</center>
-
-<p>在打开的界面中，需要将我们的音频文件的存储路径复制到文本框中，然后按照需求选择对应的模型，同时需要指定音频分离以后的文件所保存的位置，并且格式需要确保为wav格式，然后确定即可。</p>
-<p><img src="/images/%E5%8E%BB%E9%99%A4%E5%99%AA%E9%9F%B3%E6%93%8D%E4%BD%9C.png" srcset="/img/loading.gif" lazyload></p>
-<center>去除噪音操作</center>
-
-<p>这一步操作完，一共会得到两个音频文件，一个是以instrument开头的伴奏文件，另一个是以vocal开头的人声文件。</p>
-<h4 id="3-2-切割音频"><a href="#3-2-切割音频" class="headerlink" title="3.2 切割音频"></a>3.2 切割音频</h4><p>这一步需要将分离开的人声进行切割。首先输入原音频的文件夹路径，然后根据需要调整参数。主要的参数为min_length，主要依靠电脑显存大小来调整，显存越小数值也就越小。如果获取的音频太密集可以通过min_interval参数降低。其他参数建议使用默认选项，之后便进行音频切割。</p>
-<p><img src="/images/%E5%88%87%E5%89%B2%E5%99%AA%E9%9F%B3.png" srcset="/img/loading.gif" lazyload></p>
-<center>切割音频</center>
-
-<p>我们将切割完的文件进行中文识别，将音频转换为文字，可以更好地帮助我们校核音频。这里需要将切割后的文件夹路径放置到文本框，选定输出文件即可进行转换，转换完成后，可以将生成的文件路径放入到语音转文字校对工具中 <strong>.list annotation file path</strong> ,并且选中的 <strong>Open labelling WebUI</strong> ,在跳出的界面中进行文字比对，修改。当然如果不追求极致的效果，可以跳过该步骤。</p>
-<p><img src="/images/%E9%9F%B3%E9%A2%91%E8%BD%AC%E6%96%87%E5%AD%97.png" srcset="/img/loading.gif" lazyload></p>
-<center>音频文字转换</center>
-
-<h3 id="3-3-模型训练"><a href="#3-3-模型训练" class="headerlink" title="3.3 模型训练"></a>3.3 模型训练</h3><p>这一步，我们将正是进行模型的训练。我们需要在初始界面上，选择__1-GPT-SOVITS-TTS__ ，在model name中为自己的模型取名，然后在 <strong>Text labelling file</strong> 标签中,将之前生成的list文件路径放入，并将存储切割后音频文件的文件夹路径放入到 <strong>Audio dataset folder</strong> 中。然后就可以点击下面的三个选项，依次进行模型训练即可。</p>
-<p><img src="/images/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83.png" srcset="/img/loading.gif" lazyload></p>
-<center>模型训练</center>
-
-<p>训练完成后，便可以调整权重，进行深度学习。我们在 <strong>1B-Fine-tuned training</strong> 界面中，选择参数进行深度学习，这一步非常吃系统资源，不建议选择较高的数值。</p>
-<p><img src="/images/%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D%E8%AE%AD%E7%BB%83.png" srcset="/img/loading.gif" lazyload></p>
-<center>模型权重训练</center>
-
-<h4 id="3-4-模型推理"><a href="#3-4-模型推理" class="headerlink" title="3.4 模型推理"></a>3.4 模型推理</h4><p>当完成权重训练以后，便可以进行推理了.我们需要选择 <strong>1C-inference</strong> 界面，在GPT模型列表和SoVITS模型里边中找到需要使用的模型，然后勾选 <strong>Open TTS inference WEBUI</strong> 选项，既可以跳出模型推理界面。</p>
-<p><img src="/images/%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86.png" srcset="/img/loading.gif" lazyload></p>
-<center>模型推理入口界面</center>
-
-<p>在这里，我们就可以按照需求，使用训练的模型，模拟输入音频的音色进行文字转换。首先需要重新选择GPT模型列表和SoVITS模型。在__Please upload and fill reference information__中放入部分音频的分割文件，并且在对应的文本框中输入相应的中文，以供模型模拟，然后将需要转化的文字粘贴到inference text文本框中，然后转换即可。</p>
-<p><img src="/images/%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E7%95%8C%E9%9D%A2.png" srcset="/img/loading.gif" lazyload></p>
-<center>模型推理界面</center>
-
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>按照上述内容操作，最后生成的声音虽然说不能100%一样，但还是很相似的。毕竟这是机器模拟，现在还不可能模拟出一摸一样的声音，但是随着大模型的发展，真正会有实现的那一天那不一定呢。</p>
+                <h1 id="流量，既分南北也分东西"><a href="#流量，既分南北也分东西" class="headerlink" title="流量，既分南北也分东西"></a>流量，既分南北也分东西</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>在画单体应用架构图的时候，我们通常都是从上往下画的，基本不会有人是左右画的(并不绝对)。而对于分布式架构，又很少见到纯粹的是从上往下的，常常还伴随着左右。这并不是巧合，而是因为这些架构图的绘制都和流量有关。</p>
+<h2 id="2-流量"><a href="#2-流量" class="headerlink" title="2 流量"></a>2 流量</h2><p>南北流量和东西流量是数据中心环境中的网络流量模式。</p>
+<p>我们以最简单的单体应用为例，拥有服务器、客户端和数据库三个部分组成。当客户端需要访问数据时，服务器就是查询数据库然后返回结果，这么一次流量就被成为南北流量。</p>
+<p>当随着应用的升级，以及用户的增加。服务器和数据库承担不了大规模的请求，就得采用分布式和负载均衡等方式来分担压力。分布式这种不同服务器之间的流量就被称为东西流量。</p>
+<h2 id="3-传输方式"><a href="#3-传输方式" class="headerlink" title="3 传输方式"></a>3 传输方式</h2><p>南北、东西流量的区别主要是在流向和流量上的。</p>
+<p>南北流量通常是从外部网络流向内部网络的数据流量。例如常见的CURD业务系统、web浏览器请求、文件传输等。这一类业务中，网络传输频率较低，传输的内容相对较大，所以通常采用JSON的方式传输。</p>
+<p>东西流量则是内部网络中的数据流量。例如数据库之间信息同步等。这类流量传输频率较高，而且传输的数据体量较小，此时就不可以使用json的方式，因为json本身需要占据一定的容量。我们可以使用RPC技术来传输。</p>
+<p>对比http，RPC支持长链接，每次通信不需要3次握手，避免不必要的网络开销；可以灵活定制协议字段，减少网络传输字节数，但是RPC的实现较为复杂，需要自己定义接口，而且没有统一的配置。方便的hua，可以使用Google开源的gRPC工具。</p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>在了解了东西、南北流量的特点之后。我们可以在以后的网络架构和容量规划中，需要针对不同的场景区分好流量的种类，对南北流量和东西流量进行分析和优化，确保性能和安全的优化。</p>
 
                 
               </div>
@@ -340,22 +300,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">大模型</a>
+  <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/" class="category-chain-item">分布式架构</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/GPT/" class="category-chain-item">GPT</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/GPT/%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86/" class="category-chain-item">声音克隆</a>
-  
-  
-
-  
-
   
 
       </span>
@@ -381,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>声音克隆-GPT-SoVITS实操</div>
-      <div>http://example.com/2024/01/05/声音克隆-GPT-SoVITS实操/</div>
+      <div>流量，既分南北也分东西</div>
+      <div>http://example.com/2024/02/15/流量，既分南北也分东西/</div>
     </div>
     <div class="license-meta">
       
@@ -394,7 +340,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月5日</div>
+          <div>2024年2月15日</div>
         </div>
       
       
@@ -426,18 +372,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/15/%E6%B5%81%E9%87%8F%EF%BC%8C%E6%97%A2%E5%88%86%E5%8D%97%E5%8C%97%E4%B9%9F%E5%88%86%E4%B8%9C%E8%A5%BF/" title="流量，既分南北也分东西">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">流量，既分南北也分东西</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/21/RAG%E8%BF%90%E7%94%A8-%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E5%AE%9E%E6%88%98/" title="RAG运用-个人知识库实战">
-                        <span class="hidden-mobile">RAG运用-个人知识库实战</span>
+                      <a href="/2024/01/05/%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86-GPT-SoVITS%E5%AE%9E%E6%93%8D/" title="声音克隆-GPT-SoVITS实操">
+                        <span class="hidden-mobile">声音克隆-GPT-SoVITS实操</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
