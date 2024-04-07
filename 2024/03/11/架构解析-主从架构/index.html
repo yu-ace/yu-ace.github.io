@@ -16,22 +16,24 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="流量，既分南北也分东西1 简介在画单体应用架构图的时候，我们通常都是从上往下画的，基本不会有人是左右画的(并不绝对)。而对于分布式架构，又很少见到纯粹的是从上往下的，常常还伴随着左右。这并不是巧合，而是因为这些架构图的绘制都和流量有关。 2 流量南北流量和东西流量是数据中心环境中的网络流量模式。 我们以最简单的单体应用为例，拥有服务器、客户端和数据库三个部分组成。当客户端需要访问数据时，服务器就是">
+    <meta name="description" content="架构解析-主从架构1 简介主从式架构，是分布式系统中常用的架构之一。主是指主机，从则是从机，主机负责处理写操作和更新操作，从机负责复制主机的操作，并且用于处理读操作。 2 优势高可靠性和容错性。主从架构通常能提供较高的可靠性。如果主节点发生故障，系统可以快速切换到备用的从节点，从而避免系统中断。负载均衡。通过将请求分配到多个从节点上，主从架构可以实现负载均衡，提高系统的整体性能和可伸缩性。易于扩展">
 <meta property="og:type" content="article">
-<meta property="og:title" content="流量，既分南北也分东西">
-<meta property="og:url" content="http://example.com/2024/02/15/%E6%B5%81%E9%87%8F%EF%BC%8C%E6%97%A2%E5%88%86%E5%8D%97%E5%8C%97%E4%B9%9F%E5%88%86%E4%B8%9C%E8%A5%BF/index.html">
+<meta property="og:title" content="架构解析-主从架构">
+<meta property="og:url" content="http://example.com/2024/03/11/%E6%9E%B6%E6%9E%84%E8%A7%A3%E6%9E%90-%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="流量，既分南北也分东西1 简介在画单体应用架构图的时候，我们通常都是从上往下画的，基本不会有人是左右画的(并不绝对)。而对于分布式架构，又很少见到纯粹的是从上往下的，常常还伴随着左右。这并不是巧合，而是因为这些架构图的绘制都和流量有关。 2 流量南北流量和东西流量是数据中心环境中的网络流量模式。 我们以最简单的单体应用为例，拥有服务器、客户端和数据库三个部分组成。当客户端需要访问数据时，服务器就是">
+<meta property="og:description" content="架构解析-主从架构1 简介主从式架构，是分布式系统中常用的架构之一。主是指主机，从则是从机，主机负责处理写操作和更新操作，从机负责复制主机的操作，并且用于处理读操作。 2 优势高可靠性和容错性。主从架构通常能提供较高的可靠性。如果主节点发生故障，系统可以快速切换到备用的从节点，从而避免系统中断。负载均衡。通过将请求分配到多个从节点上，主从架构可以实现负载均衡，提高系统的整体性能和可伸缩性。易于扩展">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-15T14:19:04.000Z">
-<meta property="article:modified_time" content="2024-04-01T02:04:08.312Z">
+<meta property="og:image" content="http://example.com/images/GFS%E6%9E%B6%E6%9E%84.png">
+<meta property="article:published_time" content="2024-03-11T13:19:04.000Z">
+<meta property="article:modified_time" content="2024-04-07T15:19:48.476Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/GFS%E6%9E%B6%E6%9E%84.png">
   
   
   
-  <title>流量，既分南北也分东西 - 残梦三生</title>
+  <title>架构解析-主从架构 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="流量，既分南北也分东西"></span>
+            <span id="subtitle" data-typed-text="架构解析-主从架构"></span>
           
         </div>
 
@@ -208,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-15 22:19" pubdate>
-          2024年2月15日 晚上
+        <time datetime="2024-03-11 21:19" pubdate>
+          2024年3月11日 晚上
         </time>
       </span>
     
@@ -220,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          732 字
+          786 字
         
       </span>
     
@@ -268,20 +270,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">流量，既分南北也分东西</h1>
+            <h1 id="seo-header">架构解析-主从架构</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="流量，既分南北也分东西"><a href="#流量，既分南北也分东西" class="headerlink" title="流量，既分南北也分东西"></a>流量，既分南北也分东西</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>在画单体应用架构图的时候，我们通常都是从上往下画的，基本不会有人是左右画的(并不绝对)。而对于分布式架构，又很少见到纯粹的是从上往下的，常常还伴随着左右。这并不是巧合，而是因为这些架构图的绘制都和流量有关。</p>
-<h2 id="2-流量"><a href="#2-流量" class="headerlink" title="2 流量"></a>2 流量</h2><p>南北流量和东西流量是数据中心环境中的网络流量模式。</p>
-<p>我们以最简单的单体应用为例，拥有服务器、客户端和数据库三个部分组成。当客户端需要访问数据时，服务器就是查询数据库然后返回结果，这么一次流量就被成为南北流量。</p>
-<p>当随着应用的升级，以及用户的增加。服务器和数据库承担不了大规模的请求，就得采用分布式和负载均衡等方式来分担压力。分布式这种不同服务器之间的流量就被称为东西流量。</p>
-<h2 id="3-传输方式"><a href="#3-传输方式" class="headerlink" title="3 传输方式"></a>3 传输方式</h2><p>南北、东西流量的区别主要是在流向和流量上的。</p>
-<p>南北流量通常是从外部网络流向内部网络的数据流量。例如常见的CURD业务系统、web浏览器请求、文件传输等。这一类业务中，网络传输频率较低，传输的内容相对较大，所以通常采用JSON的方式传输。</p>
-<p>东西流量则是内部网络中的数据流量。例如数据库之间信息同步等。这类流量传输频率较高，而且传输的数据体量较小，此时就不可以使用json的方式，因为json本身需要占据一定的容量。我们可以使用RPC技术来传输。</p>
-<p>对比http，RPC支持长链接，每次通信不需要3次握手，避免不必要的网络开销；可以灵活定制协议字段，减少网络传输字节数，但是RPC的实现较为复杂，需要自己定义接口，而且没有统一的配置。方便的hua，可以使用Google开源的gRPC工具。</p>
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>在了解了东西、南北流量的特点之后。我们可以在以后的网络架构和容量规划中，需要针对不同的场景区分好流量的种类，对南北流量和东西流量进行分析和优化，确保性能和安全的优化。</p>
+                <h1 id="架构解析-主从架构"><a href="#架构解析-主从架构" class="headerlink" title="架构解析-主从架构"></a>架构解析-主从架构</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>主从式架构，是分布式系统中常用的架构之一。主是指主机，从则是从机，主机负责处理写操作和更新操作，从机负责复制主机的操作，并且用于处理读操作。</p>
+<h2 id="2-优势"><a href="#2-优势" class="headerlink" title="2 优势"></a>2 优势</h2><p>高可靠性和容错性。主从架构通常能提供较高的可靠性。如果主节点发生故障，系统可以快速切换到备用的从节点，从而避免系统中断。<br>负载均衡。通过将请求分配到多个从节点上，主从架构可以实现负载均衡，提高系统的整体性能和可伸缩性。<br>易于扩展。从机的扩展比较灵活，扩容操作不会影响业务的进行。</p>
+<h2 id="3-缺点"><a href="#3-缺点" class="headerlink" title="3 缺点"></a>3 缺点</h2><p>单点故障。主节点故障可能导致整个系统瘫痪，虽然备用从节点能够接管服务，但是切换复杂度高。<br>性能瓶颈。所有写操作都要经过主节点，会成为系统的性能瓶颈，限制系统整体吞吐量。<br>数据一致性。在主从架构中，主节点和从节点之间需要保持数据的一致性，这可能会引入一些复杂的同步机制，增加系统的复杂性和开发成本。</p>
+<h2 id="4-GFS架构鉴赏"><a href="#4-GFS架构鉴赏" class="headerlink" title="4 GFS架构鉴赏"></a>4 GFS架构鉴赏</h2><p>谷歌文件系统（Google File System）是一种专有分布式文件系统，由Google公司开发，运行于Linux平台上。<br><img src="/images/GFS%E6%9E%B6%E6%9E%84.png" srcset="/img/loading.gif" lazyload></p>
+<center>GFS架构</center>
+从图中可以看出，GFS使用的也是一主多从的架构，一个GFS集群是由一个master和大量的chunkserver组成的。
+与主从架构不同的是，GFS的master节点存储的不是具体的数据，而是数据所保存在chunkserver的位置。
+这个架构的主要运行逻辑是GFS客户端向master节点发送文件名称和索引位置，master节点搜索到以后返回客户端一个标识符以及数据在chunkserver中的位置，然后客户端再去chunkserver中查找并返回数据。
+而在master节点和chunkserver之间，master节点向chunkserver发送控制、管理数据块的存储等操作，而chunkserver则向master节点传输存储、健康、负载等状态。以确保GFS系统的稳定性和可靠性。
 
                 
               </div>
@@ -302,6 +304,13 @@
         
   <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/" class="category-chain-item">分布式架构</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/" class="category-chain-item">主从架构</a>
+  
+  
+
   
 
       </span>
@@ -327,8 +336,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>流量，既分南北也分东西</div>
-      <div>http://example.com/2024/02/15/流量，既分南北也分东西/</div>
+      <div>架构解析-主从架构</div>
+      <div>http://example.com/2024/03/11/架构解析-主从架构/</div>
     </div>
     <div class="license-meta">
       
@@ -340,7 +349,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月15日</div>
+          <div>2024年3月11日</div>
         </div>
       
       
@@ -372,9 +381,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/11/%E6%9E%B6%E6%9E%84%E8%A7%A3%E6%9E%90-%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/" title="架构解析-主从架构">
+                      <a href="/2024/03/13/%E6%9E%B6%E6%9E%84%E8%A7%A3%E6%9E%90-%E4%B8%BB%E5%A4%87%E6%9E%B6%E6%9E%84/" title="架构解析-主备架构">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">架构解析-主从架构</span>
+                        <span class="hidden-mobile">架构解析-主备架构</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -382,8 +391,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/05/%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86-GPT-SoVITS%E5%AE%9E%E6%93%8D/" title="声音克隆-GPT-SoVITS实操">
-                        <span class="hidden-mobile">声音克隆-GPT-SoVITS实操</span>
+                      <a href="/2024/02/15/%E6%B5%81%E9%87%8F%EF%BC%8C%E6%97%A2%E5%88%86%E5%8D%97%E5%8C%97%E4%B9%9F%E5%88%86%E4%B8%9C%E8%A5%BF/" title="流量，既分南北也分东西">
+                        <span class="hidden-mobile">流量，既分南北也分东西</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

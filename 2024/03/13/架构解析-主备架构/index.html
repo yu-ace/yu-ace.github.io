@@ -16,22 +16,22 @@
   <meta name="author" content="yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="流量，既分南北也分东西1 简介在画单体应用架构图的时候，我们通常都是从上往下画的，基本不会有人是左右画的(并不绝对)。而对于分布式架构，又很少见到纯粹的是从上往下的，常常还伴随着左右。这并不是巧合，而是因为这些架构图的绘制都和流量有关。 2 流量南北流量和东西流量是数据中心环境中的网络流量模式。 我们以最简单的单体应用为例，拥有服务器、客户端和数据库三个部分组成。当客户端需要访问数据时，服务器就是">
+    <meta name="description" content="架构解析-主备架构1 简介主从式架构，是分布式系统中常用的架构之一。它可以提高系统的性能和容错能力，在主节点发生故障以后可以自动选举新的主节点，确保系统的连续性。但是在对系统可用性要求极高的场景下，这时间还是会有很大影响的。在这样的情况下，我们就需要使用主备架构。主备架构，主是指主机，备指备机。主机负责对外服务，备机则是备份主机的所有数据，不参与服务，当主机发生故障时，则会切换到备机来继续对外提供">
 <meta property="og:type" content="article">
-<meta property="og:title" content="流量，既分南北也分东西">
-<meta property="og:url" content="http://example.com/2024/02/15/%E6%B5%81%E9%87%8F%EF%BC%8C%E6%97%A2%E5%88%86%E5%8D%97%E5%8C%97%E4%B9%9F%E5%88%86%E4%B8%9C%E8%A5%BF/index.html">
+<meta property="og:title" content="架构解析-主备架构">
+<meta property="og:url" content="http://example.com/2024/03/13/%E6%9E%B6%E6%9E%84%E8%A7%A3%E6%9E%90-%E4%B8%BB%E5%A4%87%E6%9E%B6%E6%9E%84/index.html">
 <meta property="og:site_name" content="残梦三生">
-<meta property="og:description" content="流量，既分南北也分东西1 简介在画单体应用架构图的时候，我们通常都是从上往下画的，基本不会有人是左右画的(并不绝对)。而对于分布式架构，又很少见到纯粹的是从上往下的，常常还伴随着左右。这并不是巧合，而是因为这些架构图的绘制都和流量有关。 2 流量南北流量和东西流量是数据中心环境中的网络流量模式。 我们以最简单的单体应用为例，拥有服务器、客户端和数据库三个部分组成。当客户端需要访问数据时，服务器就是">
+<meta property="og:description" content="架构解析-主备架构1 简介主从式架构，是分布式系统中常用的架构之一。它可以提高系统的性能和容错能力，在主节点发生故障以后可以自动选举新的主节点，确保系统的连续性。但是在对系统可用性要求极高的场景下，这时间还是会有很大影响的。在这样的情况下，我们就需要使用主备架构。主备架构，主是指主机，备指备机。主机负责对外服务，备机则是备份主机的所有数据，不参与服务，当主机发生故障时，则会切换到备机来继续对外提供">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-15T14:19:04.000Z">
-<meta property="article:modified_time" content="2024-04-01T02:04:08.312Z">
+<meta property="article:published_time" content="2024-03-13T11:39:34.000Z">
+<meta property="article:modified_time" content="2024-04-07T15:20:49.618Z">
 <meta property="article:author" content="yu">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>流量，既分南北也分东西 - 残梦三生</title>
+  <title>架构解析-主备架构 - 残梦三生</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="流量，既分南北也分东西"></span>
+            <span id="subtitle" data-typed-text="架构解析-主备架构"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-15 22:19" pubdate>
-          2024年2月15日 晚上
+        <time datetime="2024-03-13 19:39" pubdate>
+          2024年3月13日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          732 字
+          945 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -268,20 +268,16 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">流量，既分南北也分东西</h1>
+            <h1 id="seo-header">架构解析-主备架构</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="流量，既分南北也分东西"><a href="#流量，既分南北也分东西" class="headerlink" title="流量，既分南北也分东西"></a>流量，既分南北也分东西</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>在画单体应用架构图的时候，我们通常都是从上往下画的，基本不会有人是左右画的(并不绝对)。而对于分布式架构，又很少见到纯粹的是从上往下的，常常还伴随着左右。这并不是巧合，而是因为这些架构图的绘制都和流量有关。</p>
-<h2 id="2-流量"><a href="#2-流量" class="headerlink" title="2 流量"></a>2 流量</h2><p>南北流量和东西流量是数据中心环境中的网络流量模式。</p>
-<p>我们以最简单的单体应用为例，拥有服务器、客户端和数据库三个部分组成。当客户端需要访问数据时，服务器就是查询数据库然后返回结果，这么一次流量就被成为南北流量。</p>
-<p>当随着应用的升级，以及用户的增加。服务器和数据库承担不了大规模的请求，就得采用分布式和负载均衡等方式来分担压力。分布式这种不同服务器之间的流量就被称为东西流量。</p>
-<h2 id="3-传输方式"><a href="#3-传输方式" class="headerlink" title="3 传输方式"></a>3 传输方式</h2><p>南北、东西流量的区别主要是在流向和流量上的。</p>
-<p>南北流量通常是从外部网络流向内部网络的数据流量。例如常见的CURD业务系统、web浏览器请求、文件传输等。这一类业务中，网络传输频率较低，传输的内容相对较大，所以通常采用JSON的方式传输。</p>
-<p>东西流量则是内部网络中的数据流量。例如数据库之间信息同步等。这类流量传输频率较高，而且传输的数据体量较小，此时就不可以使用json的方式，因为json本身需要占据一定的容量。我们可以使用RPC技术来传输。</p>
-<p>对比http，RPC支持长链接，每次通信不需要3次握手，避免不必要的网络开销；可以灵活定制协议字段，减少网络传输字节数，但是RPC的实现较为复杂，需要自己定义接口，而且没有统一的配置。方便的hua，可以使用Google开源的gRPC工具。</p>
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>在了解了东西、南北流量的特点之后。我们可以在以后的网络架构和容量规划中，需要针对不同的场景区分好流量的种类，对南北流量和东西流量进行分析和优化，确保性能和安全的优化。</p>
+                <h1 id="架构解析-主备架构"><a href="#架构解析-主备架构" class="headerlink" title="架构解析-主备架构"></a>架构解析-主备架构</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>主从式架构，是分布式系统中常用的架构之一。它可以提高系统的性能和容错能力，在主节点发生故障以后可以自动选举新的主节点，确保系统的连续性。但是在对系统可用性要求极高的场景下，这时间还是会有很大影响的。在这样的情况下，我们就需要使用主备架构。<br>主备架构，主是指主机，备指备机。主机负责对外服务，备机则是备份主机的所有数据，不参与服务，当主机发生故障时，则会切换到备机来继续对外提供服务。</p>
+<h2 id="2-优点"><a href="#2-优点" class="headerlink" title="2 优点"></a>2 优点</h2><p>高可靠性和容错性。主备架构能够提供较高的可靠性和容错性。一旦主节点发生故障，系统可以快速切换到备用的从节点，从而避免系统中断，确保持续的服务可用性。<br>负载均衡。通过将请求分配到多个从节点上，主备架构可以实现负载均衡，有效地分摊系统的负载，提高系统的整体性能和可伸缩性。<br>简单可靠。主备架构相对简单，易于实现和维护。备用节点通常处于待命状态，只有在主节点故障时才需要进行切换，因此系统运行状态较为稳定可靠。</p>
+<h2 id="3-缺点"><a href="#3-缺点" class="headerlink" title="3 缺点"></a>3 缺点</h2><p>资源浪费。备用节点通常需要与主节点保持相同的硬件配置和资源，以确保在切换时能够满足业务需求，这可能导致资源的浪费。<br>切换延迟。尽管主备架构可以实现快速的故障切换，但仍然存在一定的切换延迟。在切换过程中可能会有一段时间的服务中断或性能下降，这对于某些对延迟敏感的应用可能是不可接受的。<br>复杂性。主备架构需要设计和实现自动化的故障检测和切换机制，以及数据同步和一致性保证机制，这增加了系统的复杂性和管理成本。</p>
+<h2 id="4-疑问"><a href="#4-疑问" class="headerlink" title="4 疑问"></a>4 疑问</h2><p>大家有没有想过这样一个问题，主备架构和主从架构一样，都有切换延迟的缺点，那么为什么还需要存在主备架构呢？<br>主备架构主要是用于关键的业务系统或者数据中心的。这种架构简单可靠，因为只涉及两个节点的切换，方便管理。在主节点发生故障时，备用节点可以快速的接管服务，业务中断的时间也比较短。同事因为备用节点是主节点的全量备份，所以切换节点时可以做到数据不丢失。而且备用节点通常处于待命状态，不会占用过多的资源。</p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>通常在日常业务中，很多时候都是主从与主备相结合使用的。两者相结合可以提供双重的高可用保障，在容灾方面，主备架构直接作为主数据的备份，避免了在从机中筛选出新的主机而降低系统的可用性。同时还可以很方便的进行容量扩容。两者的结合可以为系统的稳定性和可靠性提供更好的保障。</p>
 
                 
               </div>
@@ -302,6 +298,13 @@
         
   <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/" class="category-chain-item">分布式架构</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/%E4%B8%BB%E5%A4%87%E6%9E%B6%E6%9E%84/" class="category-chain-item">主备架构</a>
+  
+  
+
   
 
       </span>
@@ -327,8 +330,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>流量，既分南北也分东西</div>
-      <div>http://example.com/2024/02/15/流量，既分南北也分东西/</div>
+      <div>架构解析-主备架构</div>
+      <div>http://example.com/2024/03/13/架构解析-主备架构/</div>
     </div>
     <div class="license-meta">
       
@@ -340,7 +343,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月15日</div>
+          <div>2024年3月13日</div>
         </div>
       
       
@@ -372,18 +375,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/11/%E6%9E%B6%E6%9E%84%E8%A7%A3%E6%9E%90-%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/" title="架构解析-主从架构">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">架构解析-主从架构</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/05/%E5%A3%B0%E9%9F%B3%E5%85%8B%E9%9A%86-GPT-SoVITS%E5%AE%9E%E6%93%8D/" title="声音克隆-GPT-SoVITS实操">
-                        <span class="hidden-mobile">声音克隆-GPT-SoVITS实操</span>
+                      <a href="/2024/03/11/%E6%9E%B6%E6%9E%84%E8%A7%A3%E6%9E%90-%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/" title="架构解析-主从架构">
+                        <span class="hidden-mobile">架构解析-主从架构</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
